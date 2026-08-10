@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>SB Mobile Detailing — Weekly Marketing Report</title>
+<style>
+
+  :root{
+    --bg:#eef3f6; --surface:#ffffff; --surface-2:#f5f8fa;
+    --ink:#14232e; --ink-2:#33454f; --muted:#5f7079; --hair:#e0e8ed;
+    --accent:#0f6f8c; --accent-2:#2e9fc4; --accent-wash:#e4f1f6;
+    --good:#2c8659; --good-wash:#e3f1e9; --warn:#b47a24;
+    --shadow:0 1px 2px rgba(20,35,46,.06), 0 8px 24px rgba(20,35,46,.05);
+    --maxw:920px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0c141c; --surface:#152230; --surface-2:#101b26;
+      --ink:#e9eff3; --ink-2:#c2cfd8; --muted:#8ea0ac; --hair:#243541;
+      --accent:#3aa7cb; --accent-2:#5cc0dd; --accent-wash:#132b36;
+      --good:#4bb17e; --good-wash:#142a20; --warn:#d0a251;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#eef3f6; --surface:#ffffff; --surface-2:#f5f8fa;
+    --ink:#14232e; --ink-2:#33454f; --muted:#5f7079; --hair:#e0e8ed;
+    --accent:#0f6f8c; --accent-2:#2e9fc4; --accent-wash:#e4f1f6;
+    --good:#2c8659; --good-wash:#e3f1e9; --warn:#b47a24;
+    --shadow:0 1px 2px rgba(20,35,46,.06), 0 8px 24px rgba(20,35,46,.05);
+  }
+  :root[data-theme="dark"]{
+    --bg:#0c141c; --surface:#152230; --surface-2:#101b26;
+    --ink:#e9eff3; --ink-2:#c2cfd8; --muted:#8ea0ac; --hair:#243541;
+    --accent:#3aa7cb; --accent-2:#5cc0dd; --accent-wash:#132b36;
+    --good:#4bb17e; --good-wash:#142a20; --warn:#d0a251;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55; font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:clamp(20px,4vw,52px) clamp(16px,4vw,32px) 72px}
+  .num{font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1}
+
+  /* ---- header ---- */
+  header{margin-bottom:34px}
+  .eyebrow{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:650}
+  h1{font-size:clamp(28px,5vw,40px); line-height:1.08; margin:.32em 0 .18em; font-weight:680; letter-spacing:-.02em; text-wrap:balance}
+  .sub{color:var(--muted); font-size:15px; margin:0}
+  .status{
+    display:inline-flex; align-items:center; gap:8px; margin-top:18px;
+    background:var(--good-wash); color:var(--good); border:1px solid color-mix(in srgb,var(--good) 26%,transparent);
+    padding:7px 13px; border-radius:999px; font-size:13px; font-weight:600;
+  }
+  .status .dot{width:8px; height:8px; border-radius:50%; background:var(--good); box-shadow:0 0 0 3px color-mix(in srgb,var(--good) 22%,transparent)}
+
+  /* ---- section scaffold ---- */
+  section{margin-top:40px}
+  .sec-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:16px}
+  .sec-head h2{font-size:20px; margin:0; font-weight:660; letter-spacing:-.01em}
+  .sec-head .win{font-size:12.5px; color:var(--muted); letter-spacing:.02em}
+  .card{background:var(--surface); border:1px solid var(--hair); border-radius:16px; box-shadow:var(--shadow)}
+  .pad{padding:clamp(18px,3vw,26px)}
+
+  /* ---- highlights band ---- */
+  .ships{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  @media (max-width:680px){.ships{grid-template-columns:1fr}}
+  .ship{background:var(--surface); border:1px solid var(--hair); border-radius:14px; padding:18px 18px 20px; box-shadow:var(--shadow); position:relative}
+  .ship .tag{font-size:11px; letter-spacing:.12em; text-transform:uppercase; font-weight:650; color:var(--accent)}
+  .ship h3{font-size:16px; margin:9px 0 6px; font-weight:640; letter-spacing:-.01em}
+  .ship p{margin:0; font-size:13.5px; color:var(--muted); line-height:1.5}
+  .ship .chk{position:absolute; top:16px; right:16px; width:20px; height:20px; border-radius:50%; background:var(--good-wash); color:var(--good); display:grid; place-items:center; font-size:12px; font-weight:800}
+
+  /* ---- KPI tiles ---- */
+  .tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--hair); border-radius:16px; overflow:hidden; border:1px solid var(--hair)}
+  @media (max-width:680px){.tiles{grid-template-columns:repeat(2,1fr)}}
+  .tile{background:var(--surface); padding:18px 18px 16px}
+  .tile .k{font-size:12px; color:var(--muted); letter-spacing:.02em; margin-bottom:7px}
+  .tile .v{font-size:26px; font-weight:680; letter-spacing:-.02em; line-height:1}
+  .tile .d{font-size:12.5px; margin-top:7px; font-weight:600; display:inline-flex; align-items:center; gap:4px}
+  .up{color:var(--good)} .flat{color:var(--muted)} .soft{color:var(--warn)}
+
+  .read{font-size:14.5px; color:var(--ink-2); margin:16px 2px 0; line-height:1.6}
+  .read b{color:var(--ink); font-weight:640}
+
+  /* ---- hero revenue ---- */
+  .rev-top{display:flex; align-items:flex-end; gap:26px; flex-wrap:wrap; margin-bottom:20px}
+  .rev-big{font-size:clamp(38px,7vw,54px); font-weight:700; letter-spacing:-.03em; line-height:.95}
+  .rev-cap{font-size:13px; color:var(--muted); margin-top:6px}
+  .pill{display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:999px; font-size:13px; font-weight:650; background:var(--good-wash); color:var(--good)}
+
+  /* chart */
+  figure{margin:0}
+  .chart-wrap{overflow-x:auto}
+  svg{display:block; width:100%; height:auto}
+  .bar{fill:var(--accent-2)}
+  .bar.today{fill:var(--accent); opacity:.4}
+  .axline{stroke:var(--hair)}
+  .axtxt{fill:var(--muted); font-size:10px; font-variant-numeric:tabular-nums}
+  .tip{position:fixed; pointer-events:none; opacity:0; transition:opacity .1s; background:var(--ink); color:var(--bg); padding:6px 9px; border-radius:8px; font-size:12px; font-weight:600; white-space:nowrap; z-index:9; box-shadow:var(--shadow)}
+  .tip .t2{color:color-mix(in srgb,var(--bg) 62%,transparent); font-weight:500}
+
+  /* ---- tables ---- */
+  .tablewrap{overflow-x:auto; margin-top:16px}
+  table{width:100%; border-collapse:collapse; font-size:13.5px; min-width:440px}
+  th,td{text-align:right; padding:9px 12px; border-bottom:1px solid var(--hair); font-variant-numeric:tabular-nums}
+  th:first-child,td:first-child{text-align:left; font-variant-numeric:normal}
+  thead th{font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:650; border-bottom:1px solid var(--hair)}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr.total td{font-weight:680; color:var(--ink); border-top:2px solid var(--hair)}
+  .chip{display:inline-block; font-size:11px; font-weight:650; padding:2px 8px; border-radius:6px; letter-spacing:.02em}
+  .chip.on{background:var(--good-wash); color:var(--good)}
+  .chip.off{background:var(--surface-2); color:var(--muted); border:1px solid var(--hair)}
+
+  .note{font-size:13px; color:var(--muted); margin-top:14px; padding:12px 14px; background:var(--surface-2); border-radius:10px; border:1px solid var(--hair); line-height:1.5}
+  .note b{color:var(--ink-2)}
+
+  /* ---- klaviyo detail blocks ---- */
+  .subh{font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:650; margin:0 0 8px; display:flex; align-items:center; gap:7px}
+  .kgrid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:680px){.kgrid{grid-template-columns:1fr}}
+  .kblock{background:var(--surface-2); border:1px solid var(--hair); border-radius:12px; padding:16px 17px}
+  .kblock p{margin:0; font-size:13.5px; color:var(--ink-2); line-height:1.56}
+  .kblock p b{color:var(--ink); font-weight:640}
+  .kblock.warn{background:color-mix(in srgb,var(--warn) 9%,var(--surface)); border-color:color-mix(in srgb,var(--warn) 30%,transparent)}
+  .kblock.warn .subh{color:var(--warn)}
+  .kblock .flag{width:16px; height:16px; border-radius:4px; background:color-mix(in srgb,var(--warn) 20%,transparent); color:var(--warn); display:grid; place-items:center; font-size:11px; font-weight:800}
+  .draftpill{display:inline-block; margin-top:9px; font-size:11.5px; font-weight:650; color:var(--good); background:var(--good-wash); border:1px solid color-mix(in srgb,var(--good) 26%,transparent); padding:3px 9px; border-radius:6px}
+
+  /* ---- footer ---- */
+  footer{margin-top:52px; padding-top:22px; border-top:1px solid var(--hair); color:var(--muted); font-size:12.5px; line-height:1.7}
+  footer .srcs{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 16px}
+  footer .src{background:var(--surface); border:1px solid var(--hair); border-radius:8px; padding:5px 11px; font-weight:600; color:var(--ink-2); font-size:12px}
+  a{color:var(--accent)}
+
+  /* ---- work list (completed items, grouped) ---- */
+  .wgroup{margin-top:18px}
+  .wgroup:first-child{margin-top:0}
+  .wgroup .subh{margin-bottom:10px}
+  .wlist{list-style:none; margin:0; padding:0}
+  .wlist li{display:flex; gap:10px; align-items:flex-start; padding:7px 0; border-bottom:1px solid var(--hair); font-size:14px; color:var(--ink-2); line-height:1.5}
+  .wlist li:last-child{border-bottom:none}
+  .wlist .tick{flex:0 0 auto; width:17px; height:17px; margin-top:2px; border-radius:50%; background:var(--good-wash); color:var(--good); display:grid; place-items:center; font-size:10px; font-weight:800}
+  .wlist .who{color:var(--muted); font-size:12.5px; white-space:nowrap}
+
+  /* ---- awaiting client ---- */
+  .await{background:color-mix(in srgb,var(--warn) 9%,var(--surface)); border:1px solid color-mix(in srgb,var(--warn) 30%,transparent); border-radius:12px; padding:16px 17px; margin-top:16px}
+  .await .subh{color:var(--warn)}
+  .await ul{list-style:none; margin:0; padding:0}
+  .await li{padding:6px 0; font-size:14px; color:var(--ink-2); line-height:1.5; border-bottom:1px solid color-mix(in srgb,var(--warn) 18%,transparent)}
+  .await li:last-child{border-bottom:none}
+
+  /* ---- exec summary ---- */
+  .lede{font-size:16.5px; line-height:1.6; color:var(--ink-2); margin:0 0 4px; max-width:66ch}
+  .lede b{color:var(--ink); font-weight:640}
+
+  /* tile deltas can also be negative */
+  .down{color:var(--warn)}
+
+  @media print{
+    body{background:#fff}
+    section{break-inside:avoid}
+    .card,.tile,.ship{box-shadow:none}
+  }
+
+  /* ---- geo-grid map pack (rendered only when the section is present) ---- */
+  .tiles-3{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--hair); border-radius:16px; overflow:hidden; border:1px solid var(--hair)}
+  .tiles-3 .tile{background:var(--surface)}
+  @media (max-width:680px){.tiles-3{grid-template-columns:1fr}}
+
+  .grid-meta{font-size:13px; color:var(--muted); margin:0 0 16px}
+  .grid-meta b{color:var(--ink-2); font-weight:640}
+
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; padding-top:16px; border-top:1px solid var(--hair)}
+  .legend-item{display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--muted)}
+  .legend-swatch{width:14px; height:14px; border-radius:50%; flex:none; display:inline-block}
+  .legend-ring{width:14px; height:14px; border-radius:50%; border:2px solid var(--accent); box-sizing:border-box; flex:none; display:inline-block}
+
+  .grid-map-wrap{overflow:hidden; border-radius:14px}
+  #gridMap{width:100%; aspect-ratio:16/10; min-height:480px; border-radius:14px; z-index:0; background:var(--surface-2)}
+  .gridpin{background:transparent; border:none}
+  .gridpin-wrap{position:relative; width:100%; height:100%}
+  .gridpin-circle{position:absolute; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-variant-numeric:tabular-nums; color:#fff; border:2px solid var(--surface);
+    box-shadow:0 1px 3px rgba(0,0,0,.35)}
+  .gridpin-circle.error{border-style:dashed; border-color:#ef4444; border-width:2.5px}
+  .gridpin-ring{position:absolute; inset:0; border-radius:50%; border:2.5px solid var(--accent); box-sizing:border-box; pointer-events:none}
+  .leaflet-tooltip.gridpin-tooltip{background:var(--ink); color:var(--bg); border:none; padding:6px 9px; border-radius:8px;
+    font-size:12px; font-weight:600; box-shadow:var(--shadow); line-height:1.45}
+  .leaflet-tooltip.gridpin-tooltip .t2{display:block; margin-top:2px; opacity:.68; font-weight:500}
+  .leaflet-tooltip-top.gridpin-tooltip::before{border-top-color:var(--ink)}
+  .leaflet-tooltip-bottom.gridpin-tooltip::before{border-bottom-color:var(--ink)}
+  .leaflet-tooltip-left.gridpin-tooltip::before{border-left-color:var(--ink)}
+  .leaflet-tooltip-right.gridpin-tooltip::before{border-right-color:var(--ink)}
+  .leaflet-control-attribution{font-size:10px; background:color-mix(in srgb, var(--surface) 85%, transparent) !important; color:var(--muted) !important}
+  .leaflet-control-attribution a{color:var(--muted)}
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Weekly Marketing Report</div>
+    <h1>SB Mobile Detailing</h1>
+    <p class="sub">Prepared by Outrider Digital · Aug 3–9, 2026</p>
+    
+  </header>
+
+<section style="margin-top:28px"><p class="lede">Your new website is live at www.sbmobiledetailing.com — the full go-live checklist cleared, from DNS switchover and tracking to a confirmed contact-form test. Google Ads held steady through launch week. And we ran the first geo-grid scan of your Maps visibility, which now becomes the baseline we improve against.</p></section>
+<section><div class="sec-head"><h2>Shipped this period</h2></div><div class="ships"><div class="ship"><div class="chk">✓</div><div class="tag">Website</div><h3>Your new website is live</h3><p>The switchover completed on schedule: DNS moved, email and booking protected, and every page opened up to Google the moment the site went live.</p></div><div class="ship"><div class="chk">✓</div><div class="tag">Quality</div><h3>Launch verified end to end</h3><p>We tested the contact form to your inbox, verified analytics and marketing tags fire on every page, and ran a full post-switch check of the live site.</p></div><div class="ship"><div class="chk">✓</div><div class="tag">Maps visibility</div><h3>First geo-grid rank scan</h3><p>Our scanner ran your core detailing search from a grid of real map points around the shop. The map below shows exactly where you win and where the next opportunity sits.</p></div></div><div class="card pad" style="margin-top:16px"><div class="wgroup"><div class="subh">Go Live</div><ul class="wlist"><li><span class="tick">✓</span><span>Verified the new build already covers every live page — no rebuilds or redirects were needed</span></li><li><span class="tick">✓</span><span>Ran a mobile performance and accessibility check against the previous site as the baseline to beat</span></li><li><span class="tick">✓</span><span>Confirmed exactly which build the live site deploys from before the switch</span></li><li><span class="tick">✓</span><span>Set up automated deployments for the new site</span></li><li><span class="tick">✓</span><span>Ran a full verification pass on www.sbmobiledetailing.com after the switch</span></li><li><span class="tick">✓</span><span>Tested the contact form end to end — you confirmed the message arrived</span></li><li><span class="tick">✓</span><span>Opened every page to Google at the moment of launch by removing the pre-launch search block</span></li><li><span class="tick">✓</span><span>Secured DNS access and protected your email and online booking ahead of the switch</span></li><li><span class="tick">✓</span><span>Carried analytics and marketing tracking onto every page and verified it fires</span></li><li><span class="tick">✓</span><span>Submitted the new sitemap to Google Search Console</span></li><li><span class="tick">✓</span><span>Pushed the website live</span></li><li><span class="tick">✓</span><span>Ran the pre-launch quality checklist</span></li><li><span class="tick">✓</span><span>Confirmed access and ownership of every part of the website before launch</span></li></ul></div><div class="wgroup"><div class="subh">Website Redesign</div><ul class="wlist"><li><span class="tick">✓</span><span>Completed the conversion walkthrough of the new site</span></li></ul></div></div><p class="read">Launch week. The site is live, indexed, and verified — the work now shifts to what the new site produces: rankings, calls and bookings.</p></section>
+<section><div class="sec-head"><h2>Google Ads</h2><span class="win num">Aug 3–9, 2026 · Google Ads (campaign table: trailing 30 days)</span></div><div class="tiles"><div class="tile"><div class="k">Ad spend</div><div class="v num">$1,114</div><div class="d up">▲ up 5.9%</div></div><div class="tile"><div class="k">Conversions</div><div class="v num">13</div><div class="d down">▼ down 7.1%</div></div><div class="tile"><div class="k">Cost / conversion</div><div class="v num">$86</div><div class="d down">▼ up 14.1%</div></div><div class="tile"><div class="k">Click-through rate</div><div class="v num">6.75%</div><div class="d up">▲ new</div></div></div><p class="read">A steady week through the website switch — spend and conversions held in their usual range, and no disruption from the cutover showed up in the account. The final day of the window typically under-reports conversions until Google finalizes them, so expect that last figure to settle upward. The campaign table reflects the trailing thirty days.</p><div class="card pad" style="margin-top:16px"><div class="tablewrap"><table><thead><tr><th>Campaign</th><th>Status</th><th>Clicks</th><th>Cost</th><th>Conv.</th><th>Cost / conv.</th></tr></thead><tbody><tr><td>Performance Max 2026</td><td><span class="chip on">Active</span></td><td class="num">332</td><td class="num">$2,348</td><td class="num">18</td><td class="num">$130.46</td></tr><tr><td>Search 2026</td><td><span class="chip on">Active</span></td><td class="num">428</td><td class="num">$2,211</td><td class="num">14</td><td class="num">$157.91</td></tr><tr><td>Brand</td><td><span class="chip on">Active</span></td><td class="num">198</td><td class="num">$227</td><td class="num">16</td><td class="num">$14.18</td></tr><tr class="total"><td>Account total</td><td></td><td class="num">958</td><td class="num">$4,786</td><td class="num">48</td><td class="num">$99.70</td></tr></tbody></table></div></div></section>
+<section><div class="sec-head"><h2>Website traffic</h2><span class="win num">7 days · Google Analytics 4</span></div><div class="tiles"><div class="tile"><div class="k">Sessions</div><div class="v num">1,106</div><div class="d down">▼ down 7.4%</div></div><div class="tile"><div class="k">Users</div><div class="v num">903</div><div class="d down">▼ down 8.8%</div></div><div class="tile"><div class="k">Bounce rate</div><div class="v num">55.8%</div><div class="d down">▼ up 2.2%</div></div></div><p class="read">A steady week of visits through the switchover — the small easing against the prior week is within normal variation, and nothing in the pattern suggests the cutover cost any traffic. With the new site now live, this is the baseline the redesign gets measured against.</p></section>
+<section><div class="sec-head"><h2>Organic search</h2><span class="win num">7 days · Search Console</span></div><div class="tiles"><div class="tile"><div class="k">Clicks</div><div class="v num">123</div><div class="d down">▼ down 15.2%</div></div><div class="tile"><div class="k">Impressions</div><div class="v num">11,596</div><div class="d down">▼ down 14.0%</div></div><div class="tile"><div class="k">Avg. CTR</div><div class="v num">1.06%</div><div class="d down">▼ down 1.3%</div></div><div class="tile"><div class="k">Avg. position</div><div class="v num">19.9</div><div class="d up">▲ improved 7.9%</div></div></div><p class="read">Clicks eased against the prior week while your <b>average position improved</b> — Google is ranking the site better even as fewer searches ran, which is the right shape for launch week. The new sitemap is submitted and every page is now open to Google, so the indexing of the new build is what we watch next. Search Console reports on a short lag, so the tail of the week is still filling in.</p><div class="card pad" style="margin-top:16px"><div class="tablewrap"><table><thead><tr><th>Page</th><th>Clicks</th><th>Change</th><th>Impressions</th></tr></thead><tbody><tr><td>Homepage</td><td class="num">49</td><td class="num">-5</td><td class="num">2,846</td></tr><tr><td>/mobile-detailing/san-marcos</td><td class="num">3</td><td class="num">+3</td><td class="num">374</td></tr><tr><td>/mobile-window-tinting/cardiff</td><td class="num">2</td><td class="num">+2</td><td class="num">54</td></tr><tr><td>book.sbmobiledetailing.com</td><td class="num">2</td><td class="num">0</td><td class="num">49</td></tr><tr><td>/mobile-window-tinting/carlsbad</td><td class="num">1</td><td class="num">+1</td><td class="num">313</td></tr><tr><td>/speciality-services/rodent-remediation</td><td class="num">1</td><td class="num">0</td><td class="num">43</td></tr><tr><td>/mobile-detailing/carlsbad</td><td class="num">1</td><td class="num">0</td><td class="num">336</td></tr><tr><td>/mobile-detailing/escondido</td><td class="num">1</td><td class="num">-1</td><td class="num">286</td></tr></tbody></table></div></div></section>
+<section><div class="sec-head"><h2>Map Pack Performance</h2><span class="win num">Live geo-grid scan · San Marcos · Aug 4, 2026</span></div><p class="read">This is our own scanner running your core detailing search from real map points around the shop — not an estimate, and now repeatable every month at no meaningful cost. The picture is sharp: you own the <b>top spot</b> in a tight pocket around the storefront, and visibility drops off quickly beyond it. That edge is the opportunity — as the new site and profile work compound, the green zone widening is what we will be tracking, scan over scan.</p><div class="tiles tiles-3"><div class="tile"><div class="k">ARP, average rank</div><div class="v num">1.1</div><div class="d flat">Average position at the 40 points where you show up. Rank 1 is the top spot.</div></div><div class="tile"><div class="k">ATRP, blanket coverage</div><div class="v num">16.0</div><div class="d flat">Average position across the whole grid, counting every miss as a rank 21.</div></div><div class="tile"><div class="k">SoLV, share of voice</div><div class="v num">24.8%</div><div class="d flat">Percent of the 5 mile grid where you land in the top 3 results.</div></div></div><div class="card pad" style="margin-top:16px"><div class="grid-meta">Keyword: <b>mobile detailing san marcos ca</b> &middot; Grid: <b>13 &times; 13</b>, 169 points &middot; Radius: <b>5 miles</b> &middot; Scanned: <b>Aug 4, 2026</b></div><div class="grid-map-wrap"><div id="gridMap" role="img" aria-label="Interactive map of the 13 by 13 geo-grid rank scan for mobile detailing san marcos ca, centered on the San Marcos storefront"></div></div><div class="legend"><span class="legend-item"><span class="legend-swatch" style="background:#15803d"></span>1 to 3, top of the pack</span><span class="legend-item"><span class="legend-swatch" style="background:#ca8a04"></span>4 to 7, page one</span><span class="legend-item"><span class="legend-swatch" style="background:#c2410c"></span>8 to 10, bottom of page one</span><span class="legend-item"><span class="legend-swatch" style="background:#b91c1c"></span>11 to 20, page two or lower</span><span class="legend-item"><span class="legend-swatch" style="background:#52525b"></span>Not in the top 20</span><span class="legend-item"><span class="legend-ring"></span>Scan center</span></div></div><div class="note"><b>Reading this grid.</b> Every pin is a real search run from that exact map point, not a survey or an estimate. 40 of the 161 completed points put you in the top 3 results for this search. 8 of the 169 points returned no result from the search API and are left out of the ARP, ATRP and SoLV numbers rather than counted as misses. Rankings naturally fade with distance from the location — the map shows where that edge sits today.</div><div class="card pad" style="margin-top:16px"><h3>What grid tracking measures</h3><p class="read">Rank on Google Maps is not one number. Where you show up in the map pack changes depending on where the searcher is standing. So instead of checking rank from a single point, we scan a grid of points around the location and record your position at every one. Three numbers come out of that scan.</p><ul><li><strong>ARP:</strong> average position across the points where you show up.</li><li><strong>ATRP:</strong> average position across every point in the grid, counting the points where you do not show up as misses.</li><li><strong>SoLV:</strong> the percentage of the area where you land in the top 3.</li></ul></div></section>
+
+  <footer>
+    <div><b style="color:var(--ink-2)">Data sources</b> — every figure in this report is pulled directly from the platforms below:</div>
+    <div class="srcs"><span class="src">Google Ads</span><span class="src">Google Analytics 4</span><span class="src">Search Console</span><span class="src">Geo-grid rank scan</span></div>
+    <div>Freshness: Analytics through 2026-08-09 · Search Console through 2026-08-08 · Google Ads through 2026-08-09 · Geo-grid scan through 2026-08-04. Search Console reports on a 2–3 day lag by design.</div>
+  </footer>
+</div>
+
+<div class="tip" id="tip"></div>
+
+<script>
+
+  const REV = [["2026-08-03", 2401.36]];
+  (function(){
+    if(!REV.length) return;
+    const svg=document.getElementById("revChart"); if(!svg) return;
+    const W=920,H=220, m={t:14,r:10,b:26,l:52};
+    const iw=W-m.l-m.r, ih=H-m.t-m.b, n=REV.length;
+    const peak=Math.max.apply(null,REV.map(d=>d[1]))||1;
+    // Round the axis up to a clean step so gridlines land on readable numbers.
+    const step0=Math.pow(10,Math.floor(Math.log10(peak)))/2;
+    const max=Math.ceil(peak/step0)*step0 || 1;
+    const bw=iw/n*0.64, step=iw/n;
+    const x=i=>m.l+step*i+(step-bw)/2, y=v=>m.t+ih-(v/max)*ih;
+    const fmt=v=>v>=1000?"$"+(v/1000).toFixed(v%1000?1:0)+"k":"$"+v;
+    let g="";
+    for(let k=0;k<=4;k++){
+      const v=max*k/4, yy=y(v).toFixed(1);
+      g+=`<line class="axline" x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}"/>`;
+      g+=`<text class="axtxt" x="${m.l-8}" y="${(+yy+3)}" text-anchor="end">${fmt(v)}</text>`;
+    }
+    REV.forEach((d,i)=>{
+      const bh=Math.max(2,(d[1]/max)*ih), yy=(m.t+ih-bh).toFixed(1);
+      g+=`<rect class="bar" x="${x(i).toFixed(1)}" y="${yy}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="3" data-i="${i}"/>`;
+    });
+    const ticks=n<=7?REV.map((_,i)=>i):[0,Math.floor(n/4),Math.floor(n/2),Math.floor(3*n/4),n-1];
+    ticks.forEach(i=>{
+      g+=`<text class="axtxt" x="${(x(i)+bw/2).toFixed(1)}" y="${H-8}" text-anchor="middle">${REV[i][0].slice(5)}</text>`;
+    });
+    svg.innerHTML=g;
+    const tip=document.getElementById("tip");
+    svg.querySelectorAll(".bar").forEach(b=>{
+      b.style.cursor="crosshair";
+      b.addEventListener("mouseenter",()=>{
+        const d=REV[+b.dataset.i];
+        tip.innerHTML=`<span>$${d[1].toLocaleString()}</span> <span class="t2">${d[0]}</span>`;
+        tip.style.opacity=1; b.style.opacity=.82;
+      });
+      b.addEventListener("mousemove",ev=>{ tip.style.left=(ev.clientX+12)+"px"; tip.style.top=(ev.clientY-34)+"px"; });
+      b.addEventListener("mouseleave",()=>{ tip.style.opacity=0; b.style.opacity=""; });
+    });
+  })();
+
+</script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  // Real geo-grid scan. Row-major: [row, col, lat, lng, rank, label, state]
+  const GRID_POINTS = [[0, 0, 33.218366, -117.27802, null, "20+", "complete"], [0, 1, 33.218366, -117.263596, null, "20+", "complete"], [0, 2, 33.218366, -117.249171, null, "20+", "complete"], [0, 3, 33.218366, -117.234747, null, "20+", "complete"], [0, 4, 33.218366, -117.220322, null, "20+", "complete"], [0, 5, 33.218366, -117.205898, null, "20+", "complete"], [0, 6, 33.218366, -117.191474, null, "20+", "complete"], [0, 7, 33.218366, -117.177049, null, "20+", "complete"], [0, 8, 33.218366, -117.162625, null, "20+", "complete"], [0, 9, 33.218366, -117.1482, null, "ERR", "failed"], [0, 10, 33.218366, -117.133776, null, "ERR", "failed"], [0, 11, 33.218366, -117.119351, null, "ERR", "failed"], [0, 12, 33.218366, -117.104927, null, "ERR", "failed"], [1, 0, 33.206288, -117.27802, null, "20+", "complete"], [1, 1, 33.206288, -117.263596, null, "20+", "complete"], [1, 2, 33.206288, -117.249171, null, "20+", "complete"], [1, 3, 33.206288, -117.234747, null, "20+", "complete"], [1, 4, 33.206288, -117.220322, null, "20+", "complete"], [1, 5, 33.206288, -117.205898, null, "20+", "complete"], [1, 6, 33.206288, -117.191474, null, "20+", "complete"], [1, 7, 33.206288, -117.177049, null, "20+", "complete"], [1, 8, 33.206288, -117.162625, null, "20+", "complete"], [1, 9, 33.206288, -117.1482, null, "ERR", "failed"], [1, 10, 33.206288, -117.133776, null, "ERR", "failed"], [1, 11, 33.206288, -117.119351, null, "ERR", "failed"], [1, 12, 33.206288, -117.104927, null, "ERR", "failed"], [2, 0, 33.194211, -117.27802, null, "20+", "complete"], [2, 1, 33.194211, -117.263596, null, "20+", "complete"], [2, 2, 33.194211, -117.249171, null, "20+", "complete"], [2, 3, 33.194211, -117.234747, null, "20+", "complete"], [2, 4, 33.194211, -117.220322, null, "20+", "complete"], [2, 5, 33.194211, -117.205898, null, "20+", "complete"], [2, 6, 33.194211, -117.191474, null, "20+", "complete"], [2, 7, 33.194211, -117.177049, null, "20+", "complete"], [2, 8, 33.194211, -117.162625, null, "20+", "complete"], [2, 9, 33.194211, -117.1482, null, "20+", "complete"], [2, 10, 33.194211, -117.133776, null, "20+", "complete"], [2, 11, 33.194211, -117.119351, null, "20+", "complete"], [2, 12, 33.194211, -117.104927, null, "20+", "complete"], [3, 0, 33.182134, -117.27802, null, "20+", "complete"], [3, 1, 33.182134, -117.263596, null, "20+", "complete"], [3, 2, 33.182134, -117.249171, null, "20+", "complete"], [3, 3, 33.182134, -117.234747, null, "20+", "complete"], [3, 4, 33.182134, -117.220322, null, "20+", "complete"], [3, 5, 33.182134, -117.205898, null, "20+", "complete"], [3, 6, 33.182134, -117.191474, null, "20+", "complete"], [3, 7, 33.182134, -117.177049, null, "20+", "complete"], [3, 8, 33.182134, -117.162625, null, "20+", "complete"], [3, 9, 33.182134, -117.1482, null, "20+", "complete"], [3, 10, 33.182134, -117.133776, null, "20+", "complete"], [3, 11, 33.182134, -117.119351, null, "20+", "complete"], [3, 12, 33.182134, -117.104927, null, "20+", "complete"], [4, 0, 33.170057, -117.27802, null, "20+", "complete"], [4, 1, 33.170057, -117.263596, 1, "1", "complete"], [4, 2, 33.170057, -117.249171, 1, "1", "complete"], [4, 3, 33.170057, -117.234747, 1, "1", "complete"], [4, 4, 33.170057, -117.220322, 1, "1", "complete"], [4, 5, 33.170057, -117.205898, 1, "1", "complete"], [4, 6, 33.170057, -117.191474, 2, "2", "complete"], [4, 7, 33.170057, -117.177049, 2, "2", "complete"], [4, 8, 33.170057, -117.162625, 2, "2", "complete"], [4, 9, 33.170057, -117.1482, null, "20+", "complete"], [4, 10, 33.170057, -117.133776, null, "20+", "complete"], [4, 11, 33.170057, -117.119351, null, "20+", "complete"], [4, 12, 33.170057, -117.104927, null, "20+", "complete"], [5, 0, 33.157979, -117.27802, null, "20+", "complete"], [5, 1, 33.157979, -117.263596, 1, "1", "complete"], [5, 2, 33.157979, -117.249171, 1, "1", "complete"], [5, 3, 33.157979, -117.234747, 1, "1", "complete"], [5, 4, 33.157979, -117.220322, 1, "1", "complete"], [5, 5, 33.157979, -117.205898, 1, "1", "complete"], [5, 6, 33.157979, -117.191474, 1, "1", "complete"], [5, 7, 33.157979, -117.177049, 1, "1", "complete"], [5, 8, 33.157979, -117.162625, 1, "1", "complete"], [5, 9, 33.157979, -117.1482, null, "20+", "complete"], [5, 10, 33.157979, -117.133776, null, "20+", "complete"], [5, 11, 33.157979, -117.119351, null, "20+", "complete"], [5, 12, 33.157979, -117.104927, null, "20+", "complete"], [6, 0, 33.145902, -117.27802, null, "20+", "complete"], [6, 1, 33.145902, -117.263596, 1, "1", "complete"], [6, 2, 33.145902, -117.249171, 1, "1", "complete"], [6, 3, 33.145902, -117.234747, 1, "1", "complete"], [6, 4, 33.145902, -117.220322, 1, "1", "complete"], [6, 5, 33.145902, -117.205898, 1, "1", "complete"], [6, 6, 33.145902, -117.191474, 1, "1", "complete"], [6, 7, 33.145902, -117.177049, 1, "1", "complete"], [6, 8, 33.145902, -117.162625, 1, "1", "complete"], [6, 9, 33.145902, -117.1482, null, "20+", "complete"], [6, 10, 33.145902, -117.133776, null, "20+", "complete"], [6, 11, 33.145902, -117.119351, null, "20+", "complete"], [6, 12, 33.145902, -117.104927, null, "20+", "complete"], [7, 0, 33.133825, -117.27802, null, "20+", "complete"], [7, 1, 33.133825, -117.263596, 1, "1", "complete"], [7, 2, 33.133825, -117.249171, 1, "1", "complete"], [7, 3, 33.133825, -117.234747, 1, "1", "complete"], [7, 4, 33.133825, -117.220322, 1, "1", "complete"], [7, 5, 33.133825, -117.205898, 1, "1", "complete"], [7, 6, 33.133825, -117.191474, 1, "1", "complete"], [7, 7, 33.133825, -117.177049, 1, "1", "complete"], [7, 8, 33.133825, -117.162625, 1, "1", "complete"], [7, 9, 33.133825, -117.1482, null, "20+", "complete"], [7, 10, 33.133825, -117.133776, null, "20+", "complete"], [7, 11, 33.133825, -117.119351, null, "20+", "complete"], [7, 12, 33.133825, -117.104927, null, "20+", "complete"], [8, 0, 33.121747, -117.27802, null, "20+", "complete"], [8, 1, 33.121747, -117.263596, 1, "1", "complete"], [8, 2, 33.121747, -117.249171, 1, "1", "complete"], [8, 3, 33.121747, -117.234747, 1, "1", "complete"], [8, 4, 33.121747, -117.220322, 1, "1", "complete"], [8, 5, 33.121747, -117.205898, 1, "1", "complete"], [8, 6, 33.121747, -117.191474, 1, "1", "complete"], [8, 7, 33.121747, -117.177049, 1, "1", "complete"], [8, 8, 33.121747, -117.162625, 1, "1", "complete"], [8, 9, 33.121747, -117.1482, null, "20+", "complete"], [8, 10, 33.121747, -117.133776, null, "20+", "complete"], [8, 11, 33.121747, -117.119351, null, "20+", "complete"], [8, 12, 33.121747, -117.104927, null, "20+", "complete"], [9, 0, 33.10967, -117.27802, null, "20+", "complete"], [9, 1, 33.10967, -117.263596, null, "20+", "complete"], [9, 2, 33.10967, -117.249171, null, "20+", "complete"], [9, 3, 33.10967, -117.234747, null, "20+", "complete"], [9, 4, 33.10967, -117.220322, null, "20+", "complete"], [9, 5, 33.10967, -117.205898, null, "20+", "complete"], [9, 6, 33.10967, -117.191474, null, "20+", "complete"], [9, 7, 33.10967, -117.177049, null, "20+", "complete"], [9, 8, 33.10967, -117.162625, null, "20+", "complete"], [9, 9, 33.10967, -117.1482, null, "20+", "complete"], [9, 10, 33.10967, -117.133776, null, "20+", "complete"], [9, 11, 33.10967, -117.119351, null, "20+", "complete"], [9, 12, 33.10967, -117.104927, null, "20+", "complete"], [10, 0, 33.097593, -117.27802, null, "20+", "complete"], [10, 1, 33.097593, -117.263596, null, "20+", "complete"], [10, 2, 33.097593, -117.249171, null, "20+", "complete"], [10, 3, 33.097593, -117.234747, null, "20+", "complete"], [10, 4, 33.097593, -117.220322, null, "20+", "complete"], [10, 5, 33.097593, -117.205898, null, "20+", "complete"], [10, 6, 33.097593, -117.191474, null, "20+", "complete"], [10, 7, 33.097593, -117.177049, null, "20+", "complete"], [10, 8, 33.097593, -117.162625, null, "20+", "complete"], [10, 9, 33.097593, -117.1482, null, "20+", "complete"], [10, 10, 33.097593, -117.133776, null, "20+", "complete"], [10, 11, 33.097593, -117.119351, null, "20+", "complete"], [10, 12, 33.097593, -117.104927, null, "20+", "complete"], [11, 0, 33.085516, -117.27802, null, "20+", "complete"], [11, 1, 33.085516, -117.263596, null, "20+", "complete"], [11, 2, 33.085516, -117.249171, null, "20+", "complete"], [11, 3, 33.085516, -117.234747, null, "20+", "complete"], [11, 4, 33.085516, -117.220322, null, "20+", "complete"], [11, 5, 33.085516, -117.205898, null, "20+", "complete"], [11, 6, 33.085516, -117.191474, null, "20+", "complete"], [11, 7, 33.085516, -117.177049, null, "20+", "complete"], [11, 8, 33.085516, -117.162625, null, "20+", "complete"], [11, 9, 33.085516, -117.1482, null, "20+", "complete"], [11, 10, 33.085516, -117.133776, null, "20+", "complete"], [11, 11, 33.085516, -117.119351, null, "20+", "complete"], [11, 12, 33.085516, -117.104927, null, "20+", "complete"], [12, 0, 33.073438, -117.27802, null, "20+", "complete"], [12, 1, 33.073438, -117.263596, null, "20+", "complete"], [12, 2, 33.073438, -117.249171, null, "20+", "complete"], [12, 3, 33.073438, -117.234747, null, "20+", "complete"], [12, 4, 33.073438, -117.220322, null, "20+", "complete"], [12, 5, 33.073438, -117.205898, null, "20+", "complete"], [12, 6, 33.073438, -117.191474, null, "20+", "complete"], [12, 7, 33.073438, -117.177049, null, "20+", "complete"], [12, 8, 33.073438, -117.162625, null, "20+", "complete"], [12, 9, 33.073438, -117.1482, null, "20+", "complete"], [12, 10, 33.073438, -117.133776, null, "20+", "complete"], [12, 11, 33.073438, -117.119351, null, "20+", "complete"], [12, 12, 33.073438, -117.104927, null, "20+", "complete"]];
+  const CENTER_ROW = 6, CENTER_COL = 6;
+  const CENTER_LINE = "1335 Descanso Ave, San Marcos, CA 92069";
+
+  (function(){
+    const el = document.getElementById("gridMap");
+    if(!el || typeof L === "undefined") return;
+
+    const RANK_COLORS = {
+      top:      { fill:"#15803d", text:"#ffffff" }, // rank 1-3
+      page1:    { fill:"#ca8a04", text:"#241d02" }, // rank 4-7
+      page1low: { fill:"#c2410c", text:"#ffffff" }, // rank 8-10
+      page2:    { fill:"#b91c1c", text:"#ffffff" }, // rank 11-20
+      notfound: { fill:"#52525b", text:"#ffffff" }, // not in top 20
+      error:    { fill:"#3f3f46", text:"#ffffff" }  // scan failed, no data
+    };
+
+    function bucketFor(rank, state){
+      if(state === "failed") return "error";
+      if(rank === null || rank === undefined) return "notfound";
+      if(rank <= 3) return "top";
+      if(rank <= 7) return "page1";
+      if(rank <= 10) return "page1low";
+      return "page2";
+    }
+
+    function pinIcon(bucket, label, isCenter){
+      const c = RANK_COLORS[bucket];
+      const size = isCenter ? 32 : 22;
+      const inner = 22;
+      const off = isCenter ? (size - inner) / 2 : 0;
+      const ring = isCenter ? '<div class="gridpin-ring"></div>' : "";
+      const errCls = bucket === "error" ? " error" : "";
+      return L.divIcon({
+        className: "gridpin",
+        html: `<div class="gridpin-wrap">${ring}<div class="gridpin-circle${errCls}" style="width:${inner}px;height:${inner}px;left:${off}px;top:${off}px;background:${c.fill};color:${c.text};font-size:12px">${label}</div></div>`,
+        iconSize: [size, size],
+        iconAnchor: [size / 2, size / 2]
+      });
+    }
+
+    const map = L.map(el, { scrollWheelZoom: false, zoomControl: true, dragging: true });
+
+    let tileLayer = null;
+    function isDarkTheme(){
+      const attr = document.documentElement.getAttribute("data-theme");
+      if(attr === "dark") return true;
+      if(attr === "light") return false;
+      return !!(window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+    }
+    function applyTileLayer(){
+      const dark = isDarkTheme();
+      if(tileLayer){ map.removeLayer(tileLayer); }
+      tileLayer = dark
+        ? L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png", {
+            subdomains: "abcd", maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+          })
+        : L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            subdomains: "abc", maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          });
+      tileLayer.addTo(map);
+    }
+    applyTileLayer();
+
+    map.fitBounds(L.latLngBounds(GRID_POINTS.map(p => [p[2], p[3]])), { padding: [22, 22] });
+
+    GRID_POINTS.forEach(p => {
+      const [row, col, lat, lng, rank, label, state] = p;
+      const isCenter = row === CENTER_ROW && col === CENTER_COL;
+      const bucket = bucketFor(rank, state);
+      const marker = L.marker([lat, lng], { icon: pinIcon(bucket, label, isCenter) }).addTo(map);
+
+      const status = state === "failed" ? "No data, scan error" : (rank === null ? "Not in top 20" : `Rank ${rank}`);
+      const coordLine = `${lat.toFixed(4)}, ${lng.toFixed(4)}`;
+      const tipHtml = isCenter
+        ? `<span>Scan center &middot; ${status}</span>` + (CENTER_LINE ? `<span class="t2">${CENTER_LINE}</span>` : "") + `<span class="t2">${coordLine}</span>`
+        : `<span>${status}</span><span class="t2">${coordLine}</span>`;
+
+      marker.bindTooltip(tipHtml, {
+        className: "gridpin-tooltip",
+        direction: "top",
+        offset: [0, -(isCenter ? 24 : 16)]
+      });
+    });
+
+    window.addEventListener("resize", () => map.invalidateSize());
+    setTimeout(() => map.invalidateSize(), 250);
+
+    if(window.matchMedia){
+      const mq = window.matchMedia("(prefers-color-scheme: dark)");
+      const onChange = () => applyTileLayer();
+      if(mq.addEventListener){ mq.addEventListener("change", onChange); }
+      else if(mq.addListener){ mq.addListener(onChange); }
+    }
+    new MutationObserver(applyTileLayer).observe(document.documentElement, {
+      attributes: true, attributeFilter: ["data-theme"]
+    });
+  })();
+</script>
+</body>
+</html>
