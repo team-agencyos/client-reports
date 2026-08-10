@@ -109,7 +109,7 @@
     margin: 0 0 20px;
   }
   .stat {
-    flex: 1 1 140px;
+    flex: 1 1 130px;
     padding: 16px 20px 16px 0;
   }
   .stat + .stat { padding-left: 20px; border-left: 1px solid var(--line); }
@@ -137,17 +137,29 @@
     white-space: nowrap;
   }
   .pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-  .pill.live   { color: var(--live);   background: var(--live-bg); }
-  .pill.ready  { color: var(--ready);  background: var(--ready-bg); }
-  .pill.legacy { color: var(--legacy); background: var(--legacy-bg); }
-  .pill.flag   { color: var(--flag);   background: var(--flag-bg); }
+  .pill.keep    { color: var(--live);   background: var(--live-bg); }
+  .pill.refresh { color: var(--accent); background: var(--accent-soft); }
+  .pill.ready   { color: var(--ready);  background: var(--ready-bg); }
+  .pill.legacy  { color: var(--legacy); background: var(--legacy-bg); }
+  .pill.flag    { color: var(--flag);   background: var(--flag-bg); }
 
-  section { margin-top: 44px; }
-  .sec-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 4px; }
-  .sec-head h2 { font-size: 19px; font-weight: 800; letter-spacing: -0.01em; margin: 0; }
+  .part {
+    margin-top: 48px;
+    border-top: 3px solid var(--ink);
+    padding-top: 10px;
+  }
+  .part-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); margin: 0; }
+  .part h2 { font-size: 24px; font-weight: 800; letter-spacing: -0.015em; margin: 4px 0 0; }
+
+  section { margin-top: 34px; }
+  .sec-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; border-bottom: 2px solid var(--line); padding-bottom: 8px; margin-bottom: 4px; }
+  .sec-head h3 { font-size: 17px; font-weight: 800; letter-spacing: -0.01em; margin: 0; }
   .sec-head .path { font-family: var(--mono); font-size: 13px; color: var(--accent); }
   .sec-head .count { margin-left: auto; font-size: 12.5px; color: var(--ink-faint); font-variant-numeric: tabular-nums; }
   .sec-note { font-size: 13.5px; color: var(--ink-soft); max-width: 72ch; margin: 10px 0 14px; }
+  .sec-note .url { font-size: 12.5px; }
+
+  .group-label { font-size: 11.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); margin: 18px 0 2px; }
 
   ul.tree { list-style: none; margin: 0; padding: 0; }
   ul.tree li {
@@ -176,10 +188,10 @@
     width: 10px;
     border-top: 1px solid var(--line);
   }
-  .url { font-family: var(--mono); font-size: 13px; }
+  .url { font-family: var(--mono); font-size: 13px; overflow-wrap: anywhere; }
   .label { color: var(--ink-soft); font-size: 13px; }
-  .from { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); }
-  .from b { font-weight: 400; color: var(--legacy); text-decoration: line-through; text-decoration-color: var(--legacy); }
+  .to { font-family: var(--mono); font-size: 12px; color: var(--ink-faint); }
+  .to b { font-weight: 400; color: var(--accent); }
 
   .matrix-scroll { overflow-x: auto; margin-top: 14px; }
   table.matrix { border-collapse: collapse; width: 100%; min-width: 720px; }
@@ -200,12 +212,12 @@
   }
   table.matrix tbody th .url { display: block; font-weight: 400; color: var(--ink-faint); font-size: 11.5px; }
   table.matrix td { background: var(--panel); font-size: 12px; }
-  td .cell-slug { font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft); display: block; margin-bottom: 3px; }
+  td .cell-slug { font-family: var(--mono); font-size: 11.5px; color: var(--ink-soft); display: block; margin-top: 3px; }
 
-  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0 40px; }
+  .cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 40px; }
 
   .callout {
-    margin-top: 44px;
+    margin-top: 40px;
     border: 1px solid var(--flag);
     background: var(--flag-bg);
     padding: 18px 20px;
@@ -222,52 +234,175 @@
   <header>
     <p class="eyebrow">Outrider Digital · Site Architecture</p>
     <h1>ABS Commercial Cleaning — Site Map</h1>
-    <p class="lede">The full target architecture for <strong>abscleaning.com</strong>: every page live today, every page written for the 90-day sprint, and where the legacy URLs redirect. Live crawl of the XML sitemap taken <strong>Aug 10, 2026</strong>, merged with the content master tracker and the redirect map.</p>
+    <p class="lede">Every page live on <strong>abscleaning.com</strong> today — all 69 URLs, verified by crawling the Rank Math XML sitemap and cross-checking the site's own navigation links, with live HTTP checks on <strong>Aug 10, 2026</strong>. Each page is tagged with what happens to it in the 90-day rebuild.</p>
 
     <div class="stats">
-      <div class="stat"><b>66</b><span>URLs live today</span></div>
-      <div class="stat"><b>50</b><span>pages written for new architecture</span></div>
-      <div class="stat"><b>30</b><span>redirects mapped</span></div>
-      <div class="stat"><b>0 / 50</b><span>new pages published so far</span></div>
+      <div class="stat"><b>69</b><span>pages live today</span></div>
+      <div class="stat"><b>41</b><span>stay as they are</span></div>
+      <div class="stat"><b>2</b><span>content refresh, same URL</span></div>
+      <div class="stat"><b>25</b><span>will 301 into the new build</span></div>
+      <div class="stat"><b>1</b><span>unmapped — needs a decision</span></div>
     </div>
 
     <div class="legend">
-      <span class="pill live">Live</span> on the site today
-      <span class="pill ready">Ready</span> written (Jul 2026), awaiting publish
-      <span class="pill legacy">301</span> legacy URL folds into this page
+      <span class="pill keep">Stays</span> no change planned
+      <span class="pill refresh">Refresh</span> new content, same URL
+      <span class="pill legacy">301</span> redirects to a new page when it publishes
       <span class="pill flag">Flag</span> needs a decision
     </div>
   </header>
 
+  <div class="part">
+    <p class="part-label">Part 1</p>
+    <h2>The site today — 69 live pages</h2>
+  </div>
+
   <section>
-    <div class="sec-head"><h2>Home &amp; core pages</h2><span class="count">7 pages</span></div>
+    <div class="sec-head"><h3>Home, hubs &amp; core pages</h3><span class="count">10 pages</span></div>
     <ul class="tree">
-      <li><span class="url">/</span><span class="label">Home — Commercial Cleaning Company Texas</span><span class="pill live">Live</span></li>
-      <li><span class="url">/services/</span><span class="label">Services hub</span><span class="pill live">Live</span></li>
-      <li><span class="url">/facilities/</span><span class="label">Facilities hub</span><span class="pill live">Live</span></li>
-      <li><span class="url">/industries-we-serve/</span><span class="label">Industries we serve</span><span class="pill live">Live</span></li>
-      <li><span class="url">/get-a-quote-commercial-cleaning-free-quote-texas/</span><span class="label">Get a quote</span><span class="pill live">Live</span></li>
-      <li><span class="url">/contact-commercial-cleaning-texas/</span><span class="label">Contact</span><span class="pill live">Live</span></li>
-      <li><span class="url">/careers/</span><span class="label">Careers</span><span class="pill live">Live</span> <span class="label">· /privacy-policy/ also live</span></li>
+      <li><span class="url">/</span><span class="label">Home — Commercial Cleaning Company Texas</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/services/</span><span class="label">Services hub</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/facilities/</span><span class="label">Facilities hub</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/blog/</span><span class="label">Blog hub</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/industries-we-serve/</span><span class="label">Industries we serve</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/get-a-quote-commercial-cleaning-free-quote-texas/</span><span class="label">Get a quote</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/contact-commercial-cleaning-texas/</span><span class="label">Contact</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/careers/</span><span class="label">Careers</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/privacy-policy/</span><span class="label">Privacy policy</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/commercial-cleaning-locations-texas/</span><span class="label">Locations directory hub</span><span class="pill flag">Flag</span><span class="label">its 5 city children redirect to the new root hubs, but this hub has no redirect target mapped</span></li>
     </ul>
   </section>
 
   <section>
-    <div class="sec-head"><h2>City hub pages</h2><span class="path">/commercial-cleaning-[city]/</span><span class="count">5 pages · all new at root level</span></div>
-    <p class="sec-note">The five city hubs move from the buried <span class="url">/commercial-cleaning-locations-texas/…</span> directory up to the root. Each hub links down to its service × city pages and facility siblings.</p>
+    <div class="sec-head"><h3>Location pages</h3><span class="count">8 pages</span></div>
+    <p class="sec-note">Five city pages sit under the locations directory, plus three older duplicate city pages that are still live at the root. <strong>The three duplicates are missing from the XML sitemap</strong> but reachable through on-site links — until the redirects go live, Austin, Houston, and San Antonio each have two competing city pages.</p>
     <ul class="tree">
-      <li><span class="url">/commercial-cleaning-austin/</span><span class="pill ready">Ready</span><span class="from"><b>/commercial-cleaning-locations-texas/austin/</b> + 1 more → 301</span></li>
-      <li><span class="url">/commercial-cleaning-dallas/</span><span class="pill ready">Ready</span><span class="from"><b>/commercial-cleaning-locations-texas/dallas/</b> → 301</span></li>
-      <li><span class="url">/commercial-cleaning-fort-worth/</span><span class="pill ready">Ready</span><span class="from"><b>/commercial-cleaning-locations-texas/fort-worth/</b> → 301</span></li>
-      <li><span class="url">/commercial-cleaning-houston/</span><span class="pill ready">Ready</span><span class="from"><b>/commercial-cleaning-locations-texas/houston/</b> + 1 more → 301</span></li>
-      <li><span class="url">/commercial-cleaning-san-antonio/</span><span class="pill ready">Ready</span><span class="from"><b>/commercial-cleaning-locations-texas/san-antonio/</b> + 1 more → 301</span></li>
-      <li><span class="url">/commercial-cleaning-locations-texas/</span><span class="label">old directory hub</span><span class="pill flag">Flag</span><span class="label">no redirect target mapped yet — point it at home or the Austin hub</span></li>
+      <li><span class="url">/commercial-cleaning-locations-texas/austin/</span><span class="pill legacy">301</span><span class="to">→ <b>/commercial-cleaning-austin/</b></span></li>
+      <li><span class="url">/commercial-cleaning-locations-texas/dallas/</span><span class="pill legacy">301</span><span class="to">→ <b>/commercial-cleaning-dallas/</b></span></li>
+      <li><span class="url">/commercial-cleaning-locations-texas/fort-worth/</span><span class="pill legacy">301</span><span class="to">→ <b>/commercial-cleaning-fort-worth/</b></span></li>
+      <li><span class="url">/commercial-cleaning-locations-texas/houston/</span><span class="pill legacy">301</span><span class="to">→ <b>/commercial-cleaning-houston/</b></span></li>
+      <li><span class="url">/commercial-cleaning-locations-texas/san-antonio/</span><span class="pill legacy">301</span><span class="to">→ <b>/commercial-cleaning-san-antonio/</b></span></li>
+      <li><span class="url">/abs-commercial-cleaning-commercial-cleaning-austin/</span><span class="pill legacy">301</span><span class="pill flag">Not in XML sitemap</span><span class="to">→ <b>/commercial-cleaning-austin/</b></span></li>
+      <li><span class="url">/abs-commercial-cleaning-commercial-cleaning-houston/</span><span class="pill legacy">301</span><span class="pill flag">Not in XML sitemap</span><span class="to">→ <b>/commercial-cleaning-houston/</b></span></li>
+      <li><span class="url">/abs-commercial-cleaning-commercial-cleaning-san-antonio/</span><span class="pill legacy">301</span><span class="pill flag">Not in XML sitemap</span><span class="to">→ <b>/commercial-cleaning-san-antonio/</b></span></li>
     </ul>
   </section>
 
   <section>
-    <div class="sec-head"><h2>Service × city pages</h2><span class="path">/services/…</span><span class="count">25 pages · 5 services × 5 cities</span></div>
-    <p class="sec-note">One page per service per city, all on the consistent <span class="url">[service]-[city]</span> slug pattern. Cells marked <span class="pill legacy">301</span> replace an existing page on an old slug; <span class="pill ready">Ready</span> alone means a net-new page; <span class="pill live">Live</span> means the URL already exists and gets refreshed content in place. All 23 non-live pages are written and awaiting publish.</p>
+    <div class="sec-head"><h3>Service pages</h3><span class="path">/services/…</span><span class="count">20 pages</span></div>
+
+    <p class="group-label">Carpet cleaning</p>
+    <ul class="tree">
+      <li><span class="url">/services/commercial-carpet-cleaning-austin/</span><span class="pill refresh">Refresh</span></li>
+      <li><span class="url">/services/houston-carpet-cleaning/</span><span class="pill legacy">301</span><span class="to">→ <b>/services/commercial-carpet-cleaning-houston/</b></span></li>
+      <li><span class="url">/services/san-antonio-carpet-cleaning/</span><span class="pill legacy">301</span><span class="to">→ <b>/services/commercial-carpet-cleaning-san-antonio/</b></span></li>
+    </ul>
+
+    <p class="group-label">Window cleaning</p>
+    <ul class="tree">
+      <li><span class="url">/services/window-cleaning-austin/</span><span class="pill legacy">301</span><span class="to">→ <b>/services/commercial-window-cleaning-austin/</b></span></li>
+      <li><span class="url">/services/houston-window-cleaning/</span><span class="pill legacy">301</span><span class="to">→ <b>/services/commercial-window-cleaning-houston/</b></span></li>
+      <li><span class="url">/services/san-antonio-window-cleaning/</span><span class="pill legacy">301</span><span class="to">→ <b>/services/commercial-window-cleaning-san-antonio/</b></span></li>
+    </ul>
+
+    <p class="group-label">Pressure washing</p>
+    <ul class="tree">
+      <li><span class="url">/services/pressure-washing-austin/</span><span class="pill legacy">301</span><span class="to">→ <b>/services/commercial-pressure-washing-austin/</b></span></li>
+      <li><span class="url">/services/houston-pressure-washing/</span><span class="pill legacy">301</span><span class="to">→ <b>/services/commercial-pressure-washing-houston/</b></span></li>
+      <li><span class="url">/services/san-antonio-pressure-washing/</span><span class="pill legacy">301</span><span class="to">→ <b>/services/commercial-pressure-washing-san-antonio/</b></span></li>
+    </ul>
+
+    <p class="group-label">Office cleaning</p>
+    <ul class="tree">
+      <li><span class="url">/services/office-cleaning-austin/</span><span class="pill refresh">Refresh</span></li>
+      <li><span class="url">/services/houston-office-cleaning-services/</span><span class="pill legacy">301</span><span class="to">→ <b>/services/office-cleaning-houston/</b></span></li>
+      <li><span class="url">/services/san-antonio-office-cleaning-services/</span><span class="pill legacy">301</span><span class="to">→ <b>/services/office-cleaning-san-antonio/</b></span></li>
+    </ul>
+
+    <p class="group-label">Post-construction cleanup</p>
+    <ul class="tree">
+      <li><span class="url">/services/post-construction-cleanup-austin/</span><span class="pill legacy">301</span><span class="to">→ <b>/services/post-construction-cleaning-austin/</b></span></li>
+      <li><span class="url">/services/houston-post-construction-cleanup/</span><span class="pill legacy">301</span><span class="to">→ <b>/services/post-construction-cleaning-houston/</b></span></li>
+      <li><span class="url">/services/san-antonio-post-construction-cleanup/</span><span class="pill legacy">301</span><span class="to">→ <b>/services/post-construction-cleaning-san-antonio/</b></span></li>
+    </ul>
+
+    <p class="group-label">Floor stripping &amp; waxing</p>
+    <ul class="tree">
+      <li><span class="url">/services/houston-floor-stripping-and-waxing/</span><span class="pill keep">Stays</span><span class="label">no replacement in the new build — keeps its URL</span></li>
+      <li><span class="url">/services/san-antonio-floor-stripping-and-waxing/</span><span class="pill keep">Stays</span></li>
+    </ul>
+
+    <p class="group-label">Statewide services</p>
+    <ul class="tree">
+      <li><span class="url">/services/day-porter-services/</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/services/disinfection-and-electrostatic-spraying/</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/services/restroom-cleaning-and-sanitation/</span><span class="pill keep">Stays</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><h3>Facility pages</h3><span class="path">/facilities/…</span><span class="count">8 pages</span></div>
+    <ul class="tree">
+      <li><span class="url">/facilities/church-and-religious-facility-cleaning/</span><span class="pill legacy">301</span><span class="to">→ <b>/facilities/church-cleaning-services/</b></span></li>
+      <li><span class="url">/facilities/industrial-and-warehouse-cleaning/</span><span class="pill legacy">301</span><span class="to">→ splits into <b>/facilities/industrial-cleaning-services/</b> + <b>/facilities/warehouse-cleaning-services/</b></span></li>
+      <li><span class="url">/facilities/medical-office-and-clinic-cleaning/</span><span class="pill legacy">301</span><span class="to">→ <b>/facilities/medical-office-cleaning/</b></span></li>
+      <li><span class="url">/facilities/school-and-charter-school-cleaning/</span><span class="pill legacy">301</span><span class="to">→ <b>/facilities/school-cleaning-services/</b></span></li>
+      <li><span class="url">/facilities/daycare-and-childcare-cleaning/</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/facilities/gym-and-fitness-center-cleaning/</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/facilities/restaurant-and-food-service-cleaning/</span><span class="pill keep">Stays</span></li>
+      <li><span class="url">/facilities/retail-store-cleaning/</span><span class="pill keep">Stays</span></li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="sec-head"><h3>Blog posts</h3><span class="count">23 posts · all at the site root</span></div>
+    <p class="sec-note">All existing posts live at the root (no <span class="url">/blog/</span> prefix) and stay where they are — no redirects are mapped for them. New posts from the sprint will publish under <span class="url">/blog/…</span>.</p>
+    <div class="cols">
+      <ul class="tree">
+        <li><span class="url">/5-benefits-of-hiring-a-professional-cleaning-company/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/7-epic-benefits-of-professional-power-washing/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/7-signs-your-business-carpet-cleaning-signs-are-urgent/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/ai-in-the-workplace-a-cleaning-companys-real-story/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/bathroom-cleaning-service-professional-deep-cleaning-tips/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/benefits-of-a-professional-cleaning-company-for-doctors/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/benefits-of-commercial-cleaning-services-austin-tx/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/benefits-of-hiring-abs-commercial-cleaning-services/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/commercial-carpet-cleaning-services-texas-professional-carpet-cleaning-services/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/commercial-cleaning-company-austin-tx/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/commercial-disinfection-services-for-safer-healthier-workplaces/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/commercial-floor-cleaning-houston-top-services-for-businesses/</span><span class="pill keep">Stays</span></li>
+      </ul>
+      <ul class="tree">
+        <li><span class="url">/essential-commercial-cleaning-tips-texas-commercial-cleaning-tips-texas/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/essential-warehouse-cleaning-tips-and-techniques/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/expert-medical-cleaning-services-medical-office-cleaning-service/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/finding-the-best-commercial-cleaning-services-near-me/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/how-a-clean-office-affects-the-perception-of-your-business/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/how-businesses-benefit-from-professional-window-cleaning/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/how-places-of-worship-benefit-from-professional-cleaning/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/how-professional-cleaning-leads-to-greater-employee-satisfaction/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/how-to-write-a-commercial-cleaning-proposal/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/the-link-between-office-cleanliness-and-employee-health/</span><span class="pill keep">Stays</span></li>
+        <li><span class="url">/top-cleaning-services-for-small-business-office-cleaning-service/</span><span class="pill keep">Stays</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="callout">
+    <h2>⚠ Findings from the crawl (Aug 10, 2026)</h2>
+    <p><strong>Three live pages are missing from the XML sitemap</strong> — the duplicate <span class="url">/abs-commercial-cleaning-commercial-cleaning-[city]/</span> pages return 200 and are linked on-site, so Austin, Houston, and San Antonio currently have two competing city pages each until their 301s go live.</p>
+    <p><strong>Catch-all redirect is swallowing the new URLs</strong> — every planned URL (e.g. <span class="url">/commercial-cleaning-austin/</span>) currently 301s to the homepage. These catch-alls must be removed as each new page publishes.</p>
+    <p><strong>The locations directory hub</strong> <span class="url">/commercial-cleaning-locations-texas/</span> has no redirect target mapped — pick a destination before the city pages redirect out from under it.</p>
+  </div>
+
+  <div class="part">
+    <p class="part-label">Part 2 · Appendix</p>
+    <h2>Where it's heading — 50 pages written, 0 published</h2>
+  </div>
+
+  <section>
+    <div class="sec-head"><h3>Service × city matrix</h3><span class="path">/services/…</span><span class="count">25 pages</span></div>
+    <p class="sec-note">The new build replaces the mixed slugs above with one consistent <span class="url">[service]-[city]</span> pattern across five cities. All content was written Jul 14–24, 2026 and is awaiting publish.</p>
     <div class="matrix-scroll">
       <table class="matrix">
         <thead>
@@ -276,116 +411,99 @@
         <tbody>
           <tr>
             <th>Carpet cleaning<span class="url">commercial-carpet-cleaning-[city]</span></th>
-            <td><span class="pill live">Live</span> content refresh, same URL</td>
-            <td><span class="pill ready">Ready</span> net-new</td>
-            <td><span class="pill ready">Ready</span> net-new</td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← houston-carpet-cleaning</span><span class="pill ready">Ready</span></td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← san-antonio-carpet-cleaning</span><span class="pill ready">Ready</span></td>
+            <td><span class="pill refresh">Refresh</span><span class="cell-slug">same URL, live</span></td>
+            <td><span class="pill ready">Net-new</span></td>
+            <td><span class="pill ready">Net-new</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← houston-carpet-cleaning</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← san-antonio-carpet-cleaning</span></td>
           </tr>
           <tr>
             <th>Window cleaning<span class="url">commercial-window-cleaning-[city]</span></th>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← window-cleaning-austin</span><span class="pill ready">Ready</span></td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← dallas-window-cleaning</span><span class="pill ready">Ready</span></td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← fort-worth-window-cleaning</span><span class="pill ready">Ready</span></td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← houston-window-cleaning</span><span class="pill ready">Ready</span></td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← san-antonio-window-cleaning</span><span class="pill ready">Ready</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← window-cleaning-austin</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← dallas-window-cleaning</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← fort-worth-window-cleaning</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← houston-window-cleaning</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← san-antonio-window-cleaning</span></td>
           </tr>
           <tr>
             <th>Pressure washing<span class="url">commercial-pressure-washing-[city]</span></th>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← pressure-washing-austin</span><span class="pill ready">Ready</span></td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← dallas-pressure-washing</span><span class="pill ready">Ready</span></td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← fort-worth-pressure-washing</span><span class="pill ready">Ready</span></td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← houston-pressure-washing</span><span class="pill ready">Ready</span></td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← san-antonio-pressure-washing</span><span class="pill ready">Ready</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← pressure-washing-austin</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← dallas-pressure-washing</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← fort-worth-pressure-washing</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← houston-pressure-washing</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← san-antonio-pressure-washing</span></td>
           </tr>
           <tr>
             <th>Office cleaning<span class="url">office-cleaning-[city]</span></th>
-            <td><span class="pill live">Live</span> content refresh, same URL</td>
-            <td><span class="pill ready">Ready</span> net-new</td>
-            <td><span class="pill ready">Ready</span> net-new</td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← houston-office-cleaning-services</span><span class="pill ready">Ready</span></td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← san-antonio-office-cleaning-services</span><span class="pill ready">Ready</span></td>
+            <td><span class="pill refresh">Refresh</span><span class="cell-slug">same URL, live</span></td>
+            <td><span class="pill ready">Net-new</span></td>
+            <td><span class="pill ready">Net-new</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← houston-office-cleaning-services</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← san-antonio-office-cleaning-services</span></td>
           </tr>
           <tr>
             <th>Post-construction<span class="url">post-construction-cleaning-[city]</span></th>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← post-construction-cleanup-austin</span><span class="pill ready">Ready</span></td>
-            <td><span class="pill ready">Ready</span> net-new</td>
-            <td><span class="pill ready">Ready</span> net-new</td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← houston-post-construction-cleanup</span><span class="pill ready">Ready</span></td>
-            <td><span class="pill legacy">301</span><span class="cell-slug">← san-antonio-post-construction-cleanup</span><span class="pill ready">Ready</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← post-construction-cleanup-austin</span></td>
+            <td><span class="pill ready">Net-new</span></td>
+            <td><span class="pill ready">Net-new</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← houston-post-construction-cleanup</span></td>
+            <td><span class="pill legacy">301</span><span class="cell-slug">← san-antonio-post-construction-cleanup</span></td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="sec-note" style="margin-top:14px;">Three statewide service pages stay as they are:</p>
-    <ul class="tree">
-      <li><span class="url">/services/day-porter-services/</span><span class="pill live">Live</span></li>
-      <li><span class="url">/services/disinfection-and-electrostatic-spraying/</span><span class="pill live">Live</span></li>
-      <li><span class="url">/services/restroom-cleaning-and-sanitation/</span><span class="pill live">Live</span></li>
-    </ul>
+    <p class="sec-note" style="margin-top:10px;">Note: the redirect map lists <span class="url">dallas-window-cleaning</span>, <span class="url">fort-worth-window-cleaning</span>, <span class="url">dallas-pressure-washing</span>, and <span class="url">fort-worth-pressure-washing</span> as sources, but those old pages are not in today's live inventory.</p>
   </section>
 
   <section>
-    <div class="sec-head"><h2>Microlocal pages — Austin pilot</h2><span class="path">/services/…</span><span class="count">5 pages · all net-new</span></div>
-    <p class="sec-note">Neighborhood-level pages piloting hyperlocal coverage inside Austin. If Search Console shows traction, the pattern extends to other metros.</p>
-    <ul class="tree">
-      <li><span class="url">/services/office-cleaning-downtown-austin/</span><span class="pill ready">Ready</span></li>
-      <li><span class="url">/services/office-cleaning-the-domain-austin/</span><span class="pill ready">Ready</span></li>
-      <li><span class="url">/services/commercial-carpet-cleaning-downtown-austin/</span><span class="pill ready">Ready</span></li>
-      <li><span class="url">/services/commercial-cleaning-cherrywood-austin/</span><span class="pill ready">Ready</span></li>
-      <li><span class="url">/services/commercial-cleaning-east-cesar-chavez/</span><span class="pill ready">Ready</span></li>
-    </ul>
-  </section>
-
-  <section>
-    <div class="sec-head"><h2>Facility pages</h2><span class="path">/facilities/…</span><span class="count">9 pages · 5 rewritten, 4 unchanged</span></div>
-    <p class="sec-note">Five facility pages get keyword-first slugs — note the old industrial-and-warehouse page splits into two dedicated pages. Four keep their current URL and content.</p>
+    <div class="sec-head"><h3>Other new pages</h3><span class="count">25 pages</span></div>
     <div class="cols">
-      <ul class="tree">
-        <li><span class="url">/facilities/church-cleaning-services/</span><span class="pill ready">Ready</span><span class="from"><b>church-and-religious-facility-cleaning</b> → 301</span></li>
-        <li><span class="url">/facilities/industrial-cleaning-services/</span><span class="pill ready">Ready</span><span class="from"><b>industrial-and-warehouse-cleaning</b> → 301</span></li>
-        <li><span class="url">/facilities/warehouse-cleaning-services/</span><span class="pill ready">Ready</span><span class="from">split from same old page</span></li>
-        <li><span class="url">/facilities/medical-office-cleaning/</span><span class="pill ready">Ready</span><span class="from"><b>medical-office-and-clinic-cleaning</b> → 301</span></li>
-        <li><span class="url">/facilities/school-cleaning-services/</span><span class="pill ready">Ready</span><span class="from"><b>school-and-charter-school-cleaning</b> → 301</span></li>
-      </ul>
-      <ul class="tree">
-        <li><span class="url">/facilities/daycare-and-childcare-cleaning/</span><span class="pill live">Live</span></li>
-        <li><span class="url">/facilities/gym-and-fitness-center-cleaning/</span><span class="pill live">Live</span></li>
-        <li><span class="url">/facilities/restaurant-and-food-service-cleaning/</span><span class="pill live">Live</span></li>
-        <li><span class="url">/facilities/retail-store-cleaning/</span><span class="pill live">Live</span></li>
-      </ul>
+      <div>
+        <p class="group-label">City hubs — new at root · 5</p>
+        <ul class="tree">
+          <li><span class="url">/commercial-cleaning-austin/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/commercial-cleaning-dallas/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/commercial-cleaning-fort-worth/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/commercial-cleaning-houston/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/commercial-cleaning-san-antonio/</span><span class="pill ready">Ready</span></li>
+        </ul>
+        <p class="group-label">Microlocal — Austin pilot · 5</p>
+        <ul class="tree">
+          <li><span class="url">/services/office-cleaning-downtown-austin/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/services/office-cleaning-the-domain-austin/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/services/commercial-carpet-cleaning-downtown-austin/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/services/commercial-cleaning-cherrywood-austin/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/services/commercial-cleaning-east-cesar-chavez/</span><span class="pill ready">Ready</span></li>
+        </ul>
+      </div>
+      <div>
+        <p class="group-label">Facility rewrites · 5</p>
+        <ul class="tree">
+          <li><span class="url">/facilities/church-cleaning-services/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/facilities/industrial-cleaning-services/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/facilities/warehouse-cleaning-services/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/facilities/medical-office-cleaning/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/facilities/school-cleaning-services/</span><span class="pill ready">Ready</span></li>
+        </ul>
+        <p class="group-label">Blog — new posts under /blog/ · 10</p>
+        <ul class="tree">
+          <li><span class="url">/blog/commercial-cleaning-checklist/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/blog/commercial-cleaning-contract/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/blog/commercial-floor-care/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/blog/classroom-cleaning-checklist/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/blog/restaurant-cleaning-checklist/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/blog/medical-office-cleaning-checklist/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/blog/dental-office-cleaning-checklist/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/blog/what-is-post-construction-cleaning/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/blog/post-construction-cleaning-checklist/</span><span class="pill ready">Ready</span></li>
+          <li><span class="url">/blog/post-construction-cleaning-cost/</span><span class="pill ready">Ready</span></li>
+        </ul>
+      </div>
     </div>
   </section>
-
-  <section>
-    <div class="sec-head"><h2>Blog</h2><span class="path">/blog/…</span><span class="count">10 new posts + 23 legacy posts</span></div>
-    <p class="sec-note">Ten new PAA-targeted posts publish under the <span class="url">/blog/</span> prefix. The 23 existing posts sit at the site root (e.g. <span class="url">/how-to-write-a-commercial-cleaning-proposal/</span>) and are staying where they are — no redirects mapped for them.</p>
-    <div class="cols">
-      <ul class="tree">
-        <li><span class="url">/blog/commercial-cleaning-checklist/</span><span class="pill ready">Ready</span></li>
-        <li><span class="url">/blog/commercial-cleaning-contract/</span><span class="pill ready">Ready</span></li>
-        <li><span class="url">/blog/commercial-floor-care/</span><span class="pill ready">Ready</span></li>
-        <li><span class="url">/blog/classroom-cleaning-checklist/</span><span class="pill ready">Ready</span></li>
-        <li><span class="url">/blog/restaurant-cleaning-checklist/</span><span class="pill ready">Ready</span></li>
-      </ul>
-      <ul class="tree">
-        <li><span class="url">/blog/medical-office-cleaning-checklist/</span><span class="pill ready">Ready</span></li>
-        <li><span class="url">/blog/dental-office-cleaning-checklist/</span><span class="pill ready">Ready</span></li>
-        <li><span class="url">/blog/what-is-post-construction-cleaning/</span><span class="pill ready">Ready</span></li>
-        <li><span class="url">/blog/post-construction-cleaning-checklist/</span><span class="pill ready">Ready</span></li>
-        <li><span class="url">/blog/post-construction-cleaning-cost/</span><span class="pill ready">Ready</span></li>
-      </ul>
-    </div>
-  </section>
-
-  <div class="callout">
-    <h2>⚠ Publish blocker found during the crawl</h2>
-    <p>Every new URL in this plan currently returns a <strong>301 → homepage</strong> (checked Aug 10, 2026). A catch-all redirect is swallowing the new paths — e.g. <span class="url">/commercial-cleaning-austin/</span> and <span class="url">/blog/commercial-cleaning-checklist/</span> both bounce to <span class="url">/</span>. Those catch-alls must be removed as each page publishes, or Google will keep seeing redirects instead of the new content.</p>
-    <p>Also: the page sitemap's lastmod is Jul 5 while content was finished Jul 14–24 — worth confirming Rank Math regenerates the sitemap when the new pages go live.</p>
-  </div>
 
   <footer>
-    <p>Sources: abscleaning.com Rank Math XML sitemap (crawled Aug 10, 2026) · content-tracker/ABS-content-master.csv (50 pages) · content-tracker/ABS-redirect-map.csv (30 mappings) · 90-day sprint roadmap.</p>
-    <p>Prepared by Outrider Digital for internal planning. Status pills reflect live HTTP checks on the date above.</p>
+    <p>Sources: abscleaning.com Rank Math XML sitemap + on-site link crawl (Aug 10, 2026, live HTTP checks) · content-tracker/ABS-content-master.csv (50 pages) · content-tracker/ABS-redirect-map.csv (30 mappings) · 90-day sprint roadmap.</p>
+    <p>Prepared by Outrider Digital for internal planning. Excludes non-page URLs: locations.kml, llms.txt, date archives, and blog pagination.</p>
   </footer>
 </div></body></html>
