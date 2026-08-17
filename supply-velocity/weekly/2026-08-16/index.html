@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Supply Velocity — Weekly Marketing Report</title>
+<style>
+
+  :root{
+    --bg:#eef3f6; --surface:#ffffff; --surface-2:#f5f8fa;
+    --ink:#14232e; --ink-2:#33454f; --muted:#5f7079; --hair:#e0e8ed;
+    --accent:#0f6f8c; --accent-2:#2e9fc4; --accent-wash:#e4f1f6;
+    --good:#2c8659; --good-wash:#e3f1e9; --warn:#b47a24;
+    --shadow:0 1px 2px rgba(20,35,46,.06), 0 8px 24px rgba(20,35,46,.05);
+    --maxw:920px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0c141c; --surface:#152230; --surface-2:#101b26;
+      --ink:#e9eff3; --ink-2:#c2cfd8; --muted:#8ea0ac; --hair:#243541;
+      --accent:#3aa7cb; --accent-2:#5cc0dd; --accent-wash:#132b36;
+      --good:#4bb17e; --good-wash:#142a20; --warn:#d0a251;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#eef3f6; --surface:#ffffff; --surface-2:#f5f8fa;
+    --ink:#14232e; --ink-2:#33454f; --muted:#5f7079; --hair:#e0e8ed;
+    --accent:#0f6f8c; --accent-2:#2e9fc4; --accent-wash:#e4f1f6;
+    --good:#2c8659; --good-wash:#e3f1e9; --warn:#b47a24;
+    --shadow:0 1px 2px rgba(20,35,46,.06), 0 8px 24px rgba(20,35,46,.05);
+  }
+  :root[data-theme="dark"]{
+    --bg:#0c141c; --surface:#152230; --surface-2:#101b26;
+    --ink:#e9eff3; --ink-2:#c2cfd8; --muted:#8ea0ac; --hair:#243541;
+    --accent:#3aa7cb; --accent-2:#5cc0dd; --accent-wash:#132b36;
+    --good:#4bb17e; --good-wash:#142a20; --warn:#d0a251;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55; font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:clamp(20px,4vw,52px) clamp(16px,4vw,32px) 72px}
+  .num{font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1}
+
+  /* ---- header ---- */
+  header{margin-bottom:34px}
+  .eyebrow{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:650}
+  h1{font-size:clamp(28px,5vw,40px); line-height:1.08; margin:.32em 0 .18em; font-weight:680; letter-spacing:-.02em; text-wrap:balance}
+  .sub{color:var(--muted); font-size:15px; margin:0}
+  .status{
+    display:inline-flex; align-items:center; gap:8px; margin-top:18px;
+    background:var(--good-wash); color:var(--good); border:1px solid color-mix(in srgb,var(--good) 26%,transparent);
+    padding:7px 13px; border-radius:999px; font-size:13px; font-weight:600;
+  }
+  .status .dot{width:8px; height:8px; border-radius:50%; background:var(--good); box-shadow:0 0 0 3px color-mix(in srgb,var(--good) 22%,transparent)}
+
+  /* ---- section scaffold ---- */
+  section{margin-top:40px}
+  .sec-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:16px}
+  .sec-head h2{font-size:20px; margin:0; font-weight:660; letter-spacing:-.01em}
+  .sec-head .win{font-size:12.5px; color:var(--muted); letter-spacing:.02em}
+  .card{background:var(--surface); border:1px solid var(--hair); border-radius:16px; box-shadow:var(--shadow)}
+  .pad{padding:clamp(18px,3vw,26px)}
+
+  /* ---- highlights band ---- */
+  .ships{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  @media (max-width:680px){.ships{grid-template-columns:1fr}}
+  .ship{background:var(--surface); border:1px solid var(--hair); border-radius:14px; padding:18px 18px 20px; box-shadow:var(--shadow); position:relative}
+  .ship .tag{font-size:11px; letter-spacing:.12em; text-transform:uppercase; font-weight:650; color:var(--accent)}
+  .ship h3{font-size:16px; margin:9px 0 6px; font-weight:640; letter-spacing:-.01em}
+  .ship p{margin:0; font-size:13.5px; color:var(--muted); line-height:1.5}
+  .ship .chk{position:absolute; top:16px; right:16px; width:20px; height:20px; border-radius:50%; background:var(--good-wash); color:var(--good); display:grid; place-items:center; font-size:12px; font-weight:800}
+
+  /* ---- KPI tiles ---- */
+  .tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--hair); border-radius:16px; overflow:hidden; border:1px solid var(--hair)}
+  @media (max-width:680px){.tiles{grid-template-columns:repeat(2,1fr)}}
+  .tile{background:var(--surface); padding:18px 18px 16px}
+  .tile .k{font-size:12px; color:var(--muted); letter-spacing:.02em; margin-bottom:7px}
+  .tile .v{font-size:26px; font-weight:680; letter-spacing:-.02em; line-height:1}
+  .tile .d{font-size:12.5px; margin-top:7px; font-weight:600; display:inline-flex; align-items:center; gap:4px}
+  .up{color:var(--good)} .flat{color:var(--muted)} .soft{color:var(--warn)}
+
+  .read{font-size:14.5px; color:var(--ink-2); margin:16px 2px 0; line-height:1.6}
+  .read b{color:var(--ink); font-weight:640}
+
+  /* ---- hero revenue ---- */
+  .rev-top{display:flex; align-items:flex-end; gap:26px; flex-wrap:wrap; margin-bottom:20px}
+  .rev-big{font-size:clamp(38px,7vw,54px); font-weight:700; letter-spacing:-.03em; line-height:.95}
+  .rev-cap{font-size:13px; color:var(--muted); margin-top:6px}
+  .pill{display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:999px; font-size:13px; font-weight:650; background:var(--good-wash); color:var(--good)}
+
+  /* chart */
+  figure{margin:0}
+  .chart-wrap{overflow-x:auto}
+  svg{display:block; width:100%; height:auto}
+  .bar{fill:var(--accent-2)}
+  .bar.today{fill:var(--accent); opacity:.4}
+  .axline{stroke:var(--hair)}
+  .axtxt{fill:var(--muted); font-size:10px; font-variant-numeric:tabular-nums}
+  .tip{position:fixed; pointer-events:none; opacity:0; transition:opacity .1s; background:var(--ink); color:var(--bg); padding:6px 9px; border-radius:8px; font-size:12px; font-weight:600; white-space:nowrap; z-index:9; box-shadow:var(--shadow)}
+  .tip .t2{color:color-mix(in srgb,var(--bg) 62%,transparent); font-weight:500}
+
+  /* ---- tables ---- */
+  .tablewrap{overflow-x:auto; margin-top:16px}
+  table{width:100%; border-collapse:collapse; font-size:13.5px; min-width:440px}
+  th,td{text-align:right; padding:9px 12px; border-bottom:1px solid var(--hair); font-variant-numeric:tabular-nums}
+  th:first-child,td:first-child{text-align:left; font-variant-numeric:normal}
+  thead th{font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:650; border-bottom:1px solid var(--hair)}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr.total td{font-weight:680; color:var(--ink); border-top:2px solid var(--hair)}
+  .chip{display:inline-block; font-size:11px; font-weight:650; padding:2px 8px; border-radius:6px; letter-spacing:.02em}
+  .chip.on{background:var(--good-wash); color:var(--good)}
+  .chip.off{background:var(--surface-2); color:var(--muted); border:1px solid var(--hair)}
+
+  .note{font-size:13px; color:var(--muted); margin-top:14px; padding:12px 14px; background:var(--surface-2); border-radius:10px; border:1px solid var(--hair); line-height:1.5}
+  .note b{color:var(--ink-2)}
+
+  /* ---- klaviyo detail blocks ---- */
+  .subh{font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:650; margin:0 0 8px; display:flex; align-items:center; gap:7px}
+  .kgrid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:680px){.kgrid{grid-template-columns:1fr}}
+  .kblock{background:var(--surface-2); border:1px solid var(--hair); border-radius:12px; padding:16px 17px}
+  .kblock p{margin:0; font-size:13.5px; color:var(--ink-2); line-height:1.56}
+  .kblock p b{color:var(--ink); font-weight:640}
+  .kblock.warn{background:color-mix(in srgb,var(--warn) 9%,var(--surface)); border-color:color-mix(in srgb,var(--warn) 30%,transparent)}
+  .kblock.warn .subh{color:var(--warn)}
+  .kblock .flag{width:16px; height:16px; border-radius:4px; background:color-mix(in srgb,var(--warn) 20%,transparent); color:var(--warn); display:grid; place-items:center; font-size:11px; font-weight:800}
+  .draftpill{display:inline-block; margin-top:9px; font-size:11.5px; font-weight:650; color:var(--good); background:var(--good-wash); border:1px solid color-mix(in srgb,var(--good) 26%,transparent); padding:3px 9px; border-radius:6px}
+
+  /* ---- footer ---- */
+  footer{margin-top:52px; padding-top:22px; border-top:1px solid var(--hair); color:var(--muted); font-size:12.5px; line-height:1.7}
+  footer .srcs{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 16px}
+  footer .src{background:var(--surface); border:1px solid var(--hair); border-radius:8px; padding:5px 11px; font-weight:600; color:var(--ink-2); font-size:12px}
+  a{color:var(--accent)}
+
+  /* ---- work list (completed items, grouped) ---- */
+  .wgroup{margin-top:18px}
+  .wgroup:first-child{margin-top:0}
+  .wgroup .subh{margin-bottom:10px}
+  .wlist{list-style:none; margin:0; padding:0}
+  .wlist li{display:flex; gap:10px; align-items:flex-start; padding:7px 0; border-bottom:1px solid var(--hair); font-size:14px; color:var(--ink-2); line-height:1.5}
+  .wlist li:last-child{border-bottom:none}
+  .wlist .tick{flex:0 0 auto; width:17px; height:17px; margin-top:2px; border-radius:50%; background:var(--good-wash); color:var(--good); display:grid; place-items:center; font-size:10px; font-weight:800}
+  .wlist .who{color:var(--muted); font-size:12.5px; white-space:nowrap}
+
+  /* ---- awaiting client ---- */
+  .await{background:color-mix(in srgb,var(--warn) 9%,var(--surface)); border:1px solid color-mix(in srgb,var(--warn) 30%,transparent); border-radius:12px; padding:16px 17px; margin-top:16px}
+  .await .subh{color:var(--warn)}
+  .await ul{list-style:none; margin:0; padding:0}
+  .await li{padding:6px 0; font-size:14px; color:var(--ink-2); line-height:1.5; border-bottom:1px solid color-mix(in srgb,var(--warn) 18%,transparent)}
+  .await li:last-child{border-bottom:none}
+
+  /* ---- exec summary ---- */
+  .lede{font-size:16.5px; line-height:1.6; color:var(--ink-2); margin:0 0 4px; max-width:66ch}
+  .lede b{color:var(--ink); font-weight:640}
+
+  /* tile deltas can also be negative */
+  .down{color:var(--warn)}
+
+  @media print{
+    body{background:#fff}
+    section{break-inside:avoid}
+    .card,.tile,.ship{box-shadow:none}
+  }
+
+  /* ---- geo-grid map pack (rendered only when the section is present) ---- */
+  .tiles-3{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--hair); border-radius:16px; overflow:hidden; border:1px solid var(--hair)}
+  .tiles-3 .tile{background:var(--surface)}
+  @media (max-width:680px){.tiles-3{grid-template-columns:1fr}}
+
+  .grid-meta{font-size:13px; color:var(--muted); margin:0 0 16px}
+  .grid-meta b{color:var(--ink-2); font-weight:640}
+
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; padding-top:16px; border-top:1px solid var(--hair)}
+  .legend-item{display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--muted)}
+  .legend-swatch{width:14px; height:14px; border-radius:50%; flex:none; display:inline-block}
+  .legend-ring{width:14px; height:14px; border-radius:50%; border:2px solid var(--accent); box-sizing:border-box; flex:none; display:inline-block}
+
+  .grid-map-wrap{overflow:hidden; border-radius:14px}
+  #gridMap{width:100%; aspect-ratio:16/10; min-height:480px; border-radius:14px; z-index:0; background:var(--surface-2)}
+  .gridpin{background:transparent; border:none}
+  .gridpin-wrap{position:relative; width:100%; height:100%}
+  .gridpin-circle{position:absolute; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-variant-numeric:tabular-nums; color:#fff; border:2px solid var(--surface);
+    box-shadow:0 1px 3px rgba(0,0,0,.35)}
+  .gridpin-circle.error{border-style:dashed; border-color:#ef4444; border-width:2.5px}
+  .gridpin-ring{position:absolute; inset:0; border-radius:50%; border:2.5px solid var(--accent); box-sizing:border-box; pointer-events:none}
+  .leaflet-tooltip.gridpin-tooltip{background:var(--ink); color:var(--bg); border:none; padding:6px 9px; border-radius:8px;
+    font-size:12px; font-weight:600; box-shadow:var(--shadow); line-height:1.45}
+  .leaflet-tooltip.gridpin-tooltip .t2{display:block; margin-top:2px; opacity:.68; font-weight:500}
+  .leaflet-tooltip-top.gridpin-tooltip::before{border-top-color:var(--ink)}
+  .leaflet-tooltip-bottom.gridpin-tooltip::before{border-bottom-color:var(--ink)}
+  .leaflet-tooltip-left.gridpin-tooltip::before{border-left-color:var(--ink)}
+  .leaflet-tooltip-right.gridpin-tooltip::before{border-right-color:var(--ink)}
+  .leaflet-control-attribution{font-size:10px; background:color-mix(in srgb, var(--surface) 85%, transparent) !important; color:var(--muted) !important}
+  .leaflet-control-attribution a{color:var(--muted)}
+</style>
+
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Weekly Marketing Report</div>
+    <h1>Supply Velocity</h1>
+    <p class="sub">Prepared by Outrider Digital · Aug 10–16, 2026</p>
+    <div class="status"><span class="dot"></span> 2 data sources live &amp; verified — figures pulled directly from the platforms</div>
+  </header>
+
+<section style="margin-top:28px"><p class="lede">Traffic and search clicks both eased again this week, and nothing closed in the content pipeline. The queued location, state and industry pages remain the active work — they are the growth lever, and getting the first of them written and live is the priority.</p></section>
+<section><div class="sec-head"><h2>Shipped this period</h2></div><div class="card pad" style="margin-top:16px"><div class="wgroup"><div class="subh">In progress &amp; up next</div><ul class="wlist"><li><span>Industry page: CPG supply chain consulting</span></li><li><span>Industry page: EV supply chain consulting</span></li><li><span>State page: supply chain consulting in Ohio</span></li><li><span>State page: supply chain consulting in Georgia</span></li><li><span>Location page: supply chain consulting in Miami</span></li><li><span>Location page: supply chain consulting in Detroit</span></li></ul></div></div><p class="read">Nothing closed this week, and that is the second week running — we are calling it plainly rather than dressing it up. The content plan and the six location, state and industry pages behind it are written and scoped, but none has been drafted and published yet. That is the bottleneck, and it is ours to clear: these pages are the only lever in the plan that grows the number of searches your site can appear for, so until they ship the traffic picture below is unlikely to change direction.</p></section>
+<section><div class="sec-head"><h2>Website traffic</h2><span class="win num">7 days · Google Analytics 4</span></div><div class="tiles"><div class="tile"><div class="k">Sessions</div><div class="v num">205</div><div class="d down">▼ down 18.7%</div></div><div class="tile"><div class="k">Users</div><div class="v num">180</div><div class="d down">▼ down 25.3%</div></div><div class="tile"><div class="k">Bounce rate</div><div class="v num">65.1%</div><div class="d down">▼ up 9.4%</div></div></div><p class="read">Visits and unique visitors both stepped down again, and a slightly higher share of people left without going deeper. The decline is spread across the site rather than concentrated on one page, which points at a quiet late-summer market rather than a broken page or a lost ranking — but a second consecutive soft week is a pattern, not noise, and the answer to it is new pages rather than adjustments to the existing ones.</p></section>
+<section><div class="sec-head"><h2>Organic search</h2><span class="win num">7 days · Search Console</span></div><div class="tiles"><div class="tile"><div class="k">Clicks</div><div class="v num">38</div><div class="d down">▼ down 24.0%</div></div><div class="tile"><div class="k">Impressions</div><div class="v num">30,820</div><div class="d down">▼ down 21.8%</div></div><div class="tile"><div class="k">Avg. CTR</div><div class="v num">0.12%</div><div class="d down">▼ down 2.9%</div></div><div class="tile"><div class="k">Avg. position</div><div class="v num">31.7</div><div class="d down">▼ slipped 3.2%</div></div></div><p class="read">Search clicks and impressions fell together, and your average position gave back a little ground. Impressions falling matters more than the clicks here: it means your pages were shown fewer times, so this is a demand and coverage story rather than a sign that Google has demoted you. Your site currently competes for a narrow set of searches, and the queued location and industry pages are how we widen that surface — each one targets a search your competitors already rank for and you do not yet appear against.</p><div class="card pad" style="margin-top:16px"><div class="tablewrap"><table><thead><tr><th>Page</th><th>Clicks</th><th>Change</th><th>Impressions</th></tr></thead><tbody><tr><td>Homepage</td><td class="num">4</td><td class="num">+1</td><td class="num">206</td></tr><tr><td>/the-pillars-of-supply-chain-strategy</td><td class="num">3</td><td class="num">+3</td><td class="num">203</td></tr><tr><td>/boutique-supply-chain-consulting-firms</td><td class="num">1</td><td class="num">-1</td><td class="num">9,801</td></tr><tr><td>/services/lean</td><td class="num">1</td><td class="num">+1</td><td class="num">1,473</td></tr><tr><td>/creating-lean-sales-process</td><td class="num">1</td><td class="num">+1</td><td class="num">30</td></tr><tr><td>/services/supply-chain-management/invento…timization</td><td class="num">0</td><td class="num">0</td><td class="num">1,099</td></tr><tr><td>/how-to-find-consulting-partner-supply-ch…timization</td><td class="num">0</td><td class="num">0</td><td class="num">109</td></tr><tr><td>/bullwhip-effect-supply-chains</td><td class="num">0</td><td class="num">0</td><td class="num">447</td></tr></tbody></table></div></div></section>
+
+  <footer>
+    <div><b style="color:var(--ink-2)">Data sources</b> — every figure in this report is pulled directly from the platforms below:</div>
+    <div class="srcs"><span class="src">Google Analytics 4</span><span class="src">Search Console</span></div>
+    <div>Freshness: Analytics through 2026-08-16 · Search Console through 2026-08-15. Search Console reports on a 2–3 day lag by design.</div>
+  </footer>
+</div>
+
+<div class="tip" id="tip"></div>
+
+<script>
+
+</script>
+
+</body>
+</html>
