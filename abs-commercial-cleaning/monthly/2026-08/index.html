@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ABS Cleaning — Monthly Marketing Report</title>
+<style>
+
+  :root{
+    --bg:#eef3f6; --surface:#ffffff; --surface-2:#f5f8fa;
+    --ink:#14232e; --ink-2:#33454f; --muted:#5f7079; --hair:#e0e8ed;
+    --accent:#0f6f8c; --accent-2:#2e9fc4; --accent-wash:#e4f1f6;
+    --good:#2c8659; --good-wash:#e3f1e9; --warn:#b47a24;
+    --shadow:0 1px 2px rgba(20,35,46,.06), 0 8px 24px rgba(20,35,46,.05);
+    --maxw:920px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{
+      --bg:#0c141c; --surface:#152230; --surface-2:#101b26;
+      --ink:#e9eff3; --ink-2:#c2cfd8; --muted:#8ea0ac; --hair:#243541;
+      --accent:#3aa7cb; --accent-2:#5cc0dd; --accent-wash:#132b36;
+      --good:#4bb17e; --good-wash:#142a20; --warn:#d0a251;
+      --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#eef3f6; --surface:#ffffff; --surface-2:#f5f8fa;
+    --ink:#14232e; --ink-2:#33454f; --muted:#5f7079; --hair:#e0e8ed;
+    --accent:#0f6f8c; --accent-2:#2e9fc4; --accent-wash:#e4f1f6;
+    --good:#2c8659; --good-wash:#e3f1e9; --warn:#b47a24;
+    --shadow:0 1px 2px rgba(20,35,46,.06), 0 8px 24px rgba(20,35,46,.05);
+  }
+  :root[data-theme="dark"]{
+    --bg:#0c141c; --surface:#152230; --surface-2:#101b26;
+    --ink:#e9eff3; --ink-2:#c2cfd8; --muted:#8ea0ac; --hair:#243541;
+    --accent:#3aa7cb; --accent-2:#5cc0dd; --accent-wash:#132b36;
+    --good:#4bb17e; --good-wash:#142a20; --warn:#d0a251;
+    --shadow:0 1px 2px rgba(0,0,0,.3), 0 10px 30px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.55; font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:clamp(20px,4vw,52px) clamp(16px,4vw,32px) 72px}
+  .num{font-variant-numeric:tabular-nums; font-feature-settings:"tnum" 1}
+
+  /* ---- header ---- */
+  header{margin-bottom:34px}
+  .eyebrow{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:650}
+  h1{font-size:clamp(28px,5vw,40px); line-height:1.08; margin:.32em 0 .18em; font-weight:680; letter-spacing:-.02em; text-wrap:balance}
+  .sub{color:var(--muted); font-size:15px; margin:0}
+  .status{
+    display:inline-flex; align-items:center; gap:8px; margin-top:18px;
+    background:var(--good-wash); color:var(--good); border:1px solid color-mix(in srgb,var(--good) 26%,transparent);
+    padding:7px 13px; border-radius:999px; font-size:13px; font-weight:600;
+  }
+  .status .dot{width:8px; height:8px; border-radius:50%; background:var(--good); box-shadow:0 0 0 3px color-mix(in srgb,var(--good) 22%,transparent)}
+
+  /* ---- section scaffold ---- */
+  section{margin-top:40px}
+  .sec-head{display:flex; align-items:baseline; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:16px}
+  .sec-head h2{font-size:20px; margin:0; font-weight:660; letter-spacing:-.01em}
+  .sec-head .win{font-size:12.5px; color:var(--muted); letter-spacing:.02em}
+  .card{background:var(--surface); border:1px solid var(--hair); border-radius:16px; box-shadow:var(--shadow)}
+  .pad{padding:clamp(18px,3vw,26px)}
+
+  /* ---- highlights band ---- */
+  .ships{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  @media (max-width:680px){.ships{grid-template-columns:1fr}}
+  .ship{background:var(--surface); border:1px solid var(--hair); border-radius:14px; padding:18px 18px 20px; box-shadow:var(--shadow); position:relative}
+  .ship .tag{font-size:11px; letter-spacing:.12em; text-transform:uppercase; font-weight:650; color:var(--accent)}
+  .ship h3{font-size:16px; margin:9px 0 6px; font-weight:640; letter-spacing:-.01em}
+  .ship p{margin:0; font-size:13.5px; color:var(--muted); line-height:1.5}
+  .ship .chk{position:absolute; top:16px; right:16px; width:20px; height:20px; border-radius:50%; background:var(--good-wash); color:var(--good); display:grid; place-items:center; font-size:12px; font-weight:800}
+
+  /* ---- KPI tiles ---- */
+  .tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--hair); border-radius:16px; overflow:hidden; border:1px solid var(--hair)}
+  @media (max-width:680px){.tiles{grid-template-columns:repeat(2,1fr)}}
+  .tile{background:var(--surface); padding:18px 18px 16px}
+  .tile .k{font-size:12px; color:var(--muted); letter-spacing:.02em; margin-bottom:7px}
+  .tile .v{font-size:26px; font-weight:680; letter-spacing:-.02em; line-height:1}
+  .tile .d{font-size:12.5px; margin-top:7px; font-weight:600; display:inline-flex; align-items:center; gap:4px}
+  .up{color:var(--good)} .flat{color:var(--muted)} .soft{color:var(--warn)}
+
+  .read{font-size:14.5px; color:var(--ink-2); margin:16px 2px 0; line-height:1.6}
+  .read b{color:var(--ink); font-weight:640}
+
+  /* ---- hero revenue ---- */
+  .rev-top{display:flex; align-items:flex-end; gap:26px; flex-wrap:wrap; margin-bottom:20px}
+  .rev-big{font-size:clamp(38px,7vw,54px); font-weight:700; letter-spacing:-.03em; line-height:.95}
+  .rev-cap{font-size:13px; color:var(--muted); margin-top:6px}
+  .pill{display:inline-flex; align-items:center; gap:5px; padding:4px 10px; border-radius:999px; font-size:13px; font-weight:650; background:var(--good-wash); color:var(--good)}
+
+  /* chart */
+  figure{margin:0}
+  .chart-wrap{overflow-x:auto}
+  svg{display:block; width:100%; height:auto}
+  .bar{fill:var(--accent-2)}
+  .bar.today{fill:var(--accent); opacity:.4}
+  .axline{stroke:var(--hair)}
+  .axtxt{fill:var(--muted); font-size:10px; font-variant-numeric:tabular-nums}
+  .tip{position:fixed; pointer-events:none; opacity:0; transition:opacity .1s; background:var(--ink); color:var(--bg); padding:6px 9px; border-radius:8px; font-size:12px; font-weight:600; white-space:nowrap; z-index:9; box-shadow:var(--shadow)}
+  .tip .t2{color:color-mix(in srgb,var(--bg) 62%,transparent); font-weight:500}
+
+  /* ---- tables ---- */
+  .tablewrap{overflow-x:auto; margin-top:16px}
+  table{width:100%; border-collapse:collapse; font-size:13.5px; min-width:440px}
+  th,td{text-align:right; padding:9px 12px; border-bottom:1px solid var(--hair); font-variant-numeric:tabular-nums}
+  th:first-child,td:first-child{text-align:left; font-variant-numeric:normal}
+  thead th{font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); font-weight:650; border-bottom:1px solid var(--hair)}
+  tbody tr:last-child td{border-bottom:none}
+  tbody tr.total td{font-weight:680; color:var(--ink); border-top:2px solid var(--hair)}
+  .chip{display:inline-block; font-size:11px; font-weight:650; padding:2px 8px; border-radius:6px; letter-spacing:.02em}
+  .chip.on{background:var(--good-wash); color:var(--good)}
+  .chip.off{background:var(--surface-2); color:var(--muted); border:1px solid var(--hair)}
+
+  .note{font-size:13px; color:var(--muted); margin-top:14px; padding:12px 14px; background:var(--surface-2); border-radius:10px; border:1px solid var(--hair); line-height:1.5}
+  .note b{color:var(--ink-2)}
+
+  /* ---- klaviyo detail blocks ---- */
+  .subh{font-size:11.5px; letter-spacing:.09em; text-transform:uppercase; color:var(--accent); font-weight:650; margin:0 0 8px; display:flex; align-items:center; gap:7px}
+  .kgrid{display:grid; grid-template-columns:1fr 1fr; gap:14px}
+  @media (max-width:680px){.kgrid{grid-template-columns:1fr}}
+  .kblock{background:var(--surface-2); border:1px solid var(--hair); border-radius:12px; padding:16px 17px}
+  .kblock p{margin:0; font-size:13.5px; color:var(--ink-2); line-height:1.56}
+  .kblock p b{color:var(--ink); font-weight:640}
+  .kblock.warn{background:color-mix(in srgb,var(--warn) 9%,var(--surface)); border-color:color-mix(in srgb,var(--warn) 30%,transparent)}
+  .kblock.warn .subh{color:var(--warn)}
+  .kblock .flag{width:16px; height:16px; border-radius:4px; background:color-mix(in srgb,var(--warn) 20%,transparent); color:var(--warn); display:grid; place-items:center; font-size:11px; font-weight:800}
+  .draftpill{display:inline-block; margin-top:9px; font-size:11.5px; font-weight:650; color:var(--good); background:var(--good-wash); border:1px solid color-mix(in srgb,var(--good) 26%,transparent); padding:3px 9px; border-radius:6px}
+
+  /* ---- footer ---- */
+  footer{margin-top:52px; padding-top:22px; border-top:1px solid var(--hair); color:var(--muted); font-size:12.5px; line-height:1.7}
+  footer .srcs{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 16px}
+  footer .src{background:var(--surface); border:1px solid var(--hair); border-radius:8px; padding:5px 11px; font-weight:600; color:var(--ink-2); font-size:12px}
+  a{color:var(--accent)}
+
+  /* ---- work list (completed items, grouped) ---- */
+  .wgroup{margin-top:18px}
+  .wgroup:first-child{margin-top:0}
+  .wgroup .subh{margin-bottom:10px}
+  .wlist{list-style:none; margin:0; padding:0}
+  .wlist li{display:flex; gap:10px; align-items:flex-start; padding:7px 0; border-bottom:1px solid var(--hair); font-size:14px; color:var(--ink-2); line-height:1.5}
+  .wlist li:last-child{border-bottom:none}
+  .wlist .tick{flex:0 0 auto; width:17px; height:17px; margin-top:2px; border-radius:50%; background:var(--good-wash); color:var(--good); display:grid; place-items:center; font-size:10px; font-weight:800}
+  .wlist .who{color:var(--muted); font-size:12.5px; white-space:nowrap}
+
+  /* ---- awaiting client ---- */
+  .await{background:color-mix(in srgb,var(--warn) 9%,var(--surface)); border:1px solid color-mix(in srgb,var(--warn) 30%,transparent); border-radius:12px; padding:16px 17px; margin-top:16px}
+  .await .subh{color:var(--warn)}
+  .await ul{list-style:none; margin:0; padding:0}
+  .await li{padding:6px 0; font-size:14px; color:var(--ink-2); line-height:1.5; border-bottom:1px solid color-mix(in srgb,var(--warn) 18%,transparent)}
+  .await li:last-child{border-bottom:none}
+
+  /* ---- exec summary ---- */
+  .lede{font-size:16.5px; line-height:1.6; color:var(--ink-2); margin:0 0 4px; max-width:66ch}
+  .lede b{color:var(--ink); font-weight:640}
+
+  /* tile deltas can also be negative */
+  .down{color:var(--warn)}
+
+  @media print{
+    body{background:#fff}
+    section{break-inside:avoid}
+    .card,.tile,.ship{box-shadow:none}
+  }
+
+  /* ---- geo-grid map pack (rendered only when the section is present) ---- */
+  .tiles-3{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--hair); border-radius:16px; overflow:hidden; border:1px solid var(--hair)}
+  .tiles-3 .tile{background:var(--surface)}
+  @media (max-width:680px){.tiles-3{grid-template-columns:1fr}}
+
+  .grid-meta{font-size:13px; color:var(--muted); margin:0 0 16px}
+  .grid-meta b{color:var(--ink-2); font-weight:640}
+
+  .legend{display:flex; flex-wrap:wrap; gap:16px; margin-top:18px; padding-top:16px; border-top:1px solid var(--hair)}
+  .legend-item{display:flex; align-items:center; gap:7px; font-size:12.5px; color:var(--muted)}
+  .legend-swatch{width:14px; height:14px; border-radius:50%; flex:none; display:inline-block}
+  .legend-ring{width:14px; height:14px; border-radius:50%; border:2px solid var(--accent); box-sizing:border-box; flex:none; display:inline-block}
+
+  .grid-map-wrap{overflow:hidden; border-radius:14px}
+  #gridMap{width:100%; aspect-ratio:16/10; min-height:480px; border-radius:14px; z-index:0; background:var(--surface-2)}
+  .gridpin{background:transparent; border:none}
+  .gridpin-wrap{position:relative; width:100%; height:100%}
+  .gridpin-circle{position:absolute; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-weight:700; font-variant-numeric:tabular-nums; color:#fff; border:2px solid var(--surface);
+    box-shadow:0 1px 3px rgba(0,0,0,.35)}
+  .gridpin-circle.error{border-style:dashed; border-color:#ef4444; border-width:2.5px}
+  .gridpin-ring{position:absolute; inset:0; border-radius:50%; border:2.5px solid var(--accent); box-sizing:border-box; pointer-events:none}
+  .leaflet-tooltip.gridpin-tooltip{background:var(--ink); color:var(--bg); border:none; padding:6px 9px; border-radius:8px;
+    font-size:12px; font-weight:600; box-shadow:var(--shadow); line-height:1.45}
+  .leaflet-tooltip.gridpin-tooltip .t2{display:block; margin-top:2px; opacity:.68; font-weight:500}
+  .leaflet-tooltip-top.gridpin-tooltip::before{border-top-color:var(--ink)}
+  .leaflet-tooltip-bottom.gridpin-tooltip::before{border-bottom-color:var(--ink)}
+  .leaflet-tooltip-left.gridpin-tooltip::before{border-left-color:var(--ink)}
+  .leaflet-tooltip-right.gridpin-tooltip::before{border-right-color:var(--ink)}
+  .leaflet-control-attribution{font-size:10px; background:color-mix(in srgb, var(--surface) 85%, transparent) !important; color:var(--muted) !important}
+  .leaflet-control-attribution a{color:var(--muted)}
+</style>
+
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Monthly Marketing Report</div>
+    <h1>ABS Cleaning</h1>
+    <p class="sub">Prepared by Outrider Digital · August 2026</p>
+    <div class="status"><span class="dot"></span> 2 data sources live &amp; verified — figures pulled directly from the platforms</div>
+  </header>
+
+<section style="margin-top:28px"><p class="lede">Your new website replaced the old one in August, with every old address redirected and around fifty pages carried across. Search is the clear win: impressions, clicks and average position all improved. Visits and recorded enquiries fell over the same month — those figures span two different sites, and verifying enquiry capture on the new build is the immediate priority.</p></section>
+<section><div class="sec-head"><h2>What we did in August</h2></div><div class="ships"><div class="ship"><div class="chk">✓</div><div class="tag">Go Live</div><h3>The rebuild replaced WordPress on your domain</h3><p><b>abscleaning.com</b> now runs on the new build, hosted in accounts you own, with the old WordPress and SiteGround setup retired. Around fifty existing pages came across, a redirect was mapped from every old address to its new home, and the priority pages were submitted to Google so the corrected details replace the old ones in search.</p></div><div class="ship"><div class="chk">✓</div><div class="tag">Coverage</div><h3>Twelve new service and facility pages live</h3><p>Medical office, school, church, industrial and warehouse cleaning each have their own page, alongside four service pages that were missing entirely — day porter, disinfection, floor care and restrooms — plus city versions of those services so each location has a page that names it.</p></div><div class="ship"><div class="chk">✓</div><div class="tag">Accuracy</div><h3>What the site claims now matches the business</h3><p>The final content pass settled the approved claim set and real testimonials, and your <b>ISSA membership</b> and <b>BBB accreditation</b> are now shown on the site. Header menus, footers and contact details follow the city a visitor has selected, so someone in Dallas sees Dallas.</p></div></div><div class="card pad" style="margin-top:16px"><div class="wgroup"><div class="subh">Aug 1–10 · preparing for handover</div><ul class="wlist"><li><span class="tick">✓</span><span>Checked the new design against search best practice before launch</span></li><li><span class="tick">✓</span><span>Completed the pre-launch handover — code repository, URL list, domain records and the content pass</span></li><li><span class="tick">✓</span><span>Handed over access to the website&#x27;s code repository, transferring after the switch</span></li><li><span class="tick">✓</span><span>Supplied the domain records needed to point your domain at the new site</span></li><li><span class="tick">✓</span><span>Confirmed the site&#x27;s code and hosting sit in accounts your business owns</span></li></ul></div><div class="wgroup"><div class="subh">Aug 11–17 · the pre-launch audit</div><ul class="wlist"><li><span class="tick">✓</span><span>Ran the full pre-launch audit that drove the corrections in this list</span></li></ul></div><div class="wgroup"><div class="subh">Aug 18–24 · the switch</div><ul class="wlist"><li><span class="tick">✓</span><span>Consolidated website and analytics access so reporting runs from verified accounts</span></li><li><span class="tick">✓</span><span>Reconciled the live page list against the new build so no page was missed in the move</span></li><li><span class="tick">✓</span><span>Added your ISSA membership logo across the site</span></li><li><span class="tick">✓</span><span>Set up the new website&#x27;s codebase in a repository owned by your business</span></li><li><span class="tick">✓</span><span>Set up hosting on your own Vercel account</span></li><li><span class="tick">✓</span><span>Migrated around fifty existing pages from WordPress onto the new site</span></li><li><span class="tick">✓</span><span>Tuned the site for speed, targeting a 90+ mobile performance score</span></li><li><span class="tick">✓</span><span>Switched your domain over to the new site and retired the old WordPress and SiteGround hosting</span></li><li><span class="tick">✓</span><span>Obtained access to the previous site so nothing was left behind in the move</span></li><li><span class="tick">✓</span><span>Compiled the full list of which addresses stayed the same and which were redirected, and shared it for review before the switch</span></li><li><span class="tick">✓</span><span>Ran the final content pass over the site against the approved claim set and your real testimonials</span></li><li><span class="tick">✓</span><span>Standardised the way page addresses are written, so no page is reachable at two different URLs</span></li><li><span class="tick">✓</span><span>Verified the site deploys reliably on the production hosting plan</span></li><li><span class="tick">✓</span><span>Retired the temporary preview address so only your real domain serves the site</span></li><li><span class="tick">✓</span><span>Carried every redirect from the old site into the new one</span></li><li><span class="tick">✓</span><span>Built the system behind the quote and contact forms so enquiries are captured and delivered</span></li><li><span class="tick">✓</span><span>Exported the full media library from the old host so every image is yours and hosted on your own site</span></li><li><span class="tick">✓</span><span>Exported the history of form submissions from the old site so no past enquiry was lost</span></li><li><span class="tick">✓</span><span>Reviewed the domain&#x27;s traffic rules before the switch so nothing interfered with the new site</span></li><li><span class="tick">✓</span><span>Pointed both abscleaning.com and the www version at the new site</span></li><li><span class="tick">✓</span><span>Locked down the hosting settings and switched on performance monitoring</span></li><li><span class="tick">✓</span><span>Scheduled decommissioning of the old WordPress and SiteGround hosting for 30+ days after the switch, so there is a fallback in the meantime</span></li><li><span class="tick">✓</span><span>Opened the new site to Google at the moment of the switch, so it could begin indexing immediately</span></li><li><span class="tick">✓</span><span>Confirmed all content, data and access were held in your own accounts before going live</span></li><li><span class="tick">✓</span><span>Ran the full quality-assurance pass across the site before the switch</span></li></ul></div><div class="wgroup"><div class="subh">Aug 25–31 · new pages</div><ul class="wlist"><li><span class="tick">✓</span><span>Published a warehouse cleaning page</span></li><li><span class="tick">✓</span><span>Made the Services menu follow the city a visitor has selected</span></li><li><span class="tick">✓</span><span>Published the four service pages that were missing — day porter, disinfection, floor care and restrooms</span></li><li><span class="tick">✓</span><span>Built city versions of those four services — twenty pages, so each location has a page that names it</span></li><li><span class="tick">✓</span><span>Received access to your Google Ads account, ready for the next phase of work</span></li><li><span class="tick">✓</span><span>Published an industrial cleaning page</span></li><li><span class="tick">✓</span><span>Published a church cleaning page</span></li><li><span class="tick">✓</span><span>Published the new pages to the live website</span></li><li><span class="tick">✓</span><span>Published a medical office cleaning page</span></li><li><span class="tick">✓</span><span>Published a school cleaning page</span></li><li><span class="tick">✓</span><span>Replaced the 800 answering-service number with local numbers for each city</span></li><li><span class="tick">✓</span><span>Made the footer and Contact page show the details for the selected city</span></li></ul></div></div><p class="read">August ran in four stages, and they were not evenly sized. The first ten days were handover preparation — checking the new design against search best practice, and getting the domain records, the code repository and the hosting ownership into your hands before anything moved.
+
+The middle of the month was a single piece of work that shaped everything after it: a full pre-launch audit of the site, which found the mismatched addresses, the empty FAQ sections, the missing logos and the per-location maps. Most of the corrections further down this list exist because that audit found them first.
+
+The switch itself happened in the third week, and the list under it is long because replacing a website is really a stack of small guarantees: a redirect carried over for every old address, the media library and the history of past form submissions pulled off the old host, the URL list circulated for review beforehand, the old hosting left running for a month afterwards as a fallback, and the content pass that settled what the site is allowed to claim about your business. All of it sits in a repository and hosting account your business owns.
+
+The final week was expansion: twelve pages the site did not have before — five facility types, four services that were missing entirely, and city versions of those services — plus the menus, footers and phone numbers that now follow whichever city a visitor has selected.
+
+The month ahead is intended to turn the new site into local visibility: optimising your Google Business Profile, local keyword research, and a clean search baseline now that the rebuild is the version Google sees. That is our sequencing rather than a set of promised dates.</p></section>
+<section><div class="sec-head"><h2>Website traffic</h2><span class="win num">August 2026 · Google Analytics 4</span></div><div class="tiles"><div class="tile"><div class="k">Sessions</div><div class="v num">3,223</div><div class="d down">▼ down 45.7%</div></div><div class="tile"><div class="k">Users</div><div class="v num">2,926</div><div class="d down">▼ down 46.0%</div></div><div class="tile"><div class="k">Bounce rate</div><div class="v num">53.6%</div><div class="d down">▼ up 25.0%</div></div></div><p class="read">Read this month&#x27;s comparison carefully, because it is not like-for-like. The old WordPress site and the new build each served part of August, so visits, bounce rate and recorded enquiries are measured across two different websites rather than one website over time. Visits fell against July and recorded enquiries fell further. Some of that is the switch itself, and some of it may be measurement: the system behind the quote and contact forms was rebuilt as part of the move, and a form that delivers correctly can still fail to register as a conversion if tracking has not been re-attached. We are verifying enquiry capture end to end on the new build before drawing any conclusion from this figure, and we would rather tell you that now than present a clean-looking number we do not yet trust. The first honest read on traffic comes next month, with a full period on a single site.</p></section>
+<section><div class="sec-head"><h2>Organic search</h2><span class="win num">August 2026 · Search Console</span></div><div class="tiles"><div class="tile"><div class="k">Clicks</div><div class="v num">181</div><div class="d up">▲ up 38.2%</div></div><div class="tile"><div class="k">Impressions</div><div class="v num">75,218</div><div class="d up">▲ up 16.8%</div></div><div class="tile"><div class="k">Avg. CTR</div><div class="v num">0.24%</div><div class="d up">▲ up 18.3%</div></div><div class="tile"><div class="k">Avg. position</div><div class="v num">25.0</div><div class="d up">▲ improved 6.7%</div></div></div><p class="read">Search is where the month is unambiguous. Impressions, clicks and click-through rate all rose, and average position improved — the strongest combination available, because it means the site is being shown more often, ranked higher, and clicked more when it appears. That is the outcome the redirect mapping was built to protect, and it is the part of a rebuild that most often goes wrong. It did not. Your own brand searches gained ground, and several of the newly published facility pages picked up their first impressions and clicks within the month, which is fast for pages that did not exist in July. The exception worth naming: a few older variations of your brand name lost clicks and slipped in position while Google re-crawls the replaced pages. That is expected during a rebuild and is the thing to watch rather than act on.</p><div class="card pad" style="margin-top:16px"><div class="tablewrap"><table><thead><tr><th>Page</th><th>Clicks</th><th>Change</th><th>Impressions</th></tr></thead><tbody><tr><td>Homepage</td><td class="num">56</td><td class="num">0</td><td class="num">15,542</td></tr><tr><td>/careers</td><td class="num">3</td><td class="num">0</td><td class="num">1,511</td></tr><tr><td>/blog/classroom-cleaning-checklist</td><td class="num">2</td><td class="num">+2</td><td class="num">173</td></tr><tr><td>/services/houston-post-construction-cleanup</td><td class="num">1</td><td class="num">+1</td><td class="num">902</td></tr><tr><td>/facilities/school-and-charter-school-cleaning</td><td class="num">1</td><td class="num">+1</td><td class="num">2</td></tr><tr><td>/facilities/gym-and-fitness-center-cleaning</td><td class="num">1</td><td class="num">+1</td><td class="num">89</td></tr><tr><td>/contact-commercial-cleaning-texas</td><td class="num">1</td><td class="num">+1</td><td class="num">37</td></tr><tr><td>/facilities/church-cleaning-services</td><td class="num">1</td><td class="num">+1</td><td class="num">1,860</td></tr></tbody></table></div></div></section>
+
+  <footer>
+    <div><b style="color:var(--ink-2)">Data sources</b> — every figure in this report is pulled directly from the platforms below:</div>
+    <div class="srcs"><span class="src">Google Analytics 4</span><span class="src">Search Console</span></div>
+    <div>Freshness: Analytics through 2026-09-02 · Search Console through 2026-09-01. Search Console reports on a 2–3 day lag by design.</div>
+  </footer>
+</div>
+
+<div class="tip" id="tip"></div>
+
+<script>
+
+</script>
+
+</body>
+</html>
