@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>Supply Velocity — Monthly Marketing Report</title>
+<title>Supply Velocity · Monthly Marketing Report</title>
 <style>
 
   :root{
@@ -176,6 +176,12 @@
   .tiles-3 .tile{background:var(--surface)}
   @media (max-width:680px){.tiles-3{grid-template-columns:1fr}}
 
+  /* A tile row is only ever as wide as it has tiles to fill — a short row in the
+     4-up grid leaves empty cells showing as bare hairline blocks. */
+  .tiles-2{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--hair); border-radius:16px; overflow:hidden; border:1px solid var(--hair)}
+  .tiles-2 .tile{background:var(--surface)}
+  @media (max-width:680px){.tiles-2{grid-template-columns:1fr}}
+
   .grid-meta{font-size:13px; color:var(--muted); margin:0 0 16px}
   .grid-meta b{color:var(--ink-2); font-weight:640}
 
@@ -185,7 +191,8 @@
   .legend-ring{width:14px; height:14px; border-radius:50%; border:2px solid var(--accent); box-sizing:border-box; flex:none; display:inline-block}
 
   .grid-map-wrap{overflow:hidden; border-radius:14px}
-  #gridMap{width:100%; aspect-ratio:16/10; min-height:480px; border-radius:14px; z-index:0; background:var(--surface-2)}
+  .tiles-dark{filter:invert(1) hue-rotate(180deg) brightness(.85) contrast(.9) saturate(.5)}
+  #gridMap, [id^="gridMap"]{width:100%; aspect-ratio:16/10; min-height:480px; border-radius:14px; z-index:0; background:var(--surface-2)}
   .gridpin{background:transparent; border:none}
   .gridpin-wrap{position:relative; width:100%; height:100%}
   .gridpin-circle{position:absolute; border-radius:50%; display:flex; align-items:center; justify-content:center;
@@ -212,18 +219,18 @@
     <div class="eyebrow">Monthly Marketing Report</div>
     <h1>Supply Velocity</h1>
     <p class="sub">Prepared by Outrider Digital · August 2026</p>
-    <div class="status"><span class="dot"></span> 2 data sources live &amp; verified — figures pulled directly from the platforms</div>
+    <div class="status"><span class="dot"></span> 2 data sources live &amp; verified: figures pulled directly from the platforms</div>
   </header>
 
-<section style="margin-top:28px"><p class="lede">Six new pages went live in August — two cities, two states and two industries — extending the site into markets it did not previously address. Visits grew by a third. Search clicks eased back over the same stretch, on an impression base that held flat, which is the pattern of a site seen widely but ranked deep.</p></section>
-<section><div class="sec-head"><h2>What we did in August</h2></div><div class="ships"><div class="ship"><div class="chk">✓</div><div class="tag">Content</div><h3>Six new pages targeting cities, states and industries</h3><p>Miami and Detroit now have their own pages, as do Ohio and Georgia, alongside two industry pages for <b>CPG</b> and <b>EV supply chains</b>. Each one targets the way buyers in that market actually search, rather than leaving them to find a general consulting page and work out whether it applies to them.</p></div><div class="ship"><div class="chk">✓</div><div class="tag">Traffic</div><h3>Visits up by a third on the previous month</h3><p>Sessions and users both grew, and the site recorded its first conversions of the period. The growth is broad rather than concentrated in a single page, which is the healthier version of an increase.</p></div><div class="ship"><div class="chk">✓</div><div class="tag">Strategy</div><h3>A content plan the month&#x27;s work was built against</h3><p>The August plan set out which locations, states and industries to cover and in what order, so each page fills a specific gap rather than adding general material. The six pages published are the first block of that sequence.</p></div></div><div class="card pad" style="margin-top:16px"><div class="wgroup"><div class="subh">Aug 25–31 · the first block of new pages</div><ul class="wlist"><li><span class="tick">✓</span><span>Set the August content plan — which locations, states and industries to cover, and in what order</span></li><li><span class="tick">✓</span><span>Published a new location page for Supply Chain Consulting in Detroit</span></li><li><span class="tick">✓</span><span>Published a new location page for Supply Chain Consulting in Miami</span></li><li><span class="tick">✓</span><span>Published a new state page for Supply Chain Consulting in Georgia</span></li><li><span class="tick">✓</span><span>Published a new state page for Supply Chain Consulting in Ohio</span></li><li><span class="tick">✓</span><span>Published a new industry page for EV supply chain consulting</span></li><li><span class="tick">✓</span><span>Published a new industry page for CPG supply chain consulting</span></li></ul></div></div><p class="read">The month&#x27;s work landed as a single block at the end of August, and that was deliberate. The site had strong general pages and very little that spoke to a specific city, state or industry — so someone searching for supply chain consulting in Miami, or for help with an EV supply chain, had nothing to land on that matched what they typed. The August plan set out which markets to cover and in what order; the six pages published are the first block of that sequence, written together so they share a structure rather than drifting apart one at a time.
+<section style="margin-top:28px"><p class="lede">August put six new pages live: two industry pages and four location pages from the August content plan, each aimed at a search market you do not yet rank in, and three new backlinks from business and technology publications pointed at your service pages. Visits read up a third, but that jump is one unusual Sunday. Organic clicks eased on flat impressions.</p></section>
+<section><div class="sec-head"><h2>Shipped this period</h2></div><div class="ships"><div class="ship"><div class="chk">✓</div><div class="tag">Content</div><h3>Six new pages live</h3><p>CPG supply chain consulting and EV supply chain consulting each have a dedicated page under your services section, and state pages for Ohio and Georgia plus city pages for Miami and Detroit extend your footprint into four new geographic markets, matching the location pages that already draw clicks for St. Louis and North Carolina.</p></div><div class="ship"><div class="chk">✓</div><div class="tag">Link building</div><h3>Three new backlinks placed</h3><p>Articles on d-themes, Kyleads and Fueler now link to your Supply Chain Strategy and Operations, Value Stream Mapping and Sales and Operations Planning pages, each with a descriptive anchor. All three are live and followed. This continues the monthly program running since February, which now has twenty-one live links pointing at the site.</p></div><div class="ship"><div class="chk">✓</div><div class="tag">Strategy</div><h3>August content plan delivered</h3><p>The month&#x27;s content roadmap is complete and every page above came out of it. It also defines the queue the writing continues from in September.</p></div></div><div class="card pad" style="margin-top:16px"><div class="wgroup"><div class="subh">SEO</div><ul class="wlist"><li><span class="tick">✓</span><span>Wrote and published the CPG Supply Chain Consulting industry page.</span></li><li><span class="tick">✓</span><span>Wrote and published the EV Supply Chain Consulting industry page.</span></li><li><span class="tick">✓</span><span>Wrote and published the Supply Chain Consulting Ohio state page.</span></li><li><span class="tick">✓</span><span>Wrote and published the Supply Chain Consulting Georgia state page.</span></li><li><span class="tick">✓</span><span>Wrote and published the Supply Chain Consulting Miami city page.</span></li><li><span class="tick">✓</span><span>Wrote and published the Supply Chain Consulting Detroit city page.</span></li><li><span class="tick">✓</span><span>Delivered the August SEO content plan that set the month&#x27;s page targets.</span></li></ul></div></div><p class="read">The content engine produced its first full batch this month: six pages across industries, states and cities, all live and in the sitemap. Indexing is what turns them into rankings from here, so the first thing we watch in September is impressions on the new pages. The link program added three placements; the pages they point to have not yet moved in rankings, so we are reviewing the mix of sites and anchors before approving September&#x27;s batch. A full technical and content audit of the site is in progress and will set the next round of page and fix priorities.</p></section>
+<section><div class="sec-head"><h2>Website traffic</h2><span class="win num">August 2026 · Google Analytics 4</span></div><div class="tiles-3"><div class="tile"><div class="k">Sessions</div><div class="v num">1,447</div><div class="d up">▲ up 33.1%</div></div><div class="tile"><div class="k">Busiest day</div><div class="v num">442</div><div class="d flat">Sun, Aug 30</div></div><div class="tile"><div class="k">Bounce rate</div><div class="v num">63.6%</div><div class="d down">▼ up 13.1%</div></div></div><figure><div class="chart-wrap"><svg id="sessChart" viewBox="0 0 920 220" role="img" aria-label="Sessions per day over the reporting period"></svg></div></figure><p class="read">Read the headline jump with caution. Nearly all of the extra visits came from a single unusual surge on Sunday, August 30, when the site saw more than ten times its normal daily traffic. Strip that day out and August ran slightly below July. The higher bounce rate is that same surge passing through without engaging. Two enquiries landed this month where the prior period had none. We are still identifying where the Sunday traffic came from and will not count it as growth until we know.</p></section>
+<section><div class="sec-head"><h2>Organic search</h2><span class="win num">August 2026 · Search Console</span></div><div class="tiles"><div class="tile"><div class="k">Clicks</div><div class="v num">214</div><div class="d down">▼ down 23.8%</div></div><div class="tile"><div class="k">Impressions</div><div class="v num">152,167</div><div class="d flat">▬ steady</div></div><div class="tile"><div class="k">Avg. CTR</div><div class="v num">0.14%</div><div class="d down">▼ down 23.6%</div></div><div class="tile"><div class="k">Avg. position</div><div class="v num">33.4</div><div class="d flat">▬ steady</div></div></div><p class="read">Search clicks eased against the prior month while impressions held flat and your average ranking was steady. The pattern is unchanged: the boutique supply chain consulting page is shown tens of thousands of times a month but sits just off the first page, so it earns only a handful of clicks. Moving that page, and the new industry and location pages behind it, into the top ten is the job the September content and audit work is aimed at. Search Console reports a few days behind, so late-August figures may still settle upward slightly.</p><div class="card pad" style="margin-top:16px"><div class="tablewrap"><table><thead><tr><th>Page</th><th>Clicks</th><th>Change</th><th>Impressions</th></tr></thead><tbody><tr><td>Homepage</td><td class="num">23</td><td class="num">-8</td><td class="num">1,062</td></tr><tr><td>/boutique-supply-chain-consulting-firms</td><td class="num">8</td><td class="num">-5</td><td class="num">51,136</td></tr><tr><td>/the-pillars-of-supply-chain-strategy</td><td class="num">5</td><td class="num">+4</td><td class="num">638</td></tr><tr><td>/about/lean-and-supply-chain-consulting-in-st-louis</td><td class="num">3</td><td class="num">+2</td><td class="num">967</td></tr><tr><td>/wp-content/uploads/2015/04/The-Bullwhip-…Chains.pdf</td><td class="num">2</td><td class="num">-1</td><td class="num">727</td></tr><tr><td>/services/lean</td><td class="num">1</td><td class="num">+1</td><td class="num">7,162</td></tr><tr><td>/about/lean-and-supply-chain-consulting-i…h-carolina</td><td class="num">1</td><td class="num">0</td><td class="num">5,364</td></tr><tr><td>/services/supply-chain-management/supply-…assessment</td><td class="num">1</td><td class="num">0</td><td class="num">7,931</td></tr></tbody></table></div></div></section>
 
-The month ahead continues the same sequence: more locations and industries from the plan, with the first published pages watched to see which of the three types earns attention fastest. That is our intended order of work, and we will adjust it if the early pages point somewhere better.</p></section>
-<section><div class="sec-head"><h2>Website traffic</h2><span class="win num">August 2026 · Google Analytics 4</span></div><div class="tiles"><div class="tile"><div class="k">Sessions</div><div class="v num">1,447</div><div class="d up">▲ up 33.1%</div></div><div class="tile"><div class="k">Users</div><div class="v num">1,361</div><div class="d up">▲ up 36.1%</div></div><div class="tile"><div class="k">Bounce rate</div><div class="v num">63.6%</div><div class="d down">▼ up 13.1%</div></div></div><p class="read">A strong month. Visits rose by roughly a third and the underlying visitor count rose with it, so this is real additional reach rather than the same people returning more often. The site also recorded conversions where the previous month had none. A larger share of visitors left without going deeper, which is normal when new pages start pulling in a wider, less familiar audience — those arrivals are colder than someone who came looking for you by name.</p></section>
-<section><div class="sec-head"><h2>Organic search</h2><span class="win num">August 2026 · Search Console</span></div><div class="tiles"><div class="tile"><div class="k">Clicks</div><div class="v num">214</div><div class="d down">▼ down 23.8%</div></div><div class="tile"><div class="k">Impressions</div><div class="v num">152,167</div><div class="d flat">▬ steady</div></div><div class="tile"><div class="k">Avg. CTR</div><div class="v num">0.14%</div><div class="d down">▼ down 23.6%</div></div><div class="tile"><div class="k">Avg. position</div><div class="v num">33.4</div><div class="d flat">▬ steady</div></div></div><p class="read">This is the number worth understanding properly. The site was shown in search roughly the same number of times as the previous month — a very large figure — but clicks fell back. That combination points at where the site actually sits: visible across a broad set of searches, but ranked deep enough that most people never scroll far enough to click. Average position held steady, which does not change the picture. One page alone accounts for around a third of all impressions while earning single-digit clicks. The location, state and industry pages are the direct answer to this: narrower pages, aimed at narrower searches, where ranking well is achievable in a way it is not for the broadest terms in this market.</p><div class="card pad" style="margin-top:16px"><div class="tablewrap"><table><thead><tr><th>Page</th><th>Clicks</th><th>Change</th><th>Impressions</th></tr></thead><tbody><tr><td>Homepage</td><td class="num">23</td><td class="num">-8</td><td class="num">1,062</td></tr><tr><td>/boutique-supply-chain-consulting-firms</td><td class="num">8</td><td class="num">-5</td><td class="num">51,136</td></tr><tr><td>/the-pillars-of-supply-chain-strategy</td><td class="num">5</td><td class="num">+4</td><td class="num">638</td></tr><tr><td>/about/lean-and-supply-chain-consulting-in-st-louis</td><td class="num">3</td><td class="num">+2</td><td class="num">967</td></tr><tr><td>/wp-content/uploads/2015/04/The-Bullwhip-…Chains.pdf</td><td class="num">2</td><td class="num">-1</td><td class="num">727</td></tr><tr><td>/services/lean</td><td class="num">1</td><td class="num">+1</td><td class="num">7,162</td></tr><tr><td>/about/lean-and-supply-chain-consulting-i…h-carolina</td><td class="num">1</td><td class="num">0</td><td class="num">5,364</td></tr><tr><td>/services/supply-chain-management/supply-…assessment</td><td class="num">1</td><td class="num">0</td><td class="num">7,931</td></tr></tbody></table></div></div></section>
+  
 
   <footer>
-    <div><b style="color:var(--ink-2)">Data sources</b> — every figure in this report is pulled directly from the platforms below:</div>
+    <div><b style="color:var(--ink-2)">Data sources</b>: every figure in this report is pulled directly from the platforms below:</div>
     <div class="srcs"><span class="src">Google Analytics 4</span><span class="src">Search Console</span></div>
     <div>Freshness: Analytics through 2026-09-02 · Search Console through 2026-09-01. Search Console reports on a 2–3 day lag by design.</div>
   </footer>
@@ -232,6 +239,65 @@ The month ahead continues the same sequence: more locations and industries from 
 <div class="tip" id="tip"></div>
 
 <script>
+
+  const CHARTS = [{"id": "sessChart", "data": [["2026-08-01", 35.0], ["2026-08-02", 36.0], ["2026-08-03", 60.0], ["2026-08-04", 46.0], ["2026-08-05", 29.0], ["2026-08-06", 34.0], ["2026-08-07", 50.0], ["2026-08-08", 14.0], ["2026-08-09", 19.0], ["2026-08-10", 34.0], ["2026-08-11", 40.0], ["2026-08-12", 25.0], ["2026-08-13", 37.0], ["2026-08-14", 30.0], ["2026-08-15", 17.0], ["2026-08-16", 22.0], ["2026-08-17", 56.0], ["2026-08-18", 44.0], ["2026-08-19", 34.0], ["2026-08-20", 30.0], ["2026-08-21", 22.0], ["2026-08-22", 32.0], ["2026-08-23", 16.0], ["2026-08-24", 35.0], ["2026-08-25", 58.0], ["2026-08-26", 30.0], ["2026-08-27", 37.0], ["2026-08-28", 27.0], ["2026-08-29", 21.0], ["2026-08-30", 442.0], ["2026-08-31", 35.0]], "fmt": "num", "unit": " sessions"}];
+  (function(){
+    const tip=document.getElementById("tip");
+    const money=v=>v>=1000?"$"+(v/1000).toFixed(v%1000?1:0)+"k":"$"+v;
+    const plain=v=>v.toLocaleString();
+
+    CHARTS.forEach(function(C){
+      const D=C.data; if(!D.length) return;
+      const svg=document.getElementById(C.id); if(!svg) return;
+      const axfmt = C.fmt==="money" ? money : plain;
+      const tipfmt = C.fmt==="money" ? (v=>"$"+v.toLocaleString())
+                                     : (v=>v.toLocaleString()+C.unit);
+      const W=920,H=220, m={t:14,r:10,b:26,l:52};
+      const iw=W-m.l-m.r, ih=H-m.t-m.b, n=D.length;
+      const peak=Math.max.apply(null,D.map(d=>d[1]))||1;
+      // Round the axis up to a clean step so gridlines land on readable numbers.
+      // Counts are whole things, so their four gridlines must be whole too —
+      // "37.5 sessions" is not a number that exists. Money keeps the original
+      // half-decade rounding, which already reads fine at currency scale.
+      let max;
+      if(C.fmt==="num"){
+        const rough=peak/4, pow=Math.pow(10,Math.floor(Math.log10(rough)));
+        const nice=[1,2,2.5,5,10].find(f=>f*pow>=rough)||10;
+        max=Math.max(4,nice*pow*4);
+      } else {
+        const step0=Math.pow(10,Math.floor(Math.log10(peak)))/2;
+        max=Math.ceil(peak/step0)*step0 || 1;
+      }
+      const bw=iw/n*0.64, step=iw/n;
+      const x=i=>m.l+step*i+(step-bw)/2, y=v=>m.t+ih-(v/max)*ih;
+      let g="";
+      for(let k=0;k<=4;k++){
+        const v=max*k/4, yy=y(v).toFixed(1);
+        g+=`<line class="axline" x1="${m.l}" y1="${yy}" x2="${W-m.r}" y2="${yy}"/>`;
+        g+=`<text class="axtxt" x="${m.l-8}" y="${(+yy+3)}" text-anchor="end">${axfmt(v)}</text>`;
+      }
+      D.forEach((d,i)=>{
+        const bh=Math.max(2,(d[1]/max)*ih), yy=(m.t+ih-bh).toFixed(1);
+        g+=`<rect class="bar" x="${x(i).toFixed(1)}" y="${yy}" width="${bw.toFixed(1)}" height="${bh.toFixed(1)}" rx="3" data-i="${i}"/>`;
+      });
+      const ticks=n<=7?D.map((_,i)=>i):[0,Math.floor(n/4),Math.floor(n/2),Math.floor(3*n/4),n-1];
+      ticks.forEach(i=>{
+        g+=`<text class="axtxt" x="${(x(i)+bw/2).toFixed(1)}" y="${H-8}" text-anchor="middle">${D[i][0].slice(5)}</text>`;
+      });
+      svg.innerHTML=g;
+      if(!tip) return;
+      svg.querySelectorAll(".bar").forEach(b=>{
+        b.style.cursor="crosshair";
+        b.addEventListener("mouseenter",()=>{
+          const d=D[+b.dataset.i];
+          tip.innerHTML=`<span>${tipfmt(d[1])}</span> <span class="t2">${d[0]}</span>`;
+          tip.style.opacity=1; b.style.opacity=.82;
+        });
+        b.addEventListener("mousemove",ev=>{ tip.style.left=(ev.clientX+12)+"px"; tip.style.top=(ev.clientY-34)+"px"; });
+        b.addEventListener("mouseleave",()=>{ tip.style.opacity=0; b.style.opacity=""; });
+      });
+    });
+  })();
 
 </script>
 
