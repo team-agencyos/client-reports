@@ -6,340 +6,455 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Lean &amp; Supply Chain Assessment | Supply Velocity</title>
 <style>
+/* Tokens lifted from supplyvelocity.com (Tailwind v4 build) */
 :root{
-  --s900:#0f172a; --s800:#1e293b; --s700:#334155; --s600:#475569; --s500:#64748b;
-  --s400:#94a3b8; --s300:#cbd5e1; --s200:#e2e8f0; --s100:#f1f5f9; --s50:#f8fafc;
-  --teal:#14b8a6; --teal-d:#0d9488; --teal-50:#f0fdfa;
-  --blue:#2563eb; --blue-50:#eff6ff; --navy:#0a2240;
-  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --wrap:1280px;
+  --s50:#f8fafc;--s100:#f1f5f9;--s200:#e2e8f0;--s300:#cbd5e1;--s400:#94a3b8;--s500:#64748b;--s600:#475569;--s700:#334155;--s800:#1e293b;--s900:#0f172a;
+  --n900:#171717;--n800:#262626;--n300:#d4d4d4;--n500:#737373;
+  --amber300:#fcd34d;--amber500:#f59e0b;--amber600:#d97706;
+  --orange500:#f97316;--orange600:#ea580c;
+  --blue50:#eff6ff;--blue200:#bfdbfe;--blue500:#3b82f6;--blue600:#2563eb;--blue800:#1e40af;--blue900:#1e3a8a;
+  --teal500:#14b8a6;--teal600:#0d9488;--green500:#22c55e;--green600:#16a34a;--red500:#ef4444;--red600:#dc2626;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",Helvetica,Arial,sans-serif;
+  --sh-sm:0 1px 2px 0 rgb(0 0 0/.05);
+  --sh-md:0 4px 6px -1px rgb(0 0 0/.1),0 2px 4px -2px rgb(0 0 0/.1);
+  --sh-lg:0 10px 15px -3px rgb(0 0 0/.1),0 4px 6px -4px rgb(0 0 0/.1);
+  --sh-xl:0 20px 25px -5px rgb(0 0 0/.1),0 8px 10px -6px rgb(0 0 0/.1);
+  --sh-2xl:0 25px 50px -12px rgb(0 0 0/.25);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;font-family:var(--sans);color:var(--s600);background:#fff;font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
-img{max-width:100%}
-.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:24px}
-.narrow{max-width:940px}
-h1,h2,h3,h4{color:var(--s900);line-height:1.15;margin:0 0 .45em;letter-spacing:-.022em}
-h1{font-size:clamp(2.25rem,4.6vw,3.6rem);font-weight:800}
-h2{font-size:clamp(1.75rem,3vw,2.6rem);font-weight:800}
-h3{font-size:1.2rem;font-weight:700;letter-spacing:-.012em}
-p{margin:0 0 1.1em}
-a{color:var(--blue);text-decoration:none}
-a:hover{text-decoration:underline}
-section{padding-block:clamp(56px,7vw,104px)}
-.tint{background:var(--s50)}
-.lead{font-size:clamp(1.08rem,1.6vw,1.3rem);color:var(--s600);line-height:1.6}
+body{margin:0;font-family:var(--sans);color:var(--n900);background:#fff;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:var(--blue600);text-decoration:none}
+h1,h2,h3{margin:0;color:var(--s900);line-height:1.2}
+p{margin:0}
+.container{max-width:1280px;margin:0 auto;padding-inline:32px}
+@media(max-width:640px){.container{padding-inline:16px}}
+.prose{max-width:896px;margin:0 auto}
+[hidden]{display:none!important}
 
-/* ---------- header ---------- */
-.hdr{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.92);backdrop-filter:saturate(1.6) blur(12px);border-bottom:1px solid var(--s200)}
-.hdr .wrap{display:flex;align-items:center;gap:26px;height:74px}
-.logo{font-weight:800;font-size:1.22rem;color:var(--s900);letter-spacing:-.03em;white-space:nowrap}
-.logo span{color:var(--teal)}
-.nav{display:flex;gap:26px;margin-left:8px}
-.nav a{color:var(--s700);font-size:.94rem;font-weight:550}
-.nav a:hover{color:var(--teal-d);text-decoration:none}
-.hdr .cta{margin-left:auto}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--teal);color:#fff;font-weight:650;font-size:.97rem;padding:13px 26px;border-radius:8px;border:1px solid var(--teal);transition:background .15s,transform .12s,box-shadow .15s;white-space:nowrap}
-.btn:hover{background:var(--teal-d);border-color:var(--teal-d);text-decoration:none;transform:translateY(-1px);box-shadow:0 8px 20px -6px rgba(13,148,136,.45)}
-.btn-sm{padding:10px 20px;font-size:.9rem}
-.btn-alt{background:#fff;color:var(--s800);border-color:var(--s300)}
-.btn-alt:hover{background:var(--s50);color:var(--s900);border-color:var(--s400);box-shadow:none}
-.btn-light{background:#fff;color:var(--s900);border-color:#fff}
-.btn-light:hover{background:var(--s100);border-color:var(--s100);color:var(--s900)}
-@media(max-width:940px){.nav{display:none}}
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;font-size:.875rem;font-weight:600;color:var(--s900);background:var(--amber500);border-radius:.5rem;box-shadow:var(--sh-md);transition:all .2s;border:0;cursor:pointer;line-height:1.5;white-space:nowrap}
+.btn:hover{background:var(--amber600);box-shadow:var(--sh-lg)}
+.btn-lg{padding:14px 32px;font-size:1rem}
+.btn-outline{background:#fff;color:var(--s800);border:1px solid var(--s300);box-shadow:var(--sh-sm)}
+.btn-outline:hover{background:var(--s50);border-color:var(--s400);box-shadow:var(--sh-sm)}
+.btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.35);box-shadow:none;backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(255,255,255,.18);box-shadow:none}
 
-/* ---------- hero ---------- */
-.hero{padding-block:clamp(56px,7vw,96px) clamp(40px,5vw,68px);background:
-  radial-gradient(1100px 460px at 78% -12%, var(--teal-50) 0%, rgba(240,253,250,0) 62%),
-  radial-gradient(900px 420px at 8% 0%, var(--blue-50) 0%, rgba(239,246,255,0) 58%)}
-.badge{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--s200);color:var(--s700);font-size:.83rem;font-weight:600;padding:7px 15px;border-radius:99px;margin-bottom:26px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
-.badge i{width:7px;height:7px;border-radius:50%;background:var(--teal);display:block;flex:none}
-.hero h1{max-width:19ch}
-.hero .lead{max-width:62ch;margin-bottom:2em}
-.hero-actions{display:flex;flex-wrap:wrap;gap:12px}
-.statbar{display:flex;flex-wrap:wrap;gap:14px 0;margin-top:3.4em;border-top:1px solid var(--s200);padding-top:1.9em}
-.statbar div{padding-right:38px;margin-right:38px;border-right:1px solid var(--s200)}
-.statbar div:last-child{border-right:0;margin-right:0;padding-right:0}
-.statbar b{display:block;font-size:1.75rem;font-weight:800;color:var(--s900);letter-spacing:-.03em;line-height:1.15}
-.statbar span{font-size:.87rem;color:var(--s500)}
-@media(max-width:700px){.statbar div{padding-right:22px;margin-right:22px}.statbar b{font-size:1.4rem}}
+/* header (sticky top-0 border-b border-slate-200 bg-white/95 backdrop-blur-md shadow-sm; nav h-20) */
+.hdr{position:sticky;top:0;z-index:50;width:100%;border-bottom:1px solid var(--s200);background:rgba(255,255,255,.95);backdrop-filter:blur(12px);box-shadow:var(--sh-sm)}
+.hdr .container{display:flex;align-items:center;justify-content:space-between;height:80px}
+.hdr .logo img{height:64px;width:auto}
+.nav{display:flex;align-items:center;gap:2px}
+.nav a{position:relative;padding:8px 12px;font-size:15px;font-weight:500;color:var(--s800);border-radius:.5rem;transition:all .2s}
+.nav a:hover{color:var(--blue600);background:var(--blue50)}
+.nav a.on::after{content:"";position:absolute;left:50%;bottom:-2px;width:6px;height:6px;border-radius:50%;background:var(--blue500);transform:translateX(-50%)}
+.nav .caret{display:inline-block;width:8px;height:8px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);margin:0 0 3px 6px}
+.nav .search{padding:8px 10px;display:inline-flex}
+.hdr .right{display:flex;align-items:center;gap:16px}
+@media(max-width:1023px){.nav{display:none}}
 
-/* ---------- logos ---------- */
-.logos{border-block:1px solid var(--s200);background:var(--s50);padding-block:30px}
-.logos .lbl{text-align:center;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;color:var(--s400);font-weight:650;margin-bottom:16px}
-.logos .row{display:flex;flex-wrap:wrap;justify-content:center;gap:16px 52px}
-.logos .n{font-size:1.15rem;font-weight:700;color:var(--s400);letter-spacing:-.02em}
+/* hero (section relative bg-gradient-to-r from-blue-900 to-blue-800 py-[4.5rem] md:py-[6.5rem]; img absolute inset-0 opacity-20) */
+.hero{position:relative;overflow:hidden;background:linear-gradient(to right,var(--blue900),var(--blue800));padding-block:5.5rem;color:#fff;text-align:center}
+@media(min-width:768px){.hero{padding-block:7rem}}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.2}
+.hero .container{position:relative}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;margin-bottom:24px;background:rgba(15,23,42,.55);backdrop-filter:blur(12px);border:1px solid rgba(51,65,85,.5);color:var(--amber300);font-size:.875rem;font-weight:600;border-radius:9999px;box-shadow:var(--sh-lg)}
+.hero h1{color:#fff;font-size:clamp(2.25rem,4.5vw,3.25rem);font-weight:700;letter-spacing:-.01em;max-width:22ch;margin-inline:auto}
+.hero .sub{margin:20px auto 0;max-width:64ch;font-size:clamp(1.05rem,1.5vw,1.25rem);color:var(--blue200);line-height:1.6}
+.hero .actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px}
+.hero .pill{display:inline-block;margin-top:34px;padding:10px 16px;border-radius:.5rem;border:1px solid rgba(251,191,36,.35);background:rgba(15,23,42,.65);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#fff}
 
-/* ---------- generic ---------- */
-.eyebrow{display:block;font-size:.79rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-d);font-weight:700;margin-bottom:14px}
-.head{max-width:62ch;margin-bottom:2.6em}
-.grid{display:grid;gap:22px}
-.g3{grid-template-columns:repeat(auto-fit,minmax(290px,1fr))}
-.g2{grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:26px 56px}
+/* sections */
+section{padding-block:80px}
+@media(max-width:640px){section{padding-block:56px}}
+.band{background:var(--s50)}
+.sec-head{text-align:center;max-width:768px;margin:0 auto 56px}
+.sec-head h2{font-size:clamp(1.9rem,3.2vw,2.5rem);font-weight:700}
+.sec-head p{margin-top:16px;font-size:1.125rem;color:var(--s600)}
+.eyebrow{display:block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;color:var(--s500);margin-bottom:8px}
 
-.step{background:#fff;border:1px solid var(--s200);border-radius:14px;padding:32px 28px;position:relative;transition:box-shadow .18s,border-color .18s}
-.step:hover{box-shadow:0 14px 34px -14px rgba(15,23,42,.14);border-color:var(--s300)}
-.step .n{width:38px;height:38px;border-radius:10px;background:var(--teal-50);color:var(--teal-d);display:grid;place-items:center;font-weight:800;font-size:.96rem;margin-bottom:18px;border:1px solid #ccfbf1}
-.step p{margin:0;font-size:.97rem;color:var(--s600)}
+/* prose intro (matches service pages) */
+.intro p{font-size:1.125rem;line-height:1.75;color:var(--s700);margin-bottom:1.25em}
+.intro p:last-child{margin-bottom:0}
+.pull{border-left:4px solid var(--s300);padding-left:16px;margin:28px 0;font-style:italic;color:var(--s500);font-size:1.05rem}
 
-.card{display:block;background:#fff;border:1px solid var(--s200);border-radius:14px;padding:28px;transition:box-shadow .18s,transform .18s,border-color .18s}
-.card:hover{box-shadow:0 16px 38px -16px rgba(15,23,42,.18);transform:translateY(-3px);border-color:var(--s300);text-decoration:none}
-.card h3{margin-bottom:.5em}
-.card p{margin:0;font-size:.95rem;color:var(--s600)}
-.card .go{display:inline-block;margin-top:16px;font-size:.88rem;font-weight:650;color:var(--teal-d)}
+/* cards (bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl hover:-translate-y-2 border border-slate-100) */
+.grid{display:grid;gap:32px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.card{display:block;background:#fff;border-radius:1rem;padding:32px;box-shadow:var(--sh-lg);border:1px solid var(--s100);transition:all .3s;color:inherit}
+.card:hover{box-shadow:var(--sh-2xl);transform:translateY(-8px)}
+.tile{width:64px;height:64px;border-radius:.75rem;display:flex;align-items:center;justify-content:center;margin-bottom:24px;transition:transform .3s}
+.card:hover .tile{transform:scale(1.1)}
+.tile svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.t-orange{background:linear-gradient(to bottom right,var(--orange500),var(--orange600))}
+.t-slate{background:linear-gradient(to bottom right,var(--s700),var(--s800))}
+.t-blue{background:linear-gradient(to bottom right,var(--blue500),var(--blue600))}
+.t-teal{background:linear-gradient(to bottom right,var(--teal500),var(--teal600))}
+.t-red{background:linear-gradient(to bottom right,var(--red500),var(--red600))}
+.t-green{background:linear-gradient(to bottom right,var(--green500),var(--green600))}
+.t-amber{background:linear-gradient(to bottom right,var(--amber500),var(--amber600))}
+.card h3{font-size:1.5rem;font-weight:700;margin-bottom:12px}
+.card .desc{color:var(--s600);line-height:1.65;margin-bottom:16px}
+.checks{list-style:none;margin:0;padding:0}
+.checks li{display:flex;align-items:flex-start;gap:8px;font-size:.9rem;color:var(--s700);margin-bottom:8px;line-height:1.5}
+.checks svg{width:16px;height:16px;flex:none;margin-top:4px;stroke:var(--teal500);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.checks.lg li{font-size:1.05rem;margin-bottom:12px}
+.checks.lg svg{width:18px;height:18px;margin-top:5px}
+.card .go{display:inline-flex;align-items:center;gap:6px;margin-top:20px;font-weight:600;color:var(--blue600);font-size:.95rem}
+.card.soft{background:linear-gradient(to bottom,#fff,var(--s50));border:1px solid var(--s200);box-shadow:var(--sh-sm)}
 
-.ticks{list-style:none;padding:0;margin:0}
-.ticks li{position:relative;padding-left:32px;margin-bottom:.95em;color:var(--s600)}
-.ticks li::before{content:"";position:absolute;left:0;top:.36em;width:19px;height:19px;border-radius:50%;background:var(--teal-50);border:1px solid #99f6e4}
-.ticks li::after{content:"";position:absolute;left:6.5px;top:.68em;width:5px;height:9px;border:solid var(--teal-d);border-width:0 2px 2px 0;transform:rotate(45deg)}
-.ticks b{color:var(--s900);font-weight:650}
+/* logos strip (Trusted By Industry Leaders) */
+.logos .row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px 40px;align-items:center;justify-items:center;max-width:1000px;margin:0 auto}
+.logos img{height:64px;width:auto;filter:grayscale(1);opacity:.7;transition:all .25s}
+.logos img:hover{filter:none;opacity:1}
 
-.panel{background:#fff;border:1px solid var(--s200);border-radius:16px;padding:34px 32px}
-.panel.accent{border-left:4px solid var(--teal)}
-
-.case{background:#fff;border:1px solid var(--s200);border-radius:14px;padding:30px;transition:box-shadow .18s}
-.case:hover{box-shadow:0 14px 34px -16px rgba(15,23,42,.16)}
-.case .who{display:inline-block;font-size:.73rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-d);font-weight:700;background:var(--teal-50);padding:4px 10px;border-radius:5px;margin-bottom:14px}
-.case h3{margin-bottom:.45em}
-.case p{margin:0;font-size:.96rem}
+/* results / client voice */
+.case{background:#fff;border-radius:1rem;padding:28px;box-shadow:var(--sh-lg);border:1px solid var(--s100)}
+.case .tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue600);background:var(--blue50);padding:4px 10px;border-radius:9999px;margin-bottom:14px}
+.case h3{font-size:1.25rem;font-weight:700;margin-bottom:10px}
+.case p{color:var(--s600);line-height:1.6}
 .case .todo{color:var(--s400);font-style:italic}
+.testi{background:#fff;border-radius:1rem;padding:32px;box-shadow:var(--sh-lg);border:1px solid var(--s100);margin-top:32px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+.testi .q{font-size:3rem;line-height:.7;color:var(--amber500);font-weight:700;padding-top:10px}
+.testi p{font-size:1.1rem;color:var(--s700);line-height:1.7}
+.testi .who{margin-top:16px}
+.testi .who b{display:block;color:var(--s900);font-weight:600}
+.testi .who span{font-size:.875rem;color:var(--s500)}
+.row-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:32px}
+.row-head h2{font-size:clamp(1.75rem,3vw,2.25rem);font-weight:700}
 
-.quote{background:var(--s900);color:#e2e8f0;border-radius:18px;padding:clamp(32px,4vw,52px);margin-top:26px}
-.quote p{font-size:clamp(1.05rem,1.7vw,1.32rem);line-height:1.6;color:#f1f5f9;margin-bottom:1.3em}
-.quote .mark{color:var(--teal);font-size:2.6rem;line-height:.6;display:block;margin-bottom:18px}
-.quote cite{font-style:normal;font-size:.9rem;color:var(--s400)}
-.quote cite b{display:block;color:#fff;font-weight:650;font-size:.97rem;font-style:normal}
+/* why us stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+.stat{background:#fff;border-radius:1rem;padding:32px 24px;text-align:center;box-shadow:var(--sh-lg);border:1px solid var(--s100)}
+.stat b{display:block;font-size:2.75rem;font-weight:700;color:var(--blue600);line-height:1;letter-spacing:-.02em}
+.stat .l{display:block;margin-top:10px;font-weight:600;color:var(--s900)}
+.stat .d{display:block;margin-top:6px;font-size:.875rem;color:var(--s500);line-height:1.5}
 
-.stat{background:#fff;border:1px solid var(--s200);border-radius:14px;padding:30px 26px}
-.stat b{display:block;font-size:2.55rem;font-weight:800;color:var(--s900);letter-spacing:-.035em;line-height:1.05}
-.stat span{display:block;margin-top:10px;font-size:.93rem;color:var(--s500)}
-
-details{background:#fff;border:1px solid var(--s200);border-radius:12px;margin-bottom:12px;transition:border-color .15s}
-details[open]{border-color:var(--s300)}
-summary{cursor:pointer;padding:22px 58px 22px 24px;font-weight:650;color:var(--s900);list-style:none;position:relative;font-size:1.03rem}
+/* faq */
+details{background:#fff;border:1px solid var(--s200);border-radius:1rem;margin-bottom:12px;box-shadow:var(--sh-sm);transition:box-shadow .2s}
+details[open]{box-shadow:var(--sh-md)}
+summary{cursor:pointer;list-style:none;position:relative;padding:20px 56px 20px 24px;font-weight:600;color:var(--s900);font-size:1.05rem}
 summary::-webkit-details-marker{display:none}
-summary::after{content:"";position:absolute;right:24px;top:50%;width:10px;height:10px;border-right:2px solid var(--teal-d);border-bottom:2px solid var(--teal-d);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+summary::after{content:"";position:absolute;right:24px;top:50%;width:10px;height:10px;border-right:2px solid var(--blue600);border-bottom:2px solid var(--blue600);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
 details[open] summary::after{transform:translateY(-25%) rotate(-135deg)}
-details p{padding:0 24px 22px;margin:0;color:var(--s600);font-size:.99rem}
+details p{padding:0 24px 20px;color:var(--s600);line-height:1.65}
 
-.band{background:var(--navy);color:#cbd5e1;border-radius:20px;padding:clamp(40px,5vw,64px);text-align:center}
-.band h2{color:#fff}
-.band p{max-width:56ch;margin-inline:auto;color:#a8bdd6}
+/* cta band */
+.cta{position:relative;overflow:hidden;background:linear-gradient(to right,var(--blue900),var(--blue800));color:#fff;text-align:center;padding-block:88px}
+.cta .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.15}
+.cta .container{position:relative}
+.cta h2{color:#fff;font-size:clamp(1.9rem,3.2vw,2.5rem);font-weight:700}
+.cta p{margin:16px auto 0;max-width:56ch;color:var(--blue200);font-size:1.125rem}
+.cta .fine{margin-top:18px;font-size:.8rem;color:rgba(191,219,254,.8)}
 
-footer{border-top:1px solid var(--s200);background:var(--s50);padding-block:40px;font-size:.87rem;color:var(--s500)}
-footer .wrap{display:grid;gap:7px}
-footer b{color:var(--s700)}
+/* footer (bg-black) */
+footer{background:#000;color:#fff}
+footer .links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 40px;padding:28px 16px;font-size:.9rem;letter-spacing:.06em;text-transform:uppercase}
+footer .links a{color:rgba(255,255,255,.92)}
+footer .links a:hover{color:var(--amber300)}
+footer .bar{border-top:1px solid var(--n800);padding:22px 16px 26px;text-align:center;font-size:.9rem;color:var(--n300)}
+footer .bar a{color:var(--n300)}
+footer .bar small{display:block;margin-top:8px;font-size:.78rem;color:var(--n500)}
+footer .draft{background:var(--n900);color:var(--n500);font-size:.78rem;text-align:center;padding:12px 16px;border-top:1px solid var(--n800)}
 
-/* ---------- review dock ---------- */
+/* review dock (internal) */
 #dock{position:fixed;right:20px;bottom:20px;z-index:60;font-size:.85rem}
-#dock .body{background:#fff;border:1px solid var(--s300);border-radius:14px;box-shadow:0 22px 50px -14px rgba(15,23,42,.3);width:290px;overflow:hidden}
-#dock .top{background:var(--s900);color:#fff;padding:13px 16px;display:flex;align-items:center;gap:9px}
-#dock .top b{font-size:.84rem;font-weight:700}
-#dock .top .pill{background:var(--teal);color:#04241f;font-size:.63rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:4px}
-#dock .top button{margin-left:auto;background:none;border:0;color:#94a3b8;font-size:1.25rem;line-height:1;cursor:pointer;padding:0 2px}
+#dock .body{background:#fff;border:1px solid var(--s300);border-radius:1rem;box-shadow:var(--sh-2xl);width:300px;overflow:hidden}
+#dock .top{background:var(--s900);color:#fff;padding:12px 16px;display:flex;align-items:center;gap:10px}
+#dock .top b{font-size:.84rem;font-weight:600}
+#dock .top .pillx{background:var(--amber500);color:var(--s900);font-size:.62rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:3px 7px;border-radius:4px}
+#dock .top button{margin-left:auto;background:none;border:0;color:var(--s400);font-size:1.3rem;line-height:1;cursor:pointer;padding:0 2px}
 #dock .top button:hover{color:#fff}
 #dock .inner{padding:14px 16px 16px}
-#dock .hint{color:var(--s500);font-size:.78rem;line-height:1.5;margin:0 0 12px}
-#dock label{display:flex;align-items:center;gap:10px;padding:8px 0;color:var(--s700);cursor:pointer;border-top:1px solid var(--s100)}
+#dock .hint{color:var(--s500);font-size:.78rem;line-height:1.5;margin:0 0 10px}
+#dock label{display:flex;align-items:center;gap:10px;padding:9px 0;color:var(--s700);cursor:pointer;border-top:1px solid var(--s100)}
 #dock label:first-of-type{border-top:0}
 #dock input{appearance:none;width:36px;height:20px;background:var(--s300);border-radius:99px;position:relative;cursor:pointer;transition:background .18s;flex:none}
 #dock input::after{content:"";position:absolute;top:2.5px;left:2.5px;width:15px;height:15px;background:#fff;border-radius:50%;transition:transform .18s;box-shadow:0 1px 3px rgba(0,0,0,.25)}
-#dock input:checked{background:var(--teal)}
+#dock input:checked{background:var(--amber500)}
 #dock input:checked::after{transform:translateX(16px)}
-#open-dock{background:var(--s900);color:#fff;border:0;border-radius:99px;padding:12px 20px;font-size:.84rem;font-weight:650;cursor:pointer;box-shadow:0 12px 30px -8px rgba(15,23,42,.45);font-family:inherit}
+#open-dock{background:var(--s900);color:#fff;border:0;border-radius:99px;padding:12px 20px;font-size:.84rem;font-weight:600;cursor:pointer;box-shadow:var(--sh-2xl);font-family:inherit}
 #open-dock:hover{background:var(--s800)}
-[hidden]{display:none!important}
 @media(max-width:520px){#dock{right:12px;bottom:12px;left:12px}#dock .body{width:auto}}
+@media print{#dock{display:none!important}.hdr{position:static}}
 </style>
 </head>
 <body>
 
 <header class="hdr">
-  <div class="wrap">
-    <div class="logo">Supply<span>Velocity</span></div>
-    <nav class="nav">
-      <a href="#">Services</a><a href="#">Industries</a><a href="#">Results</a>
-      <a href="#">Resources</a><a href="#">About</a>
+  <div class="container">
+    <a class="logo" href="#" aria-label="Supply Velocity"><img src="assets/supply-velocity-logo.svg" alt="Supply Velocity"></a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#" class="on">Services</a>
+      <a href="#">Industries</a>
+      <a href="#">Results</a>
+      <a href="#">Resources</a>
+      <a href="#">About<span class="caret"></span></a>
+      <a href="#contact">Contact</a>
+      <a href="#" class="search" aria-label="Search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#334155" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></a>
     </nav>
-    <a class="btn btn-sm cta" href="#contact">Contact Us</a>
+    <div class="right"><a class="btn" href="#contact">Request Discovery Meeting</a></div>
   </div>
 </header>
 
-<div class="hero">
-  <div class="wrap">
-    <span class="badge"><i></i> Trusted by 190+ Clients Since 1998</span>
-    <h1>Start with an Assessment. Fix the right problems first.</h1>
-    <p class="lead">In two days on site, we find the few issues driving most of your operational cost and delay, then hand you a prioritized roadmap with the return on every project.</p>
-    <div class="hero-actions">
-      <a class="btn" href="#contact">Book Your Lean Discovery Meeting</a>
-      <a class="btn btn-alt" href="#which">Which Assessment fits?</a>
+<section class="hero">
+  <img class="bg" src="assets/hero.jpg" alt="" aria-hidden="true">
+  <div class="container">
+    <span class="badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg> Trusted by 190+ Clients Since 1998</span>
+    <h1>Lean &amp; Supply Chain Assessment</h1>
+    <p class="sub">Start with an Assessment. Fix the right problems first. In two days on site we find the few issues driving most of your operational cost and delay, then hand you a prioritized roadmap with the return on every project.</p>
+    <div class="actions">
+      <a class="btn btn-lg" href="#contact">Request Discovery Meeting</a>
+      <a class="btn btn-lg btn-ghost" href="#which">Which Assessment fits?</a>
     </div>
-    <div class="statbar">
-      <div><b>190+</b><span>clients since 1998</span></div>
-      <div><b>900+</b><span>projects delivered</span></div>
-      <div><b>5</b><span>average projects per client</span></div>
-      <div><b>90%</b><span>of engagements start here</span></div>
-    </div>
-  </div>
-</div>
-
-<div class="logos" id="logos" hidden>
-  <div class="wrap">
-    <div class="lbl">Trusted by industry leaders</div>
-    <div class="row">
-      <span class="n">DuPont</span><span class="n">Johnson Controls</span>
-      <span class="n">MiTek</span><span class="n">Red Cross</span>
-    </div>
-  </div>
-</div>
-
-<section>
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Why we start here</span>
-      <h2>Every operation has a list of problems. Knowing where to begin is the harder question.</h2>
-    </div>
-    <div class="grid g2">
-      <p class="lead" style="margin:0">Productivity is off, inventory is too high, orders ship late, the warehouse is out of space, throughput has plateaued. Most leaders can name the symptoms. Far fewer know which one is actually costing them the most, or what is causing it.</p>
-      <p style="margin:0">We do not start by selling projects. Unlike firms that run a discovery meeting and then propose a predetermined solution, we learn your business and your people first. Only then do we recommend improvement projects, each with its scope, objectives, tools, timing, fee, and the return on investment where the data supports it.</p>
-    </div>
+    <div class="pill">190+ Clients &nbsp;|&nbsp; Average 5 Projects per Client &nbsp;|&nbsp; Since 1998</div>
   </div>
 </section>
 
-<section class="tint">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">How it works</span>
-      <h2>Two days on site. A roadmap in two to three weeks.</h2>
+<section>
+  <div class="container prose intro">
+    <p>Every operation has a list of problems. Productivity is off, inventory is too high, orders ship late, the warehouse is out of space, throughput has plateaued. Most leaders can name the symptoms. Far fewer know which one is actually costing them the most, or what is causing it.</p>
+    <p>That is what the Assessment answers, and it is why more than 90% of Supply Velocity engagements start here. We do not start by selling projects. Unlike firms that run a discovery meeting and then propose a predetermined solution, we learn your business and your people first. Only then do we recommend improvement projects, each with its scope, objectives, tools, timing, fee, and the return on investment where the data supports it.</p>
+    <div class="pull">&hellip;the Assessment tends to confirm what leadership suspects. Its value is in what it finds underneath.</div>
+    <p>You decide what to run, in what order, and whether to run it with us or on your own.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="container">
+    <div class="sec-head">
+      <h2>How the Assessment Works</h2>
+      <p>Two days on site. A written report and a prioritized roadmap, typically two to three weeks later.</p>
     </div>
     <div class="grid g3">
-      <div class="step"><div class="n">1</div><h3>On site, two days</h3><p>Three for multi-channel or multi-site operations. Interviews with the people closest to the process, facility walk-throughs, and a review of your operating data.</p></div>
-      <div class="step"><div class="n">2</div><h3>80/20 analysis</h3><p>We focus on the small number of issues responsible for most of your challenges, rather than weeks of data collection.</p></div>
-      <div class="step"><div class="n">3</div><h3>Report and roadmap</h3><p>A read-out of findings on site, then a written Assessment Report and an executive presentation with Q&amp;A, typically two to three weeks later.</p></div>
+      <div class="card">
+        <div class="tile t-orange"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <h3>1. On site, two days</h3>
+        <p class="desc">Three for multi-channel or multi-site operations. We interview the people closest to the process, walk the facility, and review your operating data.</p>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Kick-off with leadership on day one</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Interviews and facility walk-throughs</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Initial read-out at the end of day two</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="tile t-blue"><svg viewBox="0 0 24 24"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></div>
+        <h3>2. 80/20 analysis</h3>
+        <p class="desc">We focus on the small number of issues responsible for most of your challenges, rather than weeks of data collection.</p>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Root causes, not just symptoms</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Financial impact of each gap</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Which Lean tools close it</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="tile t-teal"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></div>
+        <h3>3. Report and roadmap</h3>
+        <p class="desc">A written Assessment Report and an executive presentation with Q&amp;A, typically two to three weeks after the visit.</p>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Quick wins you can start immediately</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Projects with scope, timing, fee and return</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Nominated implementation team</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="wrap">
+  <div class="container">
     <div class="grid g2">
-      <div>
-        <span class="eyebrow">Before we arrive</span>
-        <h2>What we need from you</h2>
-        <p>To keep the Assessment to two days, we ask for a short data package before we arrive. Most clients already have all of it.</p>
-        <ul class="ticks">
-          <li>Roughly <b>12 months</b> of demand and purchase history at SKU level</li>
-          <li><b>Current inventory</b> levels</li>
-          <li>Any <b>performance measures</b> and goals you already track</li>
-          <li>An <b>org chart</b> and a <b>facility drawing</b></li>
+      <div class="card">
+        <div class="tile t-slate"><svg viewBox="0 0 24 24"><path d="M21 8v13H3V8M1 3h22v5H1zM10 12h4"/></svg></div>
+        <h3>What we need from you</h3>
+        <p class="desc">To keep the Assessment to two days, we ask for a short data package before we arrive. Most clients already have all of it.</p>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Roughly 12 months of demand and purchase history at SKU level</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Current inventory levels</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Any performance measures and goals you already track</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>An org chart and a facility drawing</li>
         </ul>
       </div>
-      <div class="panel accent">
-        <span class="eyebrow">Deliverables</span>
-        <h3 style="font-size:1.45rem;margin-bottom:.8em">What you receive</h3>
-        <ul class="ticks">
-          <li>Prioritized improvement opportunities and <b>quick wins</b> you can start immediately</li>
-          <li>A vision of the <b>future state</b></li>
-          <li><b>Recommended projects</b>, each with objectives, tools, scope, timing, fee and the return on investment where the data supports it</li>
-          <li>Longer-term <b>strategic initiatives</b></li>
-          <li>Nominated <b>implementation team</b> members and timing</li>
+      <div class="card">
+        <div class="tile t-amber"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg></div>
+        <h3>What you receive</h3>
+        <p class="desc">A findings read-out on the last day on site, then the written Assessment Report and an executive presentation.</p>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Prioritized improvement opportunities and quick wins</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>A vision of the future state</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Recommended projects with objectives, tools, scope, timing, fee, and return where the data supports it</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Longer-term strategic initiatives</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Nominated implementation team members and timing</li>
         </ul>
-        <p style="margin:1.5em 0 0;font-size:.95rem;color:var(--s500)">You can implement the roadmap with your own team, or have Supply Velocity facilitate it.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="tint" id="which">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Choose your starting point</span>
-      <h2>Which Assessment fits your operation?</h2>
-      <p class="lead">Most Assessments cover more than one area. Tell us the problem and we will scope it.</p>
+<section class="band" id="which">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Which Assessment Fits Your Operation?</h2>
+      <p>Most Assessments cover more than one area. Tell us the problem and we will scope it.</p>
     </div>
     <div class="grid g3">
-      <a class="card" href="/services/lean/lean-assessment/"><h3>Lean Assessment</h3><p>Manufacturing and operations. Labor productivity, on-time delivery, quality, material cost and overhead.</p><span class="go">Explore &rarr;</span></a>
-      <a class="card" href="/services/warehouse-plant-operations/"><h3>Warehouse &amp; Plant Operations</h3><p>Warehouses and plants. Layout, flow, storage media, WMS readiness, moves and expansions.</p><span class="go">Explore &rarr;</span></a>
-      <a class="card" href="/services/supply-chain-management/supply-chain-assessment/"><h3>Supply Chain Assessment</h3><p>End-to-end supply chain against the SCOR model: plan, source, make, deliver.</p><span class="go">Explore &rarr;</span></a>
-      <a class="card" href="/services/business-process-improvement/business-process-improvement-assessment/"><h3>Business Process Improvement</h3><p>Service businesses and office processes. Information flow, ERP and process re-engineering.</p><span class="go">Explore &rarr;</span></a>
-      <a class="card" href="/services/performance-measurement/performance-measurement-assessment/"><h3>Performance Measurement</h3><p>Scorecards, metrics and incentives that align the floor with leadership.</p><span class="go">Explore &rarr;</span></a>
-      <div class="card" style="background:var(--teal-50);border-color:#99f6e4"><h3>Not sure which one?</h3><p>Most Assessments span more than one area. Describe the problem and we will scope the right one for your operation.</p><a class="go" href="#contact">Talk to us &rarr;</a></div>
+      <a class="card" href="/services/lean/lean-assessment/">
+        <div class="tile t-orange"><svg viewBox="0 0 24 24"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><path d="M17 18h1M12 18h1M7 18h1"/></svg></div>
+        <h3>Lean Assessment</h3>
+        <p class="desc">Manufacturing and operations. Labor productivity, on-time delivery, quality, material cost and overhead.</p>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Value stream and process flow mapping</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Flow manufacturing and Kanban</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>5S visual management</li>
+        </ul>
+        <span class="go">Explore &rarr;</span>
+      </a>
+      <a class="card" href="/services/warehouse-plant-operations/">
+        <div class="tile t-blue"><svg viewBox="0 0 24 24"><path d="M22 8.35V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V8.35A2 2 0 0 1 3.26 6.5l8-3.2a2 2 0 0 1 1.48 0l8 3.2A2 2 0 0 1 22 8.35z"/><path d="M6 18h12M6 14h12M6 10h12"/></svg></div>
+        <h3>Warehouse &amp; Plant Operations</h3>
+        <p class="desc">Warehouses and plants. Layout, flow, storage media, WMS readiness, moves and expansions.</p>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Warehouse layout design</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Inventory optimization</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Throughput improvement</li>
+        </ul>
+        <span class="go">Explore &rarr;</span>
+      </a>
+      <a class="card" href="/services/supply-chain-management/supply-chain-assessment/">
+        <div class="tile t-teal"><svg viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div>
+        <h3>Supply Chain Assessment</h3>
+        <p class="desc">End-to-end supply chain against the SCOR model: plan, source, make, deliver.</p>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Network and fulfillment strategy</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Supplier and lead-time performance</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Cost to serve by channel</li>
+        </ul>
+        <span class="go">Explore &rarr;</span>
+      </a>
+      <a class="card" href="/services/business-process-improvement/business-process-improvement-assessment/">
+        <div class="tile t-slate"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <h3>Business Process Improvement</h3>
+        <p class="desc">Service businesses and office processes. Information flow, ERP and process re-engineering.</p>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Order-to-cash and quote-to-order flow</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>ERP configuration review</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Customer service process design</li>
+        </ul>
+        <span class="go">Explore &rarr;</span>
+      </a>
+      <a class="card" href="/services/performance-measurement/performance-measurement-assessment/">
+        <div class="tile t-green"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
+        <h3>Performance Measurement</h3>
+        <p class="desc">Scorecards, metrics and incentives that align the floor with leadership.</p>
+        <ul class="checks">
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Balanced scorecard design</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Leading and lagging indicators</li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Metrics that tie to the financials</li>
+        </ul>
+        <span class="go">Explore &rarr;</span>
+      </a>
+      <div class="card soft">
+        <div class="tile t-amber"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3M12 17h.01"/></svg></div>
+        <h3>Not sure which one?</h3>
+        <p class="desc">Most Assessments span more than one area. Describe the problem and we will scope the right one for your operation.</p>
+        <a class="btn" href="#contact">Talk to us</a>
+      </div>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="wrap narrow">
-    <div class="head">
-      <span class="eyebrow">What we find</span>
-      <h2>The Assessment confirms what you suspect. Its value is what sits underneath.</h2>
+  <div class="container prose">
+    <div class="sec-head" style="margin-bottom:36px">
+      <h2>What the Assessment Usually Uncovers</h2>
+      <p>The Assessment tends to confirm leadership's concerns. Its value is in the hidden causes underneath them.</p>
     </div>
-    <ul class="ticks" style="font-size:1.05rem">
-      <li>Inventory problems caused by <b>planning issues</b></li>
-      <li>Production delays created by <b>poor material flow</b> or supplier quality</li>
-      <li>Warehouse congestion driven by the <b>wrong storage media</b></li>
-      <li>Customer service issues that originate in the <b>ERP configuration</b></li>
-      <li>Excess labor resulting from <b>inefficient process design</b></li>
+    <ul class="checks lg">
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Inventory problems caused by planning issues</li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Production delays created by poor material flow or supplier quality</li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Warehouse congestion driven by the wrong storage media</li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Customer service issues that originate in the ERP configuration</li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Excess labor resulting from inefficient process design</li>
     </ul>
-    <div class="panel accent" style="margin-top:2.2em">
-      <p style="margin:0;font-size:1.08rem;color:var(--s800)"><b>Without seeing these relationships, companies spend significant time and money solving the wrong problem.</b></p>
-    </div>
+    <div class="pull" style="margin-top:32px">Without seeing these relationships, companies spend significant time and money solving the wrong problem.</div>
   </div>
 </section>
 
-<section class="tint">
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Results</span>
-      <h2>What it looks like in practice</h2>
+<section class="band">
+  <div class="container">
+    <div class="row-head">
+      <div><span class="eyebrow">Results</span><h2>What It Looks Like in Practice</h2></div>
+      <a class="btn btn-outline" href="/resources/category/results-case-studies/">View All Case Studies</a>
     </div>
     <div class="grid g3">
       <div class="case">
-        <span class="who">Apparel distribution</span>
+        <span class="tag">Apparel distribution</span>
         <h3>Image Solutions</h3>
         <p>Ahead of a warehouse move and WMS upgrade, a Lean Warehouse Assessment found shipping placed at the far dock doors, a reactive replenishment process, and metrics that did not tie to the financials. Delivered a swapped dock design, a performance scorecard and a 90-day roadmap.</p>
       </div>
       <div class="case">
-        <span class="who">Family-owned manufacturer</span>
+        <span class="tag">Family-owned manufacturer</span>
         <h3>Chemline</h3>
         <p class="todo">Lean operations and supply chain Assessment. Detail to be pulled from the case study deck.</p>
       </div>
       <div class="case">
-        <span class="who">PE-backed logistics</span>
+        <span class="tag">PE-backed logistics</span>
         <h3>Redwood Logistics</h3>
         <p class="todo">Lean process improvement Assessment. Detail to be pulled from the case study deck.</p>
       </div>
     </div>
-    <div class="quote">
-      <span class="mark">&ldquo;</span>
-      <p>What stood out the most was their ability to balance objective analysis with practical recommendations. The output was not just diagnostic. It included concrete next steps such as a 90-day roadmap, prioritization of leadership and training gaps, and specific guidance around WMS adoption, SOP development and operating cadence.</p>
-      <cite><b>Jayson Wickenkamp</b>Senior Vice President and General Manager, Image Solutions</cite>
+    <div class="testi">
+      <div class="q">&ldquo;</div>
+      <div>
+        <p>What stood out the most was their ability to balance objective analysis with practical recommendations. The output was not just diagnostic. It included concrete next steps such as a 90-day roadmap, prioritization of leadership and training gaps, and specific guidance around WMS adoption, SOP development and operating cadence.</p>
+        <div class="who"><b>Jayson Wickenkamp</b><span>Senior Vice President and General Manager, Image Solutions</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="logos" id="logos">
+  <div class="container">
+    <div class="sec-head" style="margin-bottom:40px">
+      <h2>Trusted By Industry Leaders</h2>
+      <p>Driving operational excellence and delivering results across diverse industries since 1998.</p>
+    </div>
+    <div class="row">
+      <img src="assets/logos/volpi.webp" alt="Volpi">
+      <img src="assets/logos/emerson.webp" alt="Emerson">
+      <img src="assets/logos/american-red-cross.webp" alt="American Red Cross">
+      <img src="assets/logos/pure-hockey.webp" alt="Pure Hockey">
+      <img src="assets/logos/rubinbrown.webp" alt="RubinBrown">
+      <img src="assets/logos/fabick.webp" alt="Fabick Cat">
+      <img src="assets/logos/international-foods.webp" alt="International Foods Cooperation">
+      <img src="assets/logos/icp.webp" alt="ICP Building Solutions Group">
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="container">
+    <div class="sec-head">
+      <h2>Why Us?</h2>
+      <p>Trusted partnerships that extend across multiple projects reflect the long-term value and results we deliver.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>190+</b><span class="l">Clients</span><span class="d">Across distribution, manufacturing and services since 1998.</span></div>
+      <div class="stat"><b>900+</b><span class="l">Projects</span><span class="d">Delivered with measurable operational and financial results.</span></div>
+      <div class="stat"><b>5</b><span class="l">Projects per Client</span><span class="d">Clients invite us back, on average, for five improvement projects.</span></div>
+      <div class="stat"><b>90%</b><span class="l">Start with an Assessment</span><span class="d">More than nine in ten engagements begin here.</span></div>
+      <div class="stat stat-80" hidden><b>80%</b><span class="l">Lead to Projects</span><span class="d">Assessments that move directly into implementation.</span></div>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">Track record</span>
-      <h2>Proven since 1998</h2>
-    </div>
-    <div class="grid g3">
-      <div class="stat"><b>190+</b><span>clients since 1998</span></div>
-      <div class="stat"><b>900+</b><span>projects delivered</span></div>
-      <div class="stat"><b>5</b><span>average improvement projects per client</span></div>
-      <div class="stat"><b>90%</b><span>of engagements begin with an Assessment</span></div>
-      <div class="stat stat-80" hidden><b>80%</b><span>of Assessments lead to implementation projects</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="tint">
-  <div class="wrap narrow">
-    <div class="head">
-      <span class="eyebrow">Common questions</span>
-      <h2>Before you ask</h2>
+  <div class="container prose">
+    <div class="sec-head" style="margin-bottom:36px">
+      <h2>Common Questions</h2>
     </div>
     <details><summary>How long does an Assessment take?</summary><p>Two days on site for most operations, three for multi-channel or multi-site, with the written report and executive presentation typically two to three weeks later.</p></details>
     <details><summary>We already know what our problems are.</summary><p>Usually the symptoms, yes. The Assessment identifies the root causes and the sequence to address them, which is where improvement efforts most often fail.</p></details>
@@ -352,34 +467,34 @@ footer b{color:var(--s700)}
   </div>
 </section>
 
-<section id="contact">
-  <div class="wrap">
-    <div class="band">
-      <h2>Book your Lean Discovery Meeting</h2>
-      <p>We will review your situation on a short call and scope the Assessment for your operation and facilities. No obligation, and we respond within 48 hours.</p>
-      <p style="margin-top:2em"><a class="btn btn-light" href="#">Book Your Lean Discovery Meeting</a></p>
-    </div>
+<section class="cta" id="contact">
+  <img class="bg" src="assets/hero.jpg" alt="" aria-hidden="true">
+  <div class="container">
+    <h2>Book Your Lean Discovery Meeting</h2>
+    <p>Speak to a Lean Supply Chain Transformation Expert. We will review your situation on a short call and scope the Assessment for your operation and facilities.</p>
+    <p style="margin-top:32px"><a class="btn btn-lg" href="#">Request Discovery Meeting</a></p>
+    <p class="fine">No obligation. We respond within 48 hours. Your information stays private.</p>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">
-    <div><b>Internal draft, not published.</b> Supply Velocity Assessment overview page, 23 September 2026.</div>
-    <div>Proposed URL /services/assessment/ · working title "Lean &amp; Supply Chain Assessment" · both subject to Jack's decision.</div>
-    <div>Copy sourced from Ray Davis' Assessment scope-of-work documents, the Supply Velocity Overview, the live case studies, and Ray's corrections of 23 September 2026. Tracked on Plane SV-15. Fees and scope-of-work extracts are deliberately excluded from this build.</div>
+  <div class="links">
+    <a href="#">Insights</a><a href="#">Project Abstracts</a><a href="#">Case Studies</a><a href="#">White Papers</a>
+    <a href="#">Industries</a><a href="#">Service Area</a><a href="#contact">Contact Us</a><a href="#">Sitemap</a>
   </div>
+  <div class="bar">&copy; 2026 Supply Velocity. All rights reserved. | <a href="#">Privacy Statement</a> | <a href="#">Terms of Use</a>
+    <small>Protected by reCAPTCHA &mdash; Privacy &middot; Terms</small>
+  </div>
+  <div class="draft">Internal review draft, not published. Proposed URL /services/assessment/. Copy sourced from Ray Davis' Assessment scope-of-work documents, the Supply Velocity Overview, the live case studies, and Ray's corrections of 23 September 2026. Tracked on Plane SV-15.</div>
 </footer>
 
 <div id="dock">
   <div class="body" id="dock-body">
-    <div class="top">
-      <span class="pill">Draft</span><b>Review controls</b>
-      <button type="button" id="dock-close" aria-label="Collapse">&times;</button>
-    </div>
+    <div class="top"><span class="pillx">Draft</span><b>Review controls</b><button type="button" id="dock-close" aria-label="Collapse">&times;</button></div>
     <div class="inner">
       <p class="hint">Open decisions for Jack. Flip each one to see the page both ways.</p>
-      <label><input type="checkbox" id="t-price"> Pricing question</label>
-      <label><input type="checkbox" id="t-logos"> Named-client strip</label>
+      <label><input type="checkbox" id="t-price"> Pricing question in FAQ</label>
+      <label><input type="checkbox" id="t-logos" checked> Client logo strip</label>
       <label><input type="checkbox" id="t-80"> Unverified 80% stat</label>
     </div>
   </div>
@@ -392,19 +507,19 @@ footer b{color:var(--s700)}
   function sync(id,sel){
     var on=document.getElementById(id).checked;
     document.querySelectorAll(sel).forEach(function(el){el.hidden=!on;});
-    try{localStorage.setItem('sv-'+id,on?'1':'0');}catch(e){}
+    try{localStorage.setItem('sv2-'+id,on?'1':'0');}catch(e){}
   }
   map.forEach(function(p){
     var b=document.getElementById(p[0]);
-    try{var s=localStorage.getItem('sv-'+p[0]); if(s!==null) b.checked=s==='1';}catch(e){}
+    try{var s=localStorage.getItem('sv2-'+p[0]); if(s!==null) b.checked=s==='1';}catch(e){}
     sync(p[0],p[1]);
     b.addEventListener('change',function(){sync(p[0],p[1]);});
   });
   var body=document.getElementById('dock-body'), open=document.getElementById('open-dock');
-  function setOpen(o){ body.hidden=!o; open.hidden=o; try{localStorage.setItem('sv-dock',o?'1':'0');}catch(e){} }
+  function setOpen(o){ body.hidden=!o; open.hidden=o; try{localStorage.setItem('sv2-dock',o?'1':'0');}catch(e){} }
   document.getElementById('dock-close').addEventListener('click',function(){setOpen(false);});
   open.addEventListener('click',function(){setOpen(true);});
-  try{ if(localStorage.getItem('sv-dock')==='0') setOpen(false); }catch(e){}
+  try{ if(localStorage.getItem('sv2-dock')==='0') setOpen(false); }catch(e){}
 })();
 </script>
 </body>
