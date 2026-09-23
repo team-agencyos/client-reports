@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Lean &amp; Supply Chain Assessment | Supply Velocity — DRAFT v3</title>
+<style>
+:root{
+  --navy:#0a2240; --navy-2:#123056; --blue:#337ab7; --blue-d:#2563eb;
+  --teal:#0d9488; --slate:#334155; --line:#d1d5db;
+  --bg:#ffffff; --bg-alt:#f6f8fb; --ink:#1a2433; --muted:#5b6b80;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --wrap:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:20px}
+h1,h2,h3{line-height:1.2;margin:0 0 .5em}
+h1{font-size:clamp(2rem,4.6vw,3.25rem);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(1.5rem,2.6vw,2.1rem);font-weight:750;letter-spacing:-.015em;color:var(--navy)}
+h3{font-size:1.1rem;font-weight:700}
+p{margin:0 0 1em}
+a{color:var(--blue-d)}
+section{padding-block:clamp(48px,6vw,84px)}
+.alt{background:var(--bg-alt)}
+.eyebrow{text-transform:uppercase;letter-spacing:.12em;font-size:.75rem;font-weight:700;color:var(--teal);margin-bottom:.75em}
+.lead{font-size:1.15rem;color:var(--muted)}
+
+/* review bar */
+#review{position:sticky;top:0;z-index:50;background:#12203a;color:#e8eef7;border-bottom:3px solid var(--teal)}
+#review .wrap{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;padding-block:10px}
+#review .tag{background:var(--teal);color:#04241f;font-weight:800;font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;padding:3px 9px;border-radius:4px}
+#review .note{font-size:.82rem;color:#b9c8dc;margin-right:auto}
+.tgl{display:inline-flex;align-items:center;gap:7px;font-size:.8rem;color:#e8eef7;cursor:pointer;user-select:none;white-space:nowrap}
+.tgl input{appearance:none;width:34px;height:19px;background:#40506b;border-radius:99px;position:relative;cursor:pointer;transition:background .18s;flex:none}
+.tgl input::after{content:"";position:absolute;top:2.5px;left:2.5px;width:14px;height:14px;background:#fff;border-radius:50%;transition:transform .18s}
+.tgl input:checked{background:var(--teal)}
+.tgl input:checked::after{transform:translateX(15px)}
+
+/* hero */
+.hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;padding-block:clamp(56px,7vw,104px)}
+.hero h1{color:#fff;max-width:17ch}
+.hero .sub{font-size:clamp(1.05rem,1.7vw,1.3rem);color:#c3d2e6;max-width:60ch;margin-bottom:1.6em}
+.btn{display:inline-block;background:var(--teal);color:#04241f;font-weight:750;padding:14px 28px;border-radius:7px;text-decoration:none;font-size:1.02rem;transition:transform .12s,filter .12s}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid #4e678c;margin-left:10px}
+
+/* proof strip */
+.proof{display:flex;flex-wrap:wrap;gap:10px 34px;margin-top:2.4em;padding-top:1.6em;border-top:1px solid rgba(255,255,255,.16)}
+.proof div{font-size:.94rem;color:#c3d2e6}
+.proof b{color:#fff;font-weight:750}
+
+/* logos */
+#logos{background:var(--navy-2);color:#93a8c4;padding-block:22px;border-top:1px solid rgba(255,255,255,.08)}
+#logos .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 38px;justify-content:center}
+#logos .lbl{font-size:.73rem;letter-spacing:.12em;text-transform:uppercase;width:100%;text-align:center;margin-bottom:4px;color:#7f95b4}
+#logos span.n{font-size:1.02rem;font-weight:700;color:#d6e2f2;letter-spacing:.01em}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px;margin-top:2em}
+.step{background:#fff;border:1px solid var(--line);border-radius:10px;padding:26px 24px}
+.step .num{width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-size:.9rem;margin-bottom:14px}
+.step p{margin:0;color:var(--muted);font-size:.96rem}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(285px,1fr));gap:18px;margin-top:2em}
+.card{display:block;background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:9px;padding:22px;text-decoration:none;color:inherit;transition:box-shadow .15s,transform .15s}
+.card:hover{box-shadow:0 8px 22px rgba(10,34,64,.1);transform:translateY(-2px)}
+.card h3{color:var(--navy);margin-bottom:.35em}
+.card p{margin:0;font-size:.92rem;color:var(--muted)}
+
+/* lists */
+.ticks{list-style:none;padding:0;margin:1.2em 0 0}
+.ticks li{position:relative;padding-left:30px;margin-bottom:.7em;color:var(--slate)}
+.ticks li::before{content:"";position:absolute;left:0;top:.52em;width:8px;height:8px;border-radius:50%;background:var(--teal)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px 46px}
+
+/* case */
+.case{background:#fff;border:1px solid var(--line);border-radius:10px;padding:26px;margin-bottom:18px}
+.case .who{font-size:.76rem;letter-spacing:.09em;text-transform:uppercase;color:var(--teal);font-weight:700}
+.case h3{color:var(--navy);margin:.3em 0 .5em}
+.case p{margin:0;color:var(--muted);font-size:.97rem}
+blockquote{margin:0;background:var(--navy);color:#e6eefa;border-radius:10px;padding:30px 32px;font-size:1.05rem}
+blockquote cite{display:block;margin-top:14px;font-style:normal;font-size:.87rem;color:#a9bed9}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:2em}
+.stat{background:#fff;border:1px solid var(--line);border-radius:10px;padding:26px 22px;text-align:center}
+.stat b{display:block;font-size:2.1rem;font-weight:800;color:var(--navy);line-height:1.1;letter-spacing:-.02em}
+.stat span{display:block;margin-top:8px;font-size:.9rem;color:var(--muted)}
+
+/* faq */
+.faq{border-top:1px solid var(--line);margin-top:1.8em}
+details{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;padding:18px 40px 18px 0;font-weight:650;color:var(--navy);list-style:none;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:1.5rem;font-weight:400;color:var(--teal);line-height:1}
+details[open] summary::after{content:"\2013"}
+details p{padding:0 0 18px;margin:0;color:var(--muted)}
+
+/* cta */
+.cta{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-2) 100%);color:#fff;text-align:center}
+.cta h2{color:#fff}
+.cta p{color:#c3d2e6;max-width:58ch;margin-inline:auto}
+
+footer{background:#081a31;color:#8ba2c0;font-size:.85rem;padding-block:34px}
+footer .wrap{display:grid;gap:8px}
+footer b{color:#cfdcec}
+.flag{background:#fff6d6;border:1px solid #e3c65a;border-left:4px solid #d9a904;border-radius:7px;padding:12px 16px;font-size:.87rem;color:#5a4506;margin-top:14px}
+[hidden]{display:none!important}
+@media(max-width:640px){#review .note{width:100%;margin-right:0}}
+</style>
+</head>
+<body>
+
+<div id="review">
+  <div class="wrap">
+    <span class="tag">Internal draft v3</span>
+    <span class="note">Not live. Copy for review, 23 Sep 2026. Flip the switches to see each open decision both ways. Figures shared separately.</span>
+    <label class="tgl"><input type="checkbox" id="t-price"> Pricing line</label>
+    <label class="tgl"><input type="checkbox" id="t-logos"> Named clients</label>
+    <label class="tgl"><input type="checkbox" id="t-80"> Unverified 80% stat</label>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>Start with an Assessment. Fix the right problems first.</h1>
+    <p class="sub">In two days on site, Supply Velocity finds the few issues driving most of your operational cost and delay, and hands you a prioritized roadmap with the return on each project.</p>
+    <a class="btn" href="#cta">Request a Discovery Meeting</a>
+    <a class="btn btn-ghost" href="#which">Which Assessment fits?</a>
+    <div class="proof">
+      <div><b>Since 1998</b></div>
+      <div><b>190+</b> clients</div>
+      <div><b>900+</b> projects</div>
+      <div><b>Over 90%</b> of engagements start here</div>
+    </div>
+  </div>
+</header>
+
+<div id="logos" hidden>
+  <div class="wrap">
+    <div class="lbl">Trusted by</div>
+    <span class="n">DuPont</span><span class="n">Johnson Controls</span><span class="n">MiTek</span><span class="n">Red Cross</span>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Why we start here</div>
+    <h2>Every organization has a list of problems. Knowing where to begin is the harder question.</h2>
+    <div class="two">
+      <div>
+        <p>Productivity is off, inventory is too high, orders are late, the warehouse is out of space, throughput has plateaued. Most leaders can name the symptoms. Far fewer know which one is actually costing them the most, or what is causing it.</p>
+      </div>
+      <div>
+        <p>We do not start by selling projects. Unlike firms that run a discovery meeting and then propose a predetermined solution, we learn your business and your people first. Only then do we recommend improvement projects, each with its scope, objectives, tools, timing, fee, and the return on investment where the data supports it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2>Two days on site. A roadmap in two to three weeks.</h2>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><h3>On site, two days</h3><p>Three for multi-channel or multi-site operations. Interviews with the people closest to the process, facility walk-throughs, and a review of your operating data.</p></div>
+      <div class="step"><div class="num">2</div><h3>80/20 analysis</h3><p>We focus on the small number of issues responsible for most of your challenges, rather than weeks of data collection.</p></div>
+      <div class="step"><div class="num">3</div><h3>Report and roadmap</h3><p>A read-out of findings on site, then a written Assessment Report and an executive presentation with Q&amp;A, typically two to three weeks later.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <div class="eyebrow">Before we arrive</div>
+        <h2>What we need from you</h2>
+        <p>To keep the Assessment to two days, we ask for a short data package before we arrive. Most clients already have all of it.</p>
+        <ul class="ticks">
+          <li>Roughly 12 months of demand and purchase history at SKU level</li>
+          <li>Current inventory levels</li>
+          <li>Any performance measures and goals you already track</li>
+          <li>An org chart and a facility drawing</li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow">Deliverables</div>
+        <h2>What you receive</h2>
+        <ul class="ticks">
+          <li>Prioritized improvement opportunities and quick wins you can start immediately</li>
+          <li>A vision of the future state</li>
+          <li>Recommended projects, each with objectives, tools, scope, timing, fee and the return on investment where the data supports it</li>
+          <li>Longer-term strategic initiatives</li>
+          <li>Nominated implementation team members and timing</li>
+        </ul>
+        <p style="margin-top:1.2em">You can implement the roadmap with your own team or have Supply Velocity facilitate it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="which">
+  <div class="wrap">
+    <div class="eyebrow">Choose your starting point</div>
+    <h2>Which Assessment fits your operation?</h2>
+    <p class="lead">Most Assessments cover more than one area. Tell us the problem and we will scope it.</p>
+    <div class="cards">
+      <a class="card" href="/services/lean/lean-assessment/"><h3>Lean Assessment</h3><p>Manufacturing and operations. Labor productivity, on-time delivery, quality, material cost, overhead.</p></a>
+      <a class="card" href="/services/warehouse-plant-operations/"><h3>Warehouse &amp; Plant Operations</h3><p>Warehouses and plants. Layout, flow, storage media, WMS readiness, moves and expansions.</p></a>
+      <a class="card" href="/services/supply-chain-management/supply-chain-assessment/"><h3>Supply Chain Assessment</h3><p>End-to-end supply chain against the SCOR model: plan, source, make, deliver.</p></a>
+      <a class="card" href="/services/business-process-improvement/business-process-improvement-assessment/"><h3>Business Process Improvement</h3><p>Service businesses and office processes. Information flow, ERP, process re-engineering.</p></a>
+      <a class="card" href="/services/performance-measurement/performance-measurement-assessment/"><h3>Performance Measurement</h3><p>Scorecards, metrics and incentives that align the floor with leadership.</p></a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">What we find</div>
+    <h2>The Assessment confirms what you suspect. Its value is what sits underneath.</h2>
+    <ul class="ticks">
+      <li>Inventory problems caused by planning issues</li>
+      <li>Production delays created by poor material flow or supplier quality</li>
+      <li>Warehouse congestion driven by the wrong storage media</li>
+      <li>Customer service issues that originate in the ERP configuration</li>
+      <li>Excess labor resulting from inefficient process design</li>
+    </ul>
+    <p style="margin-top:1.4em"><strong>Without seeing these relationships, companies spend significant time and money solving the wrong problem.</strong></p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Results</div>
+    <h2>What it looks like in practice</h2>
+    <div class="case">
+      <div class="who">Apparel distributor</div>
+      <h3>Image Solutions</h3>
+      <p>Ahead of a warehouse move and WMS upgrade, a Lean Warehouse Assessment found a dock layout that put shipping at the far doors, a reactive replenishment process, and metrics that did not tie to the financials. Output: a swapped dock design, a performance scorecard, and a 90-day roadmap.</p>
+    </div>
+    <div class="case">
+      <div class="who">Family-owned manufacturer</div>
+      <h3>Chemline</h3>
+      <p>Lean operations and supply chain Assessment. <em>Detail to be pulled from the case study deck on G Drive.</em></p>
+    </div>
+    <div class="case">
+      <div class="who">PE-backed logistics</div>
+      <h3>Redwood Logistics</h3>
+      <p>Lean process improvement Assessment. <em>Detail to be pulled from the case study deck on G Drive.</em></p>
+    </div>
+    <blockquote>
+      "What stood out the most was their ability to balance objective analysis with practical recommendations. The output was not just diagnostic. It included concrete next steps such as a 90-day roadmap, prioritization of leadership and training gaps, and specific guidance around WMS adoption, SOP development and operating cadence."
+      <cite>Jayson Wickenkamp, Senior Vice President and GM, Image Solutions</cite>
+    </blockquote>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">Track record</div>
+    <h2>Proven since 1998</h2>
+    <div class="stats">
+      <div class="stat"><b>190+</b><span>clients since 1998</span></div>
+      <div class="stat"><b>900+</b><span>projects delivered</span></div>
+      <div class="stat"><b>Over 90%</b><span>of engagements begin with an Assessment</span></div>
+      <div class="stat"><b>5</b><span>average improvement projects per client</span></div>
+      <div class="stat stat-80" hidden><b>Over 80%</b><span>of Assessments lead to implementation projects</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <div class="eyebrow">Common questions</div>
+    <h2>Before you ask</h2>
+    <div class="faq">
+      <details><summary>How long does an Assessment take?</summary><p>Two days on site for most operations, three for multi-channel or multi-site, with the written report and executive presentation typically two to three weeks later.</p></details>
+      <details><summary>We already know what our problems are.</summary><p>Usually the symptoms, yes. The Assessment identifies the root causes and the sequence to address them, which is where improvement efforts most often fail.</p></details>
+      <details><summary>Is the Assessment just a sales tool for projects?</summary><p>No predetermined solution walks in the door. Every recommended project comes with scope, fee and expected return so you can decide, and you can implement any of them without us.</p></details>
+      <details><summary>We are not a manufacturer. Does this apply to us?</summary><p>Assessments run in distribution and warehousing, retail, food and beverage, healthcare supply chains and business services, not only manufacturing.</p></details>
+      <details><summary>How much of our team's time does it take?</summary><p>Interviews and a facility tour across two days, scheduled around the operation, plus the data package before we arrive.</p></details>
+      <details><summary>What happens after the report?</summary><p>You choose. You keep the report, the roadmap and the quick wins either way.</p></details>
+      <details><summary>How is this different from a large consulting firm's assessment?</summary><p>Weeks-long, team-heavy studies are a different product. We apply the 80/20 principle with senior consultants who then run the projects themselves.</p></details>
+      <details class="faq-price" hidden><summary>What does an Assessment cost?</summary><p>The fee depends on scope, the number of facilities and the depth of analysis required, and is fixed in the scope-of-work before we begin. Travel is invoiced at cost.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="cta">
+  <div class="wrap">
+    <h2>Request a Discovery Meeting</h2>
+    <p>We will review your situation on a short call and scope the Assessment for your operation and facilities.</p>
+    <p style="margin-top:1.6em"><a class="btn" href="#">Request a Discovery Meeting</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><b>Internal draft, not published.</b> Supply Velocity Assessment overview page, draft v3, 23 September 2026.</div>
+    <div>Proposed URL /services/assessment/ · working title "Lean &amp; Supply Chain Assessment" · both subject to Jack's decision.</div>
+    <div>Copy sourced from Ray Davis' four Assessment SOWs, the Supply Velocity Overview, the live case studies, and Ray's corrections of 23 September 2026. Tracked on Plane SV-15.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var map = [
+    ['t-price', '.faq-price'],
+    ['t-logos', '#logos'],
+    ['t-80',    '.stat-80']
+  ];
+  function sync(id, sel){
+    var on = document.getElementById(id).checked;
+    document.querySelectorAll(sel).forEach(function(el){ el.hidden = !on; });
+    try { localStorage.setItem('sv-'+id, on ? '1' : '0'); } catch(e){}
+  }
+  map.forEach(function(pair){
+    var box = document.getElementById(pair[0]);
+    try {
+      var saved = localStorage.getItem('sv-'+pair[0]);
+      if (saved !== null) box.checked = saved === '1';
+    } catch(e){}
+    sync(pair[0], pair[1]);
+    box.addEventListener('change', function(){ sync(pair[0], pair[1]); });
+  });
+})();
+</script>
+</body>
+</html>
